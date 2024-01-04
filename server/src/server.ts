@@ -6,6 +6,11 @@ import cookieParser from 'cookie-parser';
 import connection from './routes/conn';
 import { QueryError } from 'mysql2';
 
+import indexRouter from './routes';
+import userRouter from './routes/users';
+import horseRouter from './routes/horses';
+import ridingSessionRouter from './routes/ridingSessions';
+
 const app = express();
 
 connection.connect(function(err: QueryError | null) {
@@ -23,9 +28,10 @@ app.use(express.urlencoded( {extended: false} ));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Application works');
-});
+app.use('/', indexRouter);
+app.use('/users', userRouter);
+app.use('/horses', horseRouter);
+app.use('/ridingsessions', ridingSessionRouter);
 
 app.listen(3000, () => {
     console.log('App started on port 3000');
