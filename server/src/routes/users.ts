@@ -39,14 +39,14 @@ userRouter.post('/add', function(req: Request, res: Response) {
 
         let checkUniqueEmailQuery = `SELECT * FROM users WHERE email = '${newUser.email}'`;
 
-        connection.query(checkUniqueEmailQuery, function(err: QueryError | null, rows: RowDataPacket[]) {
+        connection.query(checkUniqueEmailQuery, function(err: QueryError | null, result: RowDataPacket[]) {
             if(err) {
                 console.log('Error checking email uniqueness:', err);
                 return res.status(500).json({ error: 'Error checking email uniqueness' });
             }
 
             //Return error is email exists
-            if( rows && rows.length > 0) {
+            if( result && result.length > 0) {
                 return res.status(400).json({ error: 'Error, Email already exists' });
             }
 
@@ -74,15 +74,37 @@ userRouter.post('/add', function(req: Request, res: Response) {
 
 userRouter.post('/login', function(req: Request, res: Response) {
     let userLogin = {
-        
+        email: req.body.email,
+        password: req.body.password
     };
 
     connection.connect(function(err: QueryError | null) {
         if(err) {
             console.log('Error connecting to database: ', err);
+            return res.status(500).json({ error: 'Database connection error' });
         };
 
-       
+       let sql = `SELECT * FROM users WHERE email = '${userLogin.email}'`;
+
+       connection.query(sql, async function(err: QueryError | null, result: RowDataPacket[]) {
+            if(err) {
+                console.log('Query error: ', err);
+                return res.status(500).json({ error: 'Query error' });
+            };
+            
+            if(result.length === 0) {
+                return res.status(400).json({ error: 'User not found' });
+            };
+
+            const user = result[0];
+            const passwordMatch = await bcrypt.compare(userLogin.password, user.password);
+
+            if(passwordMatch) {
+                res.status(200).json({ message: 'Login sucessful', user: { email: user.email, id: user.id} });
+            }else {
+                res.status(401).json({ error: 'Incorrect password' });
+            }
+        });
     });
 });
 
