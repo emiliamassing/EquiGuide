@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import connection from './conn';
-import { QueryError, ResultSetHeader } from 'mysql2';
+import { QueryError, ResultSetHeader, RowDataPacket } from 'mysql2';
 import bcrypt from 'bcrypt';
 
 const userRouter: Router = express.Router();
@@ -37,28 +37,46 @@ userRouter.post('/add', function(req: Request, res: Response) {
             return res.status(500).json({ error: 'Database connection error' });
         };
 
-        bcrypt.hash(newUser.password, 10, function(err, hash) {
-            if (err) {
-                console.log('Error hashing password:', err);
-                return res.status(500).json({ error: 'Error hashing password' });
-            };
+        let checkUniqueEmailQuery = `SELECT * FROM users WHERE email = '${newUser.email}'`;
 
-            let sql: string = `INSERT INTO users (first_name, last_name, email, password) VALUES('${newUser.first_name}', '${newUser.last_name}', '${newUser.email}', '${hash}')`;
+        connection.query(checkUniqueEmailQuery, function(err: QueryError | null, rows: RowDataPacket[]) {
+            if(err) {
+                console.log('Error checking email uniqueness:', err);
+                return res.status(500).json({ error: 'Error checking email uniqueness' });
+            }
 
-            connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
+            //Return error is email exists
+            if( rows && rows.length > 0) {
+                return res.status(400).json({ error: 'Error, Email already exists' });
+            }
+
+            bcrypt.hash(newUser.password, 10, function(err, hash) {
                 if(err) {
-                    console.log('Error inserting user:', err);
-                    return res.status(500).json({ error: 'Error inserting user' });
+                    console.log('Error hashing password:', err);
+                    return res.status(500).json({ error: 'Error hashing password' });
                 };
-
-                console.log('New user inserted:', result);
-                res.status(200).json(result);
+    
+                let sql: string = `INSERT INTO users (first_name, last_name, email, password) VALUES('${newUser.first_name}', '${newUser.last_name}', '${newUser.email}', '${hash}')`;
+    
+                connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
+                    if(err) {
+                        console.log('Error inserting user:', err);
+                        return res.status(500).json({ error: 'Error inserting user' });
+                    };
+    
+                    console.log('New user inserted:', result);
+                    res.status(200).json(result);
+                });
             });
         });
     });
 });
 
-/*userRouter.post('/login', function(req: Request, res: Response) {
+userRouter.post('/login', function(req: Request, res: Response) {
+    let userLogin = {
+        
+    };
+
     connection.connect(function(err: QueryError | null) {
         if(err) {
             console.log('Error connecting to database: ', err);
@@ -66,6 +84,6 @@ userRouter.post('/add', function(req: Request, res: Response) {
 
        
     });
-});*/
+});
 
 export default userRouter;
