@@ -1,0 +1,20 @@
+@use './utils/variables' as var;
+@import './utils/normalize';
+@import './loginpage/loginpage';
+
+* {
+  font-family: var.$fontFamily;
+}
+
+body {
+  background-color: var.$bgColor;
+  color: var.$textColor;
+}
+
+button.primaryButton {
+  background-color: var.$darkGreen;
+}
+
+button.secondaryButton {
+  background-color: var.$gray;
+}
