@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { SvgLogo } from "./SvgLogo";
 
 export function Loginpage() {
     const navigate = useNavigate();
@@ -14,8 +15,10 @@ export function Loginpage() {
     return(
         <>
             <section>
-                <div className="loginContainer">
+                <div className="headerImage"></div>
+                <div className="loginPageContainer">
                     <h1>Equiguide</h1>
+                    <SvgLogo height={120} width={120}></SvgLogo>
                     <p>Unlock your riding potential</p>
                     <div className="loginButtonContainer">
                         <button className="secondaryButton" onClick={directToRegisterUser}>Register</button>
