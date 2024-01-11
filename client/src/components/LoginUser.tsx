@@ -25,6 +25,7 @@ export function LoginUser() {
 
         const userData = await loginUser('users/login', {email: emailInput, password: passwordInput});
         console.log(userData);
+        navigate('/home');
     }
 
     return(
