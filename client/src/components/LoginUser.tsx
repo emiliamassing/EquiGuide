@@ -23,7 +23,10 @@ export function LoginUser() {
     async function tryToLoginUser(e: FormEvent) {
         e.preventDefault();
 
-        const userData = await loginUser('users/login', {email: emailInput, password: passwordInput});
+        const userData = await loginUser({
+            email: emailInput, 
+            password: passwordInput
+        });
         console.log(userData);
         navigate('/home');
     }
