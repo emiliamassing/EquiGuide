@@ -1,24 +1,44 @@
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../services/userService";
+
 
 export function LoginUser() {
     const navigate = useNavigate();
+    const [emailInput, setEmailInput] = useState('');
+    const [passwordInput, setPasswordInput] = useState('');
 
     function directToLogin() {
         navigate('/login');
     }
 
-    function loginUser() {
-        console.log('Try to login');
-        
+    function handleEmailChange(e: ChangeEvent<HTMLInputElement>) {
+        setEmailInput(e.target.value);
+    }
+
+    function handlePasswordChange(e: ChangeEvent<HTMLInputElement>) {
+        setPasswordInput(e.target.value);
+    }
+
+    async function tryToLoginUser(e: FormEvent) {
+        e.preventDefault();
+
+        const userData = await loginUser('users/login', {email: emailInput, password: passwordInput});
+        console.log(userData);
     }
 
     return(
         <>
             <h1>Login</h1>
-            <div className="loginButtonContainer">
+            <form onSubmit={tryToLoginUser}>
+                <input type="text" placeholder="E-Mail" onChange={handleEmailChange}></input>
+                <input type="password" placeholder="Password" onChange={handlePasswordChange}></input>
+
+                <div className="loginButtonContainer">
                 <button className="secondaryButton" onClick={directToLogin}>Go back</button>
-                <button className="primaryButton" onClick={loginUser}>Login</button>
+                <button className="primaryButton">Login</button>
             </div>
+            </form>
         </>
     );
 }
