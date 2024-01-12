@@ -1,3 +1,4 @@
+import { IUserData } from "../models/IUserData";
 import { post } from "./serviceBase";
 
 const BASEURL = import.meta.env.VITE_API_URL;
@@ -8,6 +9,6 @@ export async function createUser(data: object) {
 }
 
 export async function loginUser(data: object) {
-    const response = await post(BASEURL + 'users/login', data);
+    const response = await post<IUserData>(BASEURL + 'users/login', data);
     return response;
 }

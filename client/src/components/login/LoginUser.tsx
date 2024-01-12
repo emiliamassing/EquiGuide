@@ -28,6 +28,9 @@ export function LoginUser() {
             password: passwordInput
         });
         console.log(userData);
+        localStorage.setItem('user', JSON.stringify(userData.user));
+        localStorage.setItem('token', userData.token);
+
         navigate('/home');
     }
 
