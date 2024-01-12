@@ -2,8 +2,11 @@ import express, { Request, Response, Router } from 'express';
 import connection from './conn';
 import { QueryError, ResultSetHeader, RowDataPacket } from 'mysql2';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
 const userRouter: Router = express.Router();
+dotenv.config();
 
 userRouter.get('/', function(req: Request, res: Response) {
     connection.connect(function(err: QueryError | null) {
@@ -100,7 +103,10 @@ userRouter.post('/login', function(req: Request, res: Response) {
             const passwordMatch = await bcrypt.compare(userLogin.password, user.password);
 
             if(passwordMatch) {
-                res.status(200).json({ message: 'Login sucessful', user: { email: user.email, id: user.id} });
+                if(process.env.JWT_KEY) {
+                    const token = jwt.sign({ userId: user.id, email: user.email, firstname: user.first_name, lastname: user.last_name }, process.env.JWT_KEY);
+                    res.status(200).json({ message: 'Login sucessful', user: { email: user.email, id: user.id, firstname: user.first_name, lastname: user.last_name}, token });
+                }
             }else {
                 res.status(401).json({ error: 'Incorrect password' });
             }
