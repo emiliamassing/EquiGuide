@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RegisterHorse } from "./RegisterHorse";
-import { createUser } from "../services/userService";
+import { createUser } from "../../services/userService";
 
 export function RegisterUser() {
     const navigate = useNavigate();

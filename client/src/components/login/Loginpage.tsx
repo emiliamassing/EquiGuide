@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { SvgLogo } from "./SvgLogo";
+import { SvgLogo } from "../logo/SvgLogo";
 
 export function Loginpage() {
     const navigate = useNavigate();

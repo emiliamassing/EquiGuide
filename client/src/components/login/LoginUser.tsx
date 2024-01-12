@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../services/userService";
+import { loginUser } from "../../services/userService";
 
 
 export function LoginUser() {
