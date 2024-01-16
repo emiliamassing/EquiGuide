@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../services/userService";
-
+import { addUserToLocalStorage, loginUser } from "../../services/userService";
 
 export function LoginUser() {
     const navigate = useNavigate();
@@ -27,10 +26,8 @@ export function LoginUser() {
             email: emailInput, 
             password: passwordInput
         });
-        console.log(userData);
-        localStorage.setItem('user', JSON.stringify(userData.user));
-        localStorage.setItem('token', userData.token);
 
+        addUserToLocalStorage(userData.user, userData.token);
         navigate('/home');
     }
 
