@@ -56,17 +56,17 @@ export function RegisterUser() {
 
     return(
         <>
-            <h1>Register user</h1>
+            <h1>Registrera</h1>
             <form onSubmit={tryToRegisterUser}>
-                <input type="text" placeholder="First name" onChange={handleFirstNameChange} required></input>
-                <input type="text" placeholder="Last name" onChange={handleLastNameChange} required></input>
+                <input type="text" placeholder="Förnamn" onChange={handleFirstNameChange} required></input>
+                <input type="text" placeholder="Efternamn" onChange={handleLastNameChange} required></input>
                 <input type="text" placeholder="E-Mail" onChange={handleEmailChange} required></input>
-                <input type="password" placeholder="Password" onChange={handlePasswordChange} required></input>
-                <input type="password" placeholder="Confirm password" onChange={handlePasswordConfirmationChange} required></input>
+                <input type="password" placeholder="Lösenord" onChange={handlePasswordChange} required></input>
+                <input type="password" placeholder="Bekräfta lösenord" onChange={handlePasswordConfirmationChange} required></input>
 
                 <div className="loginButtonContainer">
-                <button className="secondaryButton" onClick={directToLogin}>Go back</button>
-                <button className="primaryButton">Register</button>
+                <button className="secondaryButton" onClick={directToLogin}>Tillbaka</button>
+                <button className="primaryButton">Registrera</button>
                 </div>
             </form>            
         </>

@@ -21,8 +21,8 @@ export function Loginpage() {
                     <SvgLogo height={120} width={120}></SvgLogo>
                     <p>Unlock your riding potential</p>
                     <div className="loginButtonContainer">
-                        <button className="secondaryButton" onClick={directToRegisterUser}>Register</button>
-                        <button className="primaryButton" onClick={directToLoginUser}>Login</button>
+                        <button className="secondaryButton" onClick={directToRegisterUser}>Registrera</button>
+                        <button className="primaryButton" onClick={directToLoginUser}>Logga in</button>
                     </div>
                 </div>
             </section>

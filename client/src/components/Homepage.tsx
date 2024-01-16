@@ -5,7 +5,7 @@ export function Homepage() {
     return(
         isAuthenticated() ? (
             <>
-                <h1>You're now signed in</h1>
+                <h1>Du är nu inloggad</h1>
             </>
         ):(
             <NotAuthenticated></NotAuthenticated>

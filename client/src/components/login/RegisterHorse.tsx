@@ -1,5 +1,5 @@
 export function RegisterHorse() {
     return(
-        <h1>Create horse</h1>
+        <h1>Lägg till häst</h1>
     );
 }

@@ -33,14 +33,14 @@ export function LoginUser() {
 
     return(
         <>
-            <h1>Login</h1>
+            <h1>Logga in</h1>
             <form onSubmit={tryToLoginUser}>
                 <input type="text" placeholder="E-Mail" onChange={handleEmailChange}></input>
-                <input type="password" placeholder="Password" onChange={handlePasswordChange}></input>
+                <input type="password" placeholder="Lösenord" onChange={handlePasswordChange}></input>
 
                 <div className="loginButtonContainer">
-                <button className="secondaryButton" onClick={directToLogin}>Go back</button>
-                <button className="primaryButton">Login</button>
+                <button className="secondaryButton" onClick={directToLogin}>Tillbaka</button>
+                <button className="primaryButton">Logga in</button>
             </div>
             </form>
         </>
