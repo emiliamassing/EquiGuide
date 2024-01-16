@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RegisterHorse } from "./RegisterHorse";
-import { createUser } from "../../services/userService";
+import { addUserToLocalStorage, createUser, loginUser } from "../../services/userService";
 
 export function RegisterUser() {
     const navigate = useNavigate();
@@ -47,8 +46,17 @@ export function RegisterUser() {
                 email: emailInput,
                 password: passwordInput
             });
+            
             console.log(userData);
             console.log('User created');
+
+            const logInUserData = await loginUser({
+                email: emailInput,
+                password: passwordInput
+            });
+
+            addUserToLocalStorage(logInUserData.user, logInUserData.token);
+
         } else {
             console.log("Passwords doesn't match");
         }
