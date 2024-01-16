@@ -42,11 +42,11 @@ export function RegisterUser() {
 
             const userData = await createUser({
                 first_name: firstNameInput,
-                last_name: lastNameInput,
+                last_name: lastNameInput, 
                 email: emailInput,
                 password: passwordInput
             });
-            
+
             console.log(userData);
             console.log('User created');
 

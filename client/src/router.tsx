@@ -1,37 +1,52 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Startpage } from "./components/startpage/Startpage";
-import { Layout } from "./components/layout/Layout";
+import { LoginLayout } from "./components/layout/LoginLayout";
 import { Loginpage } from "./components/login/Loginpage";
 import { RegisterUser } from "./components/login/RegisterUser";
 import { LoginUser } from "./components/login/LoginUser";
 import { Homepage } from "./components/Homepage";
+import { AppLayout } from "./components/layout/AppLayout";
+import { StartLayout } from "./components/layout/StartLayout";
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Layout />,
+        element: <StartLayout />,
         children: [
             {
                 path: '/',
                 element: <Startpage />,
                 index: true
             },
+        ]
+    },
+    {
+        path: '/login',
+        element: <LoginLayout />,
+        children: [   
             {
                 path: '/login',
                 element: <Loginpage />
             },
             {
-                path: '/registerUser',
+                path: '/login/registerUser',
                 element: <RegisterUser />
             },
             {
-                path: '/loginUser',
+                path: '/login/loginUser',
                 element: <LoginUser />
             },
-            {
-                path: '/home',
-                element: <Homepage />
-            }
         ],
     },
+    {
+        path: '/home',
+        element: <AppLayout />,
+        children: [
+            {
+                path: '/home',
+                element: <Homepage />,
+                index: true
+            }
+        ]
+    }
 ]);

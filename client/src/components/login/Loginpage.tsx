@@ -5,27 +5,22 @@ export function Loginpage() {
     const navigate = useNavigate();
 
     function directToRegisterUser() {
-        navigate('/registerUser');
+        navigate('/login/registerUser');
     }
 
     function directToLoginUser() {
-        navigate('/loginUser');
+        navigate('/login/loginUser');
     }
 
     return(
         <>
-            <section>
-                <div className="headerImage"></div>
-                <div className="loginPageContainer">
-                    <h1>Equiguide</h1>
-                    <SvgLogo height={120} width={120}></SvgLogo>
-                    <p>Unlock your riding potential</p>
-                    <div className="loginButtonContainer">
-                        <button className="secondaryButton" onClick={directToRegisterUser}>Registrera</button>
-                        <button className="primaryButton" onClick={directToLoginUser}>Logga in</button>
-                    </div>
-                </div>
-            </section>
+            <h1>Equiguide</h1>
+            <SvgLogo height={120} width={120}></SvgLogo>
+            <p>Unlock your riding potential</p>
+            <div className="loginButtonContainer">
+                <button className="secondaryButton" onClick={directToRegisterUser}>Registrera</button>
+                <button className="primaryButton" onClick={directToLoginUser}>Logga in</button>
+            </div>
         </>
     );
 }
