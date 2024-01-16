@@ -4,8 +4,11 @@ import { removeFromLocalStorage } from "../services/userService";
 import { NotAuthenticated } from "./error/NotAuthenticated";
 
 export function Homepage() {
+    const navigate = useNavigate();
+
     function logout() {
         removeFromLocalStorage(); 
+        navigate('/login');
     }
 
     return(
