@@ -6,15 +6,11 @@ export function LoginLayout() {
         <>
             <main>
                 <div className="headerImage"></div>
-                <div className="loginPageContainer">
-                    <section>
-                        <Outlet></Outlet>
-                    </section>
-                </div>
+                <section>
+                    <Outlet></Outlet>
+                </section>
             </main>
-            <footer>
-                <Footer></Footer>
-            </footer>
+            <footer></footer>
         </>
     )
 }
