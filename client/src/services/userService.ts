@@ -17,3 +17,8 @@ export function addUserToLocalStorage(user: object, token: string) {
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
 }
+
+export function removeFromLocalStorage() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+}
