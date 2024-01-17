@@ -7,6 +7,7 @@ import { LoginUser } from "./components/login/LoginUser";
 import { Homepage } from "./components/Homepage";
 import { AppLayout } from "./components/layout/AppLayout";
 import { StartLayout } from "./components/layout/StartLayout";
+import { RegisterHorse } from "./components/login/RegisterHorse";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
                 path: '/login/loginUser',
                 element: <LoginUser />
             },
+            {
+                path: '/login/registerHorse',
+                element: <RegisterHorse />
+            }
         ],
     },
     {
