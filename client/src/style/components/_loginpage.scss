@@ -83,6 +83,12 @@ section {
                 border-radius: 20px;
                 outline: none;
             }
+
+            span.errorMessage {
+                margin-left: 10px;
+                margin-top: 3px;
+                font-size: var.$bodytext;
+            }
         }
     }
 

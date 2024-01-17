@@ -9,8 +9,13 @@ export async function createUser(data: object) {
 }
 
 export async function loginUser(data: object) {
-    const response = await post<IUserData>(BASEURL + 'users/login', data);
-    return response;
+    // eslint-disable-next-line no-useless-catch
+    try {
+        const response = await post<IUserData>(BASEURL + 'users/login', data);
+        return response;
+    } catch(error) {
+        throw error;
+    }
 }
 
 export function addUserToLocalStorage(user: object, token: string) {
