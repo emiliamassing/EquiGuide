@@ -34,14 +34,19 @@ export function LoginUser() {
     return(
         <>
             <h1>Logga in</h1>
-            <form onSubmit={tryToLoginUser}>
-                <input type="text" placeholder="E-Mail" onChange={handleEmailChange}></input>
-                <input type="password" placeholder="Lösenord" onChange={handlePasswordChange}></input>
-
+            <form onSubmit={tryToLoginUser} className="loginForm">
+                <div className="inputContainer">
+                    <span className="material-symbols-outlined inputSymbol">mail</span>
+                    <input type="text" name="email" placeholder="E-mail" onChange={handleEmailChange}></input>
+                </div>
+                <div className="inputContainer">
+                    <span className="material-symbols-outlined inputSymbol">lock</span>
+                    <input type="password" name="password" placeholder="Lösenord" onChange={handlePasswordChange}></input>
+                </div>
                 <div className="loginButtonContainer">
-                <button className="secondaryButton" onClick={directToLogin}>Tillbaka</button>
-                <button className="primaryButton">Logga in</button>
-            </div>
+                    <button className="secondaryButton" onClick={directToLogin}>Tillbaka</button>
+                    <button className="primaryButton">Logga in</button>
+                </div>
             </form>
         </>
     );

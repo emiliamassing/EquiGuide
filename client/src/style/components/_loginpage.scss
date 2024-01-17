@@ -37,15 +37,50 @@ section {
     }
 
     .loginButtonContainer {
-        max-width: 45em;
         display: flex;
-        justify-content: space-evenly;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         gap: 10px;
         margin-top: 5em;
         margin-bottom: 3em;
 
         button {
             text-transform: uppercase;
+        }
+    }
+
+    .loginForm {
+        display: flex;
+        flex-direction: column;
+
+        .inputContainer {
+            width: 18.5em;
+            border-radius: 20px;
+            border: 2px solid var.$gray;
+            position: relative;
+            margin: 5px;
+
+            .inputSymbol {
+                position: absolute;
+            }
+
+            .inputSymbol {
+                color: var.$darkGreen;
+                font-size: 28px;
+                top: 5px;
+                left: 9px;
+            }
+
+            input[type=text],
+            input[type=password] {
+                width: 15em;
+                margin-left: 36px;
+                padding: 10px;
+                border: none;
+                border-radius: 20px;
+                outline: none;
+            }
         }
     }
 }
