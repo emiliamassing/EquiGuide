@@ -64,17 +64,34 @@ export function RegisterUser() {
 
     return(
         <>
-            <h1>Registrera</h1>
-            <form onSubmit={tryToRegisterUser}>
-                <input type="text" placeholder="Förnamn" onChange={handleFirstNameChange} required></input>
-                <input type="text" placeholder="Efternamn" onChange={handleLastNameChange} required></input>
-                <input type="text" placeholder="E-Mail" onChange={handleEmailChange} required></input>
-                <input type="password" placeholder="Lösenord" onChange={handlePasswordChange} required></input>
-                <input type="password" placeholder="Bekräfta lösenord" onChange={handlePasswordConfirmationChange} required></input>
+            <h1>Registrera konto</h1>
+            <form onSubmit={tryToRegisterUser} className="registerForm">
+                <div className="inputDivider">
+                    <div className="inputContainer">
+                        <span className="material-symbols-outlined inputSymbol">person</span>
+                        <input type="text" placeholder="Förnamn" onChange={handleFirstNameChange} required></input>
+                    </div>
+                    <div className="inputContainer">
+                        <span className="material-symbols-outlined inputSymbol">person</span>
+                        <input type="text" placeholder="Efternamn" onChange={handleLastNameChange} required></input>
+                    </div>
+                </div>
 
+                <div className="inputContainer">
+                    <span className="material-symbols-outlined inputSymbol">mail</span>
+                    <input type="text" placeholder="E-Mail" onChange={handleEmailChange} required></input>
+                </div>
+                <div className="inputContainer">
+                    <span className="material-symbols-outlined inputSymbol">lock</span>
+                    <input type="password" placeholder="Lösenord" onChange={handlePasswordChange} required></input>
+                </div>
+                <div className="inputContainer">
+                    <span className="material-symbols-outlined inputSymbol">check_circle</span>
+                    <input type="password" placeholder="Bekräfta lösenord" onChange={handlePasswordConfirmationChange} required></input>
+                </div>
                 <div className="loginButtonContainer">
-                <button className="secondaryButton" onClick={directToLogin}>Tillbaka</button>
-                <button className="primaryButton">Registrera</button>
+                    <button className="secondaryButton" onClick={directToLogin}>Tillbaka</button>
+                    <button className="primaryButton">Registrera</button>
                 </div>
             </form>            
         </>
