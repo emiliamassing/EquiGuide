@@ -1,6 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addUserToLocalStorage, createUser, loginUser } from "../../services/userService";
+import { isAxiosError } from "../../services/serviceBase";
+import { AxiosError } from "axios";
 
 export function RegisterUser() {
     const navigate = useNavigate();
@@ -9,6 +11,7 @@ export function RegisterUser() {
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
     const [confirmPasswordInput, setConfirmPasswordInput] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     function directToLogin() {
         navigate('/login');
@@ -38,27 +41,36 @@ export function RegisterUser() {
         e.preventDefault();
         
         if(passwordInput === confirmPasswordInput) {
-            console.log('Password match');
+            try {
+                const userData = await createUser({
+                    first_name: firstNameInput,
+                    last_name: lastNameInput, 
+                    email: emailInput,
+                    password: passwordInput
+                });
+    
+                console.log(userData);
+                console.log('User created');
+    
+                const logInUserData = await loginUser({
+                    email: emailInput,
+                    password: passwordInput
+                });
 
-            const userData = await createUser({
-                first_name: firstNameInput,
-                last_name: lastNameInput, 
-                email: emailInput,
-                password: passwordInput
-            });
+                setErrorMessage('');
+    
+                addUserToLocalStorage(logInUserData.user, logInUserData.token);
+            } catch(error: unknown) {
+                if(isAxiosError(error)) {
+                    const axiosError = error as AxiosError;
 
-            console.log(userData);
-            console.log('User created');
-
-            const logInUserData = await loginUser({
-                email: emailInput,
-                password: passwordInput
-            });
-
-            addUserToLocalStorage(logInUserData.user, logInUserData.token);
-
+                    if(axiosError && axiosError.response?.status === 400) {
+                        setErrorMessage('Email-adressen är redan registrerad');
+                    }
+                }
+            }
         } else {
-            console.log("Passwords doesn't match");
+            setErrorMessage('Lösenorden matchar inte');
         }
     }
 
@@ -89,6 +101,7 @@ export function RegisterUser() {
                     <span className="material-symbols-outlined inputSymbol">check_circle</span>
                     <input type="password" placeholder="Bekräfta lösenord" onChange={handlePasswordConfirmationChange} required></input>
                 </div>
+                    <span className="errorMessage">{errorMessage}</span>
                 <div className="loginButtonContainer">
                     <button className="secondaryButton" onClick={directToLogin}>Tillbaka</button>
                     <button className="primaryButton">Registrera</button>

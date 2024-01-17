@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addUserToLocalStorage, loginUser } from "../../services/userService";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { isAxiosError } from "../../services/serviceBase";
 
 export function LoginUser() {
@@ -35,7 +35,7 @@ export function LoginUser() {
 
             addUserToLocalStorage(userData.user, userData.token);
             navigate('/home');
-        }catch(error: unknown) {
+        } catch(error: unknown) {
             if(isAxiosError(error)) {
                 const axiosError = error as AxiosError;
 
@@ -54,11 +54,11 @@ export function LoginUser() {
             <form onSubmit={tryToLoginUser} className="loginForm">
                 <div className="inputContainer">
                     <span className="material-symbols-outlined inputSymbol">mail</span>
-                    <input type="text" name="email" placeholder="Email" onChange={handleEmailChange}></input>
+                    <input type="text" name="email" placeholder="Email" onChange={handleEmailChange} required></input>
                 </div>
                 <div className="inputContainer">
                     <span className="material-symbols-outlined inputSymbol">lock</span>
-                    <input type="password" name="password" placeholder="Lösenord" onChange={handlePasswordChange}></input>
+                    <input type="password" name="password" placeholder="Lösenord" onChange={handlePasswordChange} required></input>
                 </div>
                 <span className="errorMessage">{errorMessage}</span>
                 <div className="loginButtonContainer">

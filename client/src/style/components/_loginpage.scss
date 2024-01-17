@@ -84,17 +84,23 @@ section {
                 outline: none;
             }
 
-            span.errorMessage {
-                margin-left: 10px;
-                margin-top: 3px;
-                font-size: var.$bodytext;
+            &:focus-within {
+                border: 2px solid var.$darkGreen;
+                transition: 0.2s ease-in-out;
             }
+        }
+
+        span.errorMessage {
+            margin-left: 10px;
+            margin-top: 3px;
+            font-size: var.$bodytext;
+            color: var.$darkRed;
         }
     }
 
     .registerForm {
         .inputDivider {
-            margin-bottom: 3em;
+            margin-bottom: 2em;
         }
     }
 }
