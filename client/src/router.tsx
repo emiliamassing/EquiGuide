@@ -8,6 +8,7 @@ import { Homepage } from "./components/Homepage";
 import { AppLayout } from "./components/layout/AppLayout";
 import { StartLayout } from "./components/layout/StartLayout";
 import { RegisterHorse } from "./components/login/RegisterHorse";
+import { UserVerification } from "./components/login/UserVerification";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
             {
                 path: '/login/loginUser',
                 element: <LoginUser />
+            },
+            {
+                path: '/login/userVerification',
+                element: <UserVerification />
             },
             {
                 path: '/login/registerHorse',
