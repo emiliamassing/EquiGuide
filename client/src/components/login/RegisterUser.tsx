@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addUserToLocalStorage, createUser, loginUser } from "../../services/userService";
+import { addUserToLocalStorage, addUser, loginUser } from "../../services/userService";
 import { isAxiosError } from "../../services/serviceBase";
 import { AxiosError } from "axios";
 
@@ -42,7 +42,7 @@ export function RegisterUser() {
         
         if(passwordInput === confirmPasswordInput) {
             try {
-                const userData = await createUser({
+                const userData = await addUser({
                     first_name: firstNameInput,
                     last_name: lastNameInput, 
                     email: emailInput,
