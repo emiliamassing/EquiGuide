@@ -14,7 +14,7 @@ section {
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    //justify-content: center;
     align-items: center;
     bottom: 0;
     width: 100%;
@@ -27,6 +27,7 @@ section {
     h1 {
         font-size: var.$headingOne;
         color: var.$darkGreen;
+        margin-block-end: 0;
         text-transform: uppercase;
         max-width: 10em;
         text-align: center;
@@ -43,7 +44,7 @@ section {
         justify-content: center;
         align-items: center;
         gap: 10px;
-        margin-top: 5em;
+        margin-top: 4em;
         margin-bottom: 3em;
 
         button {
@@ -51,8 +52,14 @@ section {
         }
     }
 
+    span.infoText {
+        font-size: var.$bodytextSmall;
+        margin-bottom: 1em;
+    }
+
     .loginForm,
-    .registerForm {
+    .registerUserForm,
+    .registerHorseForm {
         display: flex;
         flex-direction: column;
 
@@ -75,7 +82,8 @@ section {
             }
 
             input[type=text],
-            input[type=password] {
+            input[type=password],
+            input[type=number] {
                 width: 15em;
                 margin-left: 36px;
                 padding: 10px;
@@ -98,10 +106,15 @@ section {
         }
     }
 
-    .registerForm {
+    .registerUserForm,
+    .registerHorseForm {
         .inputDivider {
             margin-bottom: 2em;
         }
+    }
+
+    .registerHorseForm {
+        margin-top: 1em;
     }
 }
 

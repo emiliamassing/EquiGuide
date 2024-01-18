@@ -78,7 +78,7 @@ export function RegisterUser() {
     return(
         <>
             <h1>Registrera konto</h1>
-            <form onSubmit={tryToRegisterUser} className="registerForm">
+            <form onSubmit={tryToRegisterUser} className="registerUserForm">
                 <div className="inputDivider">
                     <div className="inputContainer">
                         <span className="material-symbols-outlined inputSymbol">person</span>
@@ -89,7 +89,6 @@ export function RegisterUser() {
                         <input type="text" placeholder="Efternamn" onChange={handleLastNameChange} required></input>
                     </div>
                 </div>
-
                 <div className="inputContainer">
                     <span className="material-symbols-outlined inputSymbol">mail</span>
                     <input type="text" placeholder="E-Mail" onChange={handleEmailChange} required></input>
