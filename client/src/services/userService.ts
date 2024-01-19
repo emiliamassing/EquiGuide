@@ -27,3 +27,6 @@ export function removeFromLocalStorage() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
 }
+
+const userDataString = localStorage.getItem('user');
+export const userData = userDataString ? JSON.parse(userDataString) : null;
