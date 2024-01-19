@@ -1,0 +1,153 @@
+section {
+    position: relative;
+}
+
+.headerImage {
+    background-image: url('/horse-closeup.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    height: 48vh;
+}
+
+section {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    //justify-content: center;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    min-height: 56vh;
+    padding-top: 3em;
+    border-top-left-radius: 4em;
+    border-top-right-radius: 4em;
+    background-color: var.$bgColor;
+
+    h1 {
+        font-size: var.$headingOne;
+        color: var.$darkGreen;
+        text-transform: uppercase;
+        max-width: 10em;
+        text-align: center;
+    }
+
+    p {
+        margin-top: 2em;
+        font-size: var.$bodytext;
+    }
+
+    .loginButtonContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 4em;
+        margin-bottom: 3em;
+
+        button {
+            text-transform: uppercase;
+        }
+    }
+
+    span.infoText {
+        font-size: var.$bodytextSmall;
+        margin-bottom: 1em;
+    }
+
+    .loginForm,
+    .registerUserForm,
+    .registerHorseForm {
+        display: flex;
+        flex-direction: column;
+
+        .inputContainer {
+            width: 18.5em;
+            border-radius: 20px;
+            border: 2px solid var.$gray;
+            position: relative;
+            margin: 5px;
+
+            .inputSymbol {
+                position: absolute;
+            }
+
+            .inputSymbol {
+                color: var.$darkGreen;
+                font-size: 28px;
+                top: 5px;
+                left: 9px;
+            }
+
+            input[type=text],
+            input[type=password],
+            input[type=number],
+            select {
+                width: 15em;
+                margin-left: 36px;
+                padding: 10px;
+                border: none;
+                border-radius: 20px;
+                outline: none;
+            }
+
+            &:focus-within {
+                border: 2px solid var.$darkGreen;
+                transition: 0.2s ease-in-out;
+            }
+        }
+
+        span.errorMessage {
+            margin-left: 10px;
+            margin-top: 3px;
+            font-size: var.$bodytext;
+            color: var.$darkRed;
+        }
+    }
+
+    .registerUserForm,
+    .registerHorseForm {
+        .inputDivider {
+            margin-bottom: 2em;
+        }
+    }
+
+    .registerHorseForm {
+        margin-top: 1em;
+    }
+}
+
+@media screen and (min-width: 710px) {
+    .headerImage {
+        background-image: url('/horse-closeup-tablet.jpg');
+    }
+
+    section {
+        min-height: 48vh;
+        padding-top: 3em;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    main {
+        max-width: 90%;
+        margin: 0 auto;
+        margin-top: 6em;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .headerImage {
+        background-image: url('/horse-closeup-desktop.jpg');
+        background-size: cover;
+        height: 730px;
+        width: 430px;
+    }
+
+    section {
+        position: relative;
+        width: unset;
+    }
+}
