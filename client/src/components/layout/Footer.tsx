@@ -1,7 +1,7 @@
 export function Footer() {
     return(
         <>
-            <h2>Footer</h2>
+            <span>©Emilia Mässing - 2024</span>   
         </>
-    )
+    );
 }

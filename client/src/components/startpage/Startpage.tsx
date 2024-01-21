@@ -10,8 +10,9 @@ export function Startpage() {
     return(
         <>
             <div className="startpageContainer">
-                <h1>Välkommen</h1>
+                <div className="placeholder"></div>
                 <div className="textContainer">
+                    <h1>Välkommen</h1>
                     <p>
                         Jag har länge varit en av dem som haft svårt att både planera och komma på kreativa aktiviteter tillsammans med mina fyrbenta vänner. 
                         Man vill så gärna ha varierad träning följt av något som är givande för både häst och ryttare. 
