@@ -20,39 +20,41 @@ header {
 main {
     min-height: 80vh;
 
-    .startpageContainer {
-        width: 85%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        .placeholder {
-            margin-top: 1em;
-            background-color: var.$transparentLightGreen;
-            height: 16em;
-            width: 18em;
-        }
-
-        .textContainer {
+    section.start {
+        .startpageContainer {
+            width: 85%;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
+            justify-content: center;
 
-            h1 {
-                font-size: var.$headingOne;
-                text-align: left;
-                margin-top: 2em;
+            .placeholder {
+                margin-top: 1em;
+                background-color: var.$transparentLightGreen;
+                height: 16em;
+                width: 18em;
             }
 
-            p {
+            .textContainer {
+                display: flex;
+                flex-direction: column;
 
-                font-size: var.$bodytext;
-            }
+                h1 {
+                    font-size: var.$headingOne;
+                    text-align: left;
+                    margin-top: 2em;
+                }
 
-            button {
-                margin-top: 3em;
-                margin-bottom: 3em;
-                align-self: center;
+                p {
+
+                    font-size: var.$bodytext;
+                }
+
+                button {
+                    margin-top: 3em;
+                    margin-bottom: 3em;
+                    align-self: center;
+                }
             }
         }
     }
