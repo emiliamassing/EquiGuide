@@ -14,7 +14,6 @@ section {
     position: absolute;
     display: flex;
     flex-direction: column;
-    //justify-content: center;
     align-items: center;
     bottom: 0;
     width: 100%;
@@ -116,6 +115,24 @@ section {
     .registerHorseForm {
         margin-top: 1em;
     }
+
+    .verificationContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        p {
+            font-size: var.$bodytext;
+            max-width: 20em;
+            margin-block-end: 0;
+        }
+
+        button {
+            align-self: center;
+            text-transform: uppercase;
+            margin-top: 4em;
+        }
+    }
 }
 
 @media screen and (min-width: 710px) {
@@ -124,7 +141,7 @@ section {
     }
 
     section {
-        min-height: 48vh;
+        min-height: 53vh;
         padding-top: 3em;
     }
 }
