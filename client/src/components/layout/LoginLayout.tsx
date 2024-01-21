@@ -6,7 +6,7 @@ export function LoginLayout() {
         <>
             <main>
                 <div className="headerImage"></div>
-                <section>
+                <section className="login">
                     <Outlet></Outlet>
                 </section>
             </main>

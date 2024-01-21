@@ -5,7 +5,7 @@ export function StartLayout() {
     return(
         <>
             <main>
-                <section>
+                <section className="start">
                     <Outlet></Outlet>
                 </section>
             </main>
