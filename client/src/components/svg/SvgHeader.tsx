@@ -1,14 +1,14 @@
 export function SvgHeader() {
     return(
         <>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'>
-                <rect fill='#0A3B2C' width='2000' height='1500'/>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 600' className="svgHeader">
+                <rect fill='#0A3B2C' width='2000' height='600'/>
                 <defs>
                     <radialGradient id='a' gradientUnits='objectBoundingBox'>
-                        <stop  offset='0' stop-color='#5A9378'/><stop  offset='1' stop-color='#0A3B2C'/>
+                        <stop  offset='0' stopColor='#5A9378'/><stop  offset='1' stopColor='#0A3B2C'/>
                     </radialGradient>
                     <linearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='750' x2='1550' y2='750'>
-                        <stop  offset='0' stop-color='#326752'/><stop  offset='1' stop-color='#0A3B2C'/>
+                        <stop  offset='0' stopColor='#326752'/><stop  offset='1' stopColor='#0A3B2C'/>
                     </linearGradient><path id='s' fill='url(#b)' 
                         d='M1549.2 51.6c-5.4 99.1-20.2 197.6-44.2 293.6c-24.1 96-57.4 189.4-99.3 278.6c-41.9 89.2-92.4 
                         174.1-150.3 253.3c-58 79.2-123.4 152.6-195.1 219c-71.7 66.4-149.6 125.8-232.2 177.2c-82.7 51.4-170.1 
@@ -49,7 +49,7 @@ export function SvgHeader() {
                         <use href='#g' transform='rotate(120)'/>
                         <use href='#g' transform='rotate(240)'/>
                     </g>
-                    <circle fill-opacity='0.1' fill='url(#a)' r='3000'/>
+                    <circle fillOpacity='0.1' fill='url(#a)' r='3000'/>
                 </g>
                 </g>
             </svg>

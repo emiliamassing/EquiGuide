@@ -1,0 +1,58 @@
+header {
+    svg {
+        position: relative;
+    }
+
+    .logo {
+        position: absolute;
+        top: 10px;
+        left: 3px;
+
+        span {
+            font-size: var.$headingTwo;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var.$white;
+        }
+    }
+}
+
+main {
+    .startpageContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            font-size: var.$headingOne;
+            margin-top: 2em;
+        }
+
+        .textContainer {
+            display: flex;
+            flex-direction: column;
+
+            p {
+                max-width: 20em;
+                font-size: var.$bodytext;
+            }
+
+            button {
+                margin-top: 3em;
+                align-self: center;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 710px) {
+    header {
+        svg.svgHeader {
+            height: 35vh;
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {}
