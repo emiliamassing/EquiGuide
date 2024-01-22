@@ -1,0 +1,120 @@
+header {
+    svg {
+        position: relative;
+    }
+
+    .logo {
+        position: absolute;
+        top: 10px;
+        left: 3px;
+
+        span {
+            font-size: var.$headingTwo;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var.$white;
+        }
+    }
+}
+
+main {
+    min-height: 80vh;
+
+    section {
+        .startpageContainer {
+            width: 85%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .placeholder {
+                margin-top: 1em;
+                background-color: var.$transparentLightGreen;
+                height: 16em;
+                width: 18em;
+            }
+
+            .textContainer {
+                display: flex;
+                flex-direction: column;
+
+                h1 {
+                    font-size: var.$headingOne;
+                    text-align: left;
+                    margin-top: 2em;
+                }
+
+                p {
+
+                    font-size: var.$bodytext;
+                }
+
+                button {
+                    margin-top: 3em;
+                    margin-bottom: 3em;
+                    align-self: center;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 13vh;
+    background-color: var.$viridianGreen;
+
+    span {
+        color: var.$white;
+        font-size: var.$bodytextSmall;
+    }
+}
+
+@media screen and (min-width: 710px) {
+    header {
+        svg.svgHeader {
+            height: 35vh;
+            width: 100%;
+        }
+    }
+
+    main {
+        .startpageContainer {
+            .placeholder {
+                height: 20em;
+                width: 40em;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    main {
+        margin-top: unset;
+
+        section {
+            .startpageContainer {
+                flex-direction: row;
+                justify-content: space-between;
+
+                .placeholder {
+                    margin-top: 0;
+                    height: 30em;
+                    width: 40em;
+                }
+
+                .textContainer {
+                    width: 40%;
+                    margin-left: 10em;
+
+                    p {
+                        max-width: 40em;
+                    }
+                }
+            }
+        }
+    }
+}
