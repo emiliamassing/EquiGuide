@@ -20,7 +20,7 @@ header {
 main {
     min-height: 80vh;
 
-    section.start {
+    section {
         .startpageContainer {
             width: 85%;
             margin: 0 auto;
@@ -95,22 +95,24 @@ footer {
     main {
         margin-top: unset;
 
-        .startpageContainer {
-            flex-direction: row;
-            justify-content: space-between;
+        section {
+            .startpageContainer {
+                flex-direction: row;
+                justify-content: space-between;
 
-            .placeholder {
-                margin-top: 0;
-                height: 30em;
-                width: 40em;
-            }
+                .placeholder {
+                    margin-top: 0;
+                    height: 30em;
+                    width: 40em;
+                }
 
-            .textContainer {
-                width: 40%;
-                margin-left: 10em;
+                .textContainer {
+                    width: 40%;
+                    margin-left: 10em;
 
-                p {
-                    max-width: 40em;
+                    p {
+                        max-width: 40em;
+                    }
                 }
             }
         }
