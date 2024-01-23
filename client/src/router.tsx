@@ -4,11 +4,16 @@ import { LoginLayout } from "./components/layout/LoginLayout";
 import { Loginpage } from "./components/login/Loginpage";
 import { RegisterUser } from "./components/login/RegisterUser";
 import { LoginUser } from "./components/login/LoginUser";
-import { Homepage } from "./components/Homepage";
+import { HomePage } from "./components/application/home/Homepage";
 import { AppLayout } from "./components/layout/AppLayout";
 import { StartLayout } from "./components/layout/StartLayout";
 import { RegisterHorse } from "./components/login/RegisterHorse";
 import { UserVerification } from "./components/login/UserVerification";
+import { CalendarPage } from "./components/application/calendar/CalendarPage";
+
+import { ExplorePage } from "./components/application/explore/ExplorePage";
+import { ProfilePage } from "./components/application/profile/Profilepage";
+import { AddRidePage } from "./components/application/rides/AddRidepage";
 
 export const router = createBrowserRouter([
     {
@@ -28,7 +33,8 @@ export const router = createBrowserRouter([
         children: [   
             {
                 path: '/login',
-                element: <Loginpage />
+                element: <Loginpage />,
+                index: true
             },
             {
                 path: '/login/registerUser',
@@ -49,13 +55,28 @@ export const router = createBrowserRouter([
         ],
     },
     {
-        path: '/home',
+        path: '/app',
         element: <AppLayout />,
         children: [
             {
-                path: '/home',
-                element: <Homepage />,
-                index: true
+                path: '/app/home',
+                element: <HomePage />,
+            },
+            {
+                path: '/app/calendar',
+                element: <CalendarPage />
+            },
+            {
+                path: '/app/addRide',
+                element: <AddRidePage/>
+            },
+            {
+                path: '/app/explore',
+                element: <ExplorePage />
+            },
+            {
+                path: '/app/profile',
+                element: <ProfilePage />
             }
         ]
     }

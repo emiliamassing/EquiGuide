@@ -1,18 +1,15 @@
 import { Outlet } from "react-router-dom";
-import { Footer } from "./Footer";
+import { Menu } from "../menu/Menu";
 
 export function AppLayout() {
     return(
         <>
-            <nav>Menu</nav>
+            <Menu></Menu>
             <main>
                 <section>
                     <Outlet></Outlet>
                 </section>
             </main>
-            <footer>
-                <Footer></Footer>
-            </footer>
         </>
     )
 }

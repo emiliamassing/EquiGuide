@@ -34,7 +34,7 @@ export function LoginUser() {
             setErrorMessage('');
 
             addUserToLocalStorage(userData.user, userData.token);
-            navigate('/home');
+            navigate('/app/home');
         } catch(error: unknown) {
             if(isAxiosError(error)) {
                 const axiosError = error as AxiosError;
