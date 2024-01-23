@@ -1,34 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export function MobileMenu() {
     return(
         <>
             <nav>
-                <ul>
+                <ul className="mobileMenu">
                     <li>
-                        <Link to={'/app/home'}>
+                        <NavLink to={'/app/home'}>
                             <span className="material-symbols-outlined">home</span>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to={'/app/calendar'}>
+                        <NavLink to={'/app/calendar'}>
                             <span className="material-symbols-outlined">calendar_month</span>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to={'/app/addRide'}>
+                        <NavLink to={'/app/addRide'}>
                             <span className="material-symbols-outlined">add_circle</span>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to={'/app/explore'}>
+                        <NavLink to={'/app/explore'}>
                             <span className="material-symbols-outlined">search</span>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to={'/app/profile'}>
+                        <NavLink to={'/app/profile'}>
                             <span className="material-symbols-outlined">person</span>
-                        </Link>
+                        </NavLink>
                     </li>
                 </ul>
             </nav>

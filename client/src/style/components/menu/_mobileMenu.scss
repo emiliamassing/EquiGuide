@@ -1,0 +1,23 @@
+nav {
+    ul.mobileMenu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding-inline-start: 0;
+
+        li {
+            list-style-type: none;
+
+            span {
+                font-size: 40px;
+                color: var.$gray;
+            }
+
+            a.active {
+                span {
+                    color: var.$darkGreen;
+                }
+            }
+        }
+    }
+}
