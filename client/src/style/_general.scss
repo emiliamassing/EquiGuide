@@ -1,0 +1,35 @@
+@use './utils/variables' as var;
+@import './utils/normalize';
+@import './components/startpage';
+@import './components/loginpage';
+
+* {
+  font-family: var.$fontFamily;
+}
+
+h1 {
+  margin-block-start: 0;
+}
+
+body {
+  background-color: var.$bgColor;
+  color: var.$textColor;
+}
+
+button {
+  font-size: var.$buttonText;
+  color: var.$white;
+  width: 9em;
+  padding: 17px 25px 17px 25px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+button.primaryButton {
+  background-color: var.$darkGreen;
+}
+
+button.secondaryButton {
+  background-color: var.$gray;
+}
