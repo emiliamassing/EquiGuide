@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import { MobileMenu } from "../menu/MobileMenu";
+import { Menu } from "../menu/Menu";
 
 export function AppLayout() {
     return(
         <>
-            <MobileMenu></MobileMenu>
+            <Menu></Menu>
             <main>
                 <section>
                     <Outlet></Outlet>

@@ -1,10 +1,10 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-export function MobileMenu() {
+export function Menu() {
     return(
         <>
             <nav>
-                <ul className="mobileMenu">
+                <ul className="menuList">
                     <li>
                         <NavLink to={'/app/home'}>
                             <span className="material-symbols-outlined">home</span>
