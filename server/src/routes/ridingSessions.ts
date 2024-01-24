@@ -7,7 +7,7 @@ const ridingSessionRouter: Router = express.Router();
 ridingSessionRouter.get('/', function(req: Request, res: Response) {
     connection.connect(function(err: QueryError | null) {
         if(err) {
-            console.log('Error connecting to database');
+            console.log('Error connecting to database', err);
             return res.status(500).json({ error: 'Database connection error' });
         };
 
@@ -15,7 +15,7 @@ ridingSessionRouter.get('/', function(req: Request, res: Response) {
 
         connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
             if(err) {
-                console.log('Error selecting rides');
+                console.log('Error selecting rides', err);
                 return res.status(500).json({ error: 'Error selecting horses' });
             }
 
@@ -23,6 +23,29 @@ ridingSessionRouter.get('/', function(req: Request, res: Response) {
             res.send(result);
         });
     });
+});
+
+ridingSessionRouter.get('/:id', function(req: Request, res: Response) {
+    let ridingSessionId = req.params.id;
+
+    connection.connect(function(err: QueryError | null) {
+        if(err) {
+            console.log('Error connecting to database', err);
+            return res.status(500).json({ error: 'Database connection error' });
+        }
+
+        let sql: string = `SELECT * FROM rides WHERE id=${ridingSessionId}`;
+
+        connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
+            if(err) {
+                console.log('Error selecting rides by id', err);
+                return res.status(500).json({ error: 'Error selecting rides by id' });
+            }
+
+            console.log('All rides:', result);
+            res.send(result);
+        });
+    })
 });
 
 ridingSessionRouter.post('/add', function(req: Request, res: Response) {
@@ -62,13 +85,13 @@ ridingSessionRouter.post('/add', function(req: Request, res: Response) {
             }
 
             const rideId = result.insertId;
-            const userJunctionSql = `
+            const userJunctionSql: string = `
             INSERT INTO rides_users
             (ride_id, user_id) 
             VALUES 
             ('${rideId}', '${userId.id}')`;
 
-            const horseJunctionSql = `
+            const horseJunctionSql: string = `
             INSERT INTO rides_horses
             (ride_id, horse_id)
             VALUES
