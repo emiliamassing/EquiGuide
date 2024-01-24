@@ -7,7 +7,7 @@ const horseRouter: Router = express.Router();
 horseRouter.get('/', function(req: Request, res: Response) {
     connection.connect(function(err: QueryError | null) {
         if(err) {
-            console.log('Error connecting to database');
+            console.log('Error connecting to database', err);
             return res.status(500).json({ error: 'Database connection error' });
         };
 
@@ -40,7 +40,7 @@ horseRouter.post('/add', function(req: Request, res: Response) {
 
     connection.connect(function(err: QueryError | null) {
         if(err) {
-            console.log('Error connecting to database');
+            console.log('Error connecting to database', err);
             return res.status(500).json({ error: 'Database connection error' });
         };
 

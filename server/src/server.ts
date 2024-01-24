@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', userRouter);
 app.use('/horses', horseRouter);
-app.use('/ridingsessions', ridingSessionRouter);
+app.use('/ridingSessions', ridingSessionRouter);
 
 app.listen(3000, () => {
     console.log('App started on port 3000');
