@@ -53,7 +53,7 @@ export function RegisterHorse() {
             console.log('Horse created', horseData);
             setErrorMessage('');
 
-            navigate('/home');
+            navigate('/app/home');
         } catch(error: unknown) {
             if(isAxiosError(error)) {
                 const axiosError = error as AxiosError;

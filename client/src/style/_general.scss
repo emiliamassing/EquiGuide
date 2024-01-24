@@ -1,7 +1,8 @@
 @use './utils/variables' as var;
 @import './utils/normalize';
-@import './components/startpage';
-@import './components/loginpage';
+@import './components/startpage/startpage';
+@import './components/login/loginpage';
+@import './components/menu/mobileMenu';
 
 * {
   font-family: var.$fontFamily;
