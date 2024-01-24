@@ -1,4 +1,11 @@
 nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.178) 0px 2px 4px 0px inset;
+    border-radius: 10px;
+
+
     ul.menuList {
         display: flex;
         flex-direction: row;
@@ -7,15 +14,63 @@ nav {
 
         li {
             list-style-type: none;
+            display: flex;
+            flex-direction: column;
 
             span {
                 font-size: 40px;
                 color: var.$gray;
             }
 
+            span.navText {
+                display: none;
+            }
+
             a.active {
+                border-bottom: 4px solid var.$darkGreen;
+
                 span {
                     color: var.$darkGreen;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    nav {
+        position: relative;
+        box-shadow: none;
+
+        ul.menuList {
+            justify-content: space-evenly;
+            margin-block-start: 0;
+            padding: 1em;
+
+            li {
+
+                a {
+                    display: flex;
+                    text-decoration: none;
+
+                    span {
+                        font-size: 25px;
+                    }
+
+                    span.navText {
+                        display: block;
+                        font-size: var.$buttonText;
+                        font-weight: 500;
+                        align-self: self-end;
+                        margin-bottom: 2px;
+                        margin-left: 7px;
+                    }
+
+
+                }
+
+                a.active {
+                    border-bottom: none;
                 }
             }
         }
