@@ -25,6 +25,33 @@ ridingSessionRouter.get('/', function(req: Request, res: Response) {
     });
 });
 
+ridingSessionRouter.get('/user', function(req: Request, res: Response) {
+    let userId = req.query.userId
+
+    connection.connect(function(err: QueryError | null) {
+        if(err) {
+            console.log('Error connecting to database', err);
+            return res.status(500).json({ error: 'Database connection error' });
+        };
+
+        let sql: string = `
+        SELECT * FROM rides
+        JOIN rides_users ON rides.id = rides_users.ride_id
+        JOIN users ON rides_users.user_id = users.id
+        WHERE users.id =${userId}`;
+
+        connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
+            if(err) {
+                console.log('Error selecting rides by userId', err);
+                return res.status(500).json({ error: 'Error selecting rides by userId' });
+            }
+
+            console.log('All rides with userId:', result);
+            res.send(result);
+        });
+    });
+});
+
 ridingSessionRouter.get('/:id', function(req: Request, res: Response) {
     let ridingSessionId = req.params.id;
 
