@@ -10,6 +10,8 @@
 
 h1 {
   margin-block-start: 0;
+  font-size: var.$headingOne;
+  font-weight: 600;
 }
 
 body {
@@ -19,12 +21,14 @@ body {
 
 button {
   font-size: var.$buttonText;
+  font-weight: 500;
   color: var.$white;
-  width: 9em;
+  width: 9.5em;
   padding: 17px 25px 17px 25px;
   border-radius: 25px;
   border: none;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
 
 button.primaryButton {
@@ -33,4 +37,5 @@ button.primaryButton {
 
 button.secondaryButton {
   background-color: var.$gray;
+  color: var.$black;
 }

@@ -15,7 +15,7 @@ export function Loginpage() {
     return(
         <>
             <h1>Equiguide</h1>
-            <SvgLogo height={120} width={120} outline="0a3b2c79" fill="161414"></SvgLogo>
+            <SvgLogo height={120} width={120} outline="5A9378" fill="161414"></SvgLogo>
             <p>Unlock your riding potential</p>
             <div className="loginButtonContainer">
                 <button className="secondaryButton" onClick={directToRegisterUser}>Registrera</button>
