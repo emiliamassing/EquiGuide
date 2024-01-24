@@ -15,7 +15,9 @@ userRouter.get('/', function(req: Request, res: Response) {
             return res.status(500).json({ error: 'Database connection error' });
         };
 
-        connection.query('SELECT * FROM users', function(err: QueryError | null, result: ResultSetHeader) {
+        let sql: string = `SELECT * FROM users`;
+
+        connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
             if(err) {
                 console.log('Error getting users:', err);
                 return res.status(500).json({ error: 'Error inserting user' });
@@ -40,9 +42,9 @@ userRouter.post('/add', function(req: Request, res: Response) {
             return res.status(500).json({ error: 'Database connection error' });
         };
 
-        let checkUniqueEmailQuery = `SELECT * FROM users WHERE email = '${newUser.email}'`;
+        let checkUniqueEmailSql: string = `SELECT * FROM users WHERE email = '${newUser.email}'`;
 
-        connection.query(checkUniqueEmailQuery, function(err: QueryError | null, result: RowDataPacket[]) {
+        connection.query(checkUniqueEmailSql, function(err: QueryError | null, result: RowDataPacket[]) {
             if(err) {
                 console.log('Error checking email uniqueness:', err);
                 return res.status(500).json({ error: 'Error checking email uniqueness' });
@@ -59,7 +61,11 @@ userRouter.post('/add', function(req: Request, res: Response) {
                     return res.status(500).json({ error: 'Error hashing password' });
                 };
     
-                let sql: string = `INSERT INTO users (first_name, last_name, email, password) VALUES('${newUser.first_name}', '${newUser.last_name}', '${newUser.email}', '${hash}')`;
+                let sql: string = `
+                INSERT INTO users 
+                (first_name, last_name, email, password) 
+                VALUES
+                ('${newUser.first_name}', '${newUser.last_name}', '${newUser.email}', '${hash}')`;
     
                 connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
                     if(err) {
@@ -87,7 +93,7 @@ userRouter.post('/login', function(req: Request, res: Response) {
             return res.status(500).json({ error: 'Database connection error' });
         };
 
-       let sql = `SELECT * FROM users WHERE email = '${userLogin.email}'`;
+       let sql: string = `SELECT * FROM users WHERE email = '${userLogin.email}'`;
 
        connection.query(sql, async function(err: QueryError | null, result: RowDataPacket[]) {
             if(err) {

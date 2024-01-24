@@ -44,7 +44,11 @@ horseRouter.post('/add', function(req: Request, res: Response) {
             return res.status(500).json({ error: 'Database connection error' });
         };
 
-        let sql: string = `INSERT INTO horses (name, breed, age, gender, discipline) VALUES('${newHorse.name}', '${newHorse.breed}', '${newHorse.age}', '${newHorse.gender}', '${newHorse.discipline}')`;
+        let sql: string = `
+        INSERT INTO horses 
+        (name, breed, age, gender, discipline) 
+        VALUES
+        ('${newHorse.name}', '${newHorse.breed}', '${newHorse.age}', '${newHorse.gender}', '${newHorse.discipline}')`;
 
         connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
             if(err) {
@@ -53,15 +57,19 @@ horseRouter.post('/add', function(req: Request, res: Response) {
             }
             
             const horseId = result.insertId;
-            const junctionSql = `INSERT into users_horses (user_id, horse_id) VALUES ('${userId.id}', ${horseId})`;
+            const junctionSql = `
+            INSERT INTO users_horses 
+            (user_id, horse_id) 
+            VALUES 
+            ('${userId.id}', ${horseId})`;
 
             connection.query(junctionSql, function(err: QueryError | null, result: ResultSetHeader) {
                 if(err) {
-                    console.log('Error inserting into table', err);
-                    return res.status(500).json({ error: 'Error inserting into table'});
+                    console.log('Error inserting into junction table', err);
+                    return res.status(500).json({ error: 'Error inserting into junction table'});
                 }
 
-                console.log('Created horse and inserted into table:', result);
+                console.log('Created horse and inserted into junction table:', result);
                 res.status(200).json(result);
             });
         });
