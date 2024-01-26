@@ -104,13 +104,12 @@ ridingSessionRouter.get('/:id', function(req: Request, res: Response) {
 
 ridingSessionRouter.post('/add', function(req: Request, res: Response) {
     let newRidingSession = {
-        title: req.body.title,
-        date: req.body.date,
-        duration: req.body.duration,
-        discipline: req.body.discipline,
-        notes: req.body.notes,
-        rating: req.body.rating
-    };
+        title: connection.escape(req.body.title),
+        date: connection.escape(req.body.date),
+        discipline: connection.escape(req.body.discipline),
+        notes: connection.escape(req.body.notes),
+        rating: connection.escape(req.body.rating)
+    };    
 
     let userId = {
         id: req.body.userId
@@ -128,9 +127,9 @@ ridingSessionRouter.post('/add', function(req: Request, res: Response) {
 
         let sql: string = `
         INSERT INTO rides 
-        (title, date, duration, discipline, notes, rating)
+        (title, date, discipline, notes, rating)
         VALUES
-        ('${newRidingSession.title}', '${newRidingSession.date}', '${newRidingSession.duration}', '${newRidingSession.discipline}', '${newRidingSession.notes}', '${newRidingSession.rating}')`;
+        (${newRidingSession.title}, ${newRidingSession.date}, ${newRidingSession.discipline}, ${newRidingSession.notes}, ${newRidingSession.rating})`;
 
         connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
             if(err) {
@@ -168,6 +167,15 @@ ridingSessionRouter.post('/add', function(req: Request, res: Response) {
                 });
             });
         });
+    });
+});
+
+ridingSessionRouter.post('/edit/:id', function(req: Request, res: Response) {
+    connection.connect(function(err: QueryError | null)  {
+        if(err) {
+            console.log('Error connecting to database', err);
+            return res.status(500).json({ error: 'Database connection error' });
+        };
     });
 });
 

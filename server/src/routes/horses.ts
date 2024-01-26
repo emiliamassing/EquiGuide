@@ -27,11 +27,11 @@ horseRouter.get('/', function(req: Request, res: Response) {
 
 horseRouter.post('/add', function(req: Request, res: Response) {
     let newHorse = {
-        name: req.body.name,
-        breed: req.body.breed,
-        age: req.body.age,
-        gender: req.body.gender,
-        discipline: req.body.discipline 
+        name: connection.escape(req.body.name),
+        breed: connection.escape(req.body.breed),
+        age: connection.escape(req.body.age),
+        gender: connection.escape(req.body.gender),
+        discipline: connection.escape(req.body.discipline) 
     };
 
     let userId = {
@@ -48,7 +48,7 @@ horseRouter.post('/add', function(req: Request, res: Response) {
         INSERT INTO horses 
         (name, breed, age, gender, discipline) 
         VALUES
-        ('${newHorse.name}', '${newHorse.breed}', '${newHorse.age}', '${newHorse.gender}', '${newHorse.discipline}')`;
+        (${newHorse.name}, ${newHorse.breed}, ${newHorse.age}, ${newHorse.gender}, ${newHorse.discipline})`;
 
         connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
             if(err) {
