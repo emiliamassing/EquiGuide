@@ -171,11 +171,41 @@ ridingSessionRouter.post('/add', function(req: Request, res: Response) {
 });
 
 ridingSessionRouter.post('/edit/:id', function(req: Request, res: Response) {
+    let updatedRidingSession = {
+        title: connection.escape(req.body.title),
+        date: connection.escape(req.body.date),
+        discipline: connection.escape(req.body.discipline),
+        notes: connection.escape(req.body.notes),
+        rating: connection.escape(req.body.rating)
+    }; 
+
+    let ridingSessionId = req.params.id;
+
     connection.connect(function(err: QueryError | null)  {
         if(err) {
             console.log('Error connecting to database', err);
             return res.status(500).json({ error: 'Database connection error' });
         };
+
+        let sql: string = `
+        UPDATE rides
+        SET
+        title =${updatedRidingSession.title},
+        date =${updatedRidingSession.date},
+        discipline =${updatedRidingSession.discipline},
+        notes =${updatedRidingSession.notes},
+        rating =${updatedRidingSession.rating}
+        WHERE id =${ridingSessionId}`;
+
+        connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
+            if(err) {
+                console.log('Error updating ride', err);
+                return res.status(500).json({ error: 'Error updating ride' });
+            }
+
+            console.log('Updated ride');
+            res.status(200).json(result);
+        })
     });
 });
 
