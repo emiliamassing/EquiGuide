@@ -209,4 +209,29 @@ ridingSessionRouter.post('/edit/:id', function(req: Request, res: Response) {
     });
 });
 
+ridingSessionRouter.post('/delete/:id', function(req: Request, res: Response) {
+    let ridingSessionId = req.params.id;
+
+    let deleteValue = '1';
+
+    connection.connect(function(err: QueryError | null)  {
+        if(err) {
+            console.log('Error connecting to database', err);
+            return res.status(500).json({ error: 'Database connection error' });
+        };
+
+        let sql: string = `UPDATE rides SET is_deleted =${deleteValue} WHERE id=${ridingSessionId}`;
+
+        connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
+            if(err) {
+                console.log('Error deleting ride', err);
+                return res.status(500).json({ error: 'Error deleting ride' });
+            }
+
+            console.log('soft deleted ride');
+            res.status(200).json(result);
+        })
+    });
+});
+
 export default ridingSessionRouter;
