@@ -5,7 +5,7 @@ export function AppLayout() {
     return(
         <>
             <Menu></Menu>
-            <main>
+            <main className="app">
                 <section>
                     <Outlet></Outlet>
                 </section>

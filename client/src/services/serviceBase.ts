@@ -13,3 +13,9 @@ export async function post<T>(url: string, data: object): Promise<T> {
 export function isAxiosError(error: unknown): error is AxiosError {
     return (error as AxiosError).isAxiosError !== undefined;
 }
+
+export function capitalizeWords(words: string[]): string[] {
+    return words.map(word => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+}

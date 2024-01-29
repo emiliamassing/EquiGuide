@@ -60,7 +60,7 @@ export function RegisterUser() {
                 setErrorMessage('');
     
                 addUserToLocalStorage(logInUserData.user, logInUserData.token);
-                navigate('/login/registerHorse');
+                navigate('/login/userVerification');
             } catch(error: unknown) {
                 if(isAxiosError(error)) {
                     const axiosError = error as AxiosError;
@@ -80,24 +80,24 @@ export function RegisterUser() {
             <h1>Registrera konto</h1>
             <form onSubmit={tryToRegisterUser} className="registerUserForm">
                 <div className="inputDivider">
-                    <div className="inputContainer">
+                    <div className="loginInputContainer">
                         <span className="material-symbols-outlined inputSymbol">person</span>
                         <input type="text" placeholder="Förnamn" onChange={handleFirstNameChange} required></input>
                     </div>
-                    <div className="inputContainer">
+                    <div className="loginInputContainer">
                         <span className="material-symbols-outlined inputSymbol">person</span>
                         <input type="text" placeholder="Efternamn" onChange={handleLastNameChange} required></input>
                     </div>
                 </div>
-                <div className="inputContainer">
+                <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">mail</span>
                     <input type="text" placeholder="E-Mail" onChange={handleEmailChange} required></input>
                 </div>
-                <div className="inputContainer">
+                <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">lock</span>
                     <input type="password" placeholder="Lösenord" onChange={handlePasswordChange} required></input>
                 </div>
-                <div className="inputContainer">
+                <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">check_circle</span>
                     <input type="password" placeholder="Bekräfta lösenord" onChange={handlePasswordConfirmationChange} required></input>
                 </div>
