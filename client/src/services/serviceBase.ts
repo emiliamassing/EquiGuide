@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-export async function get<T>(url: string): Promise<T> {
-    const response: AxiosResponse<T> = await axios.get<T>(url);
+export async function get<T>(url: string, params?: Record<string, string | number>): Promise<T> {
+    const response: AxiosResponse<T> = await axios.get<T>(url, {params});
     return response.data;
 }
 

@@ -26,6 +26,7 @@ export function addUserToLocalStorage(user: object, token: string) {
 export function removeFromLocalStorage() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    localStorage.removeItem('horses');
 }
 
 const userDataString = localStorage.getItem('user');
