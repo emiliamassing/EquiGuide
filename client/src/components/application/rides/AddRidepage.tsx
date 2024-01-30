@@ -1,60 +1,51 @@
-import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../../services/tokenService";
 import { NotAuthenticated } from "../../error/NotAuthenticated";
-import { disciplines } from "../../../models/disciplines";
-import { capitalizeWords } from "../../../services/serviceBase";
-import { SvgLogo } from "../../svg/SvgLogo";
-
-const allDisciplines = capitalizeWords(disciplines);
+import { useEffect, useState } from "react";
+import { IHorseData } from "../../../models/IHorseData";
+import { getHorses } from "../../../services/horseService";
+import { AxiosError } from "axios";
+import { AddRideForm } from "./AddRideForm";
+import { isAxiosError } from "../../../services/serviceBase";
 
 export function AddRidePage() {
-    const navigate = useNavigate();
+    const [horses, setHorses] = useState<IHorseData[]>([]);
+    const localUser = localStorage.getItem('user');
+    const localHorses = localStorage.getItem('horses');
 
-    function navigateToHome() {
-        navigate('/app/home');
-    }
+    useEffect(() => {
+        async function fetchHorses() {
+            if(localUser) {
+                const parsedUser = JSON.parse(localUser);
+                const id = parsedUser.id;
+
+                try{
+                    const horseData = await getHorses(id);
+
+                    localStorage.setItem('horses', JSON.stringify(horseData));
+                    setHorses(horseData);
+                } catch(error: unknown) {
+                    if(isAxiosError(error)) {
+                        const axiosError = error as AxiosError;
+
+                        if(axiosError.response && axiosError.response.status === 400) {
+                            console.log('Något gick fel');
+                        }
+                    }
+                }                
+            }
+        }
+
+        if(localHorses) {
+            setHorses(JSON.parse(localHorses));
+        } else {
+            fetchHorses();
+        }
+    }, []);
 
     return(
         isAuthenticated() ? (
             <>
-                <div className="container">
-                    <div className="headingContainer">
-                        <SvgLogo height={50} width={50} outline="5A9378" fill="161414"></SvgLogo>
-                        <h1>Planera ridpass</h1>
-                    </div>
-                    <div className="divider"></div>
-                    <form>
-                        <div className="inputContainer">
-                            <label htmlFor="title">Titel</label>
-                            <input type="text" name="title" placeholder="Titel" required></input>
-                        </div>
-                        <div className="inputContainer">
-                            <label htmlFor="date">Välj datum</label>
-                            <input type="date" name="date" required></input>
-                        </div>
-                        <div className="inputContainer">
-                        <span>Välj häst</span>
-                        <select>
-                            <option value={""} hidden disabled>Välj häst</option>
-                        </select>
-                        </div>
-                        <div className="inputContainer">
-                            <span>Inriktning</span>
-                            <select>
-                                <option value={""} hidden disabled>Inriktning</option>
-                                {
-                                    allDisciplines.map(discipline => (
-                                        <option value={discipline}>{discipline}</option>
-                                    ))
-                                }
-                            </select>
-                        </div>
-                    </form>
-                    <div className="formButtonContainer">
-                        <button className="secondaryButton" onClick={navigateToHome}>Avbryt</button>
-                        <button className="primaryButton">Skapa pass</button>
-                    </div>
-                </div>
+                <AddRideForm horseList={horses}></AddRideForm>
             </>
         ):(
             <NotAuthenticated></NotAuthenticated>
