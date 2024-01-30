@@ -24,6 +24,32 @@ horseRouter.get('/', function(req: Request, res: Response) {
         });
     });
 });
+horseRouter.get('/user', function(req: Request, res: Response) {
+    let userId = req.query.userId;
+
+    connection.connect(function(err: QueryError | null) {
+        if(err) {
+            console.log('Error connecting to database', err);
+            return res.status(500).json({ error: 'Database connection error' });
+        };
+
+        let sql: string = `
+        SELECT * FROM horses
+        JOIN users_horses ON horses.id = users_horses.horse_id
+        JOIN users ON users_horses.user_id = users.id
+        WHERE users.id =${userId}`;
+
+        connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
+            if(err) {
+                console.log('Error selecting horses', err);
+                return res.status(500).json({ error: 'Error selecting horses'});
+            }
+
+            console.log('All horses:', result);
+            res.send(result);
+        });
+    });
+});
 
 horseRouter.post('/add', function(req: Request, res: Response) {
     let newHorse = {
