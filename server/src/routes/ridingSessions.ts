@@ -125,11 +125,7 @@ ridingSessionRouter.post('/add', function(req: Request, res: Response) {
             return res.status(500).json({ error: 'Database connection error' });
         };
 
-        let sql: string = `
-        INSERT INTO rides 
-        (title, date, discipline, notes, rating)
-        VALUES
-        (${newRidingSession.title}, ${newRidingSession.date}, ${newRidingSession.discipline}, ${newRidingSession.notes}, ${newRidingSession.rating})`;
+        let sql: string = `INSERT INTO rides (title, date, discipline, notes, rating) VALUES (${newRidingSession.title}, ${newRidingSession.date}, ${newRidingSession.discipline}, ${newRidingSession.notes}, ${newRidingSession.rating})`;
 
         connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
             if(err) {

@@ -65,9 +65,7 @@ export function RegisterHorse() {
                     setErrorMessage('Något gick fel, försök igen');
                 }
             }
-        }
-
-        console.log(userId);        
+        }      
     }
 
     return(

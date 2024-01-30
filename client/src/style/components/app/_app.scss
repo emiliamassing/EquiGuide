@@ -1,6 +1,7 @@
 main.app {
     background-color: var.$bgColorApp;
-    min-height: 100vh;
+    height: 90vh;
+    overflow-y: scroll;
 
     section {
         display: flex;
