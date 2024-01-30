@@ -24,6 +24,7 @@ horseRouter.get('/', function(req: Request, res: Response) {
         });
     });
 });
+
 horseRouter.get('/user', function(req: Request, res: Response) {
     let userId = req.query.userId;
 
@@ -34,10 +35,12 @@ horseRouter.get('/user', function(req: Request, res: Response) {
         };
 
         let sql: string = `
-        SELECT * FROM horses
-        JOIN users_horses ON horses.id = users_horses.horse_id
-        JOIN users ON users_horses.user_id = users.id
-        WHERE users.id =${userId}`;
+            SELECT horses.*
+            FROM horses
+            JOIN users_horses ON horses.id = users_horses.horse_id
+            JOIN users ON users_horses.user_id = users.id
+            WHERE users.id = ${userId}
+        `;
 
         connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
             if(err) {
@@ -71,10 +74,11 @@ horseRouter.post('/add', function(req: Request, res: Response) {
         };
 
         let sql: string = `
-        INSERT INTO horses 
-        (name, breed, age, gender, discipline) 
-        VALUES
-        (${newHorse.name}, ${newHorse.breed}, ${newHorse.age}, ${newHorse.gender}, ${newHorse.discipline})`;
+            INSERT INTO horses 
+            (name, breed, age, gender, discipline) 
+            VALUES
+            (${newHorse.name}, ${newHorse.breed}, ${newHorse.age}, ${newHorse.gender}, ${newHorse.discipline})
+        `;
 
         connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
             if(err) {
@@ -84,10 +88,11 @@ horseRouter.post('/add', function(req: Request, res: Response) {
             
             const horseId = result.insertId;
             const junctionSql = `
-            INSERT INTO users_horses 
-            (user_id, horse_id) 
-            VALUES 
-            ('${userId.id}', ${horseId})`;
+                INSERT INTO users_horses 
+                (user_id, horse_id) 
+                VALUES 
+                ('${userId.id}', ${horseId})
+            `;
 
             connection.query(junctionSql, function(err: QueryError | null, result: ResultSetHeader) {
                 if(err) {
