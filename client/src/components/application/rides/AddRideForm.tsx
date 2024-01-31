@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { IHorseData } from "../../../models/IHorseData"
 import { disciplines } from "../../../models/disciplines";
 import { capitalizeWords, isAxiosError } from "../../../services/serviceBase";
-import { SvgLogo } from "../../svg/SvgLogo"
 import { ChangeEvent, FormEvent, useState } from "react";
 import { AxiosError } from "axios";
 import { userData } from "../../../services/userService";

@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { SvgLogo } from "../../svg/SvgLogo";
 import { AppHeading } from "../layouts/AppHeading";
 
 interface IShowVerificationProps {
