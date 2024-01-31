@@ -7,6 +7,9 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { AxiosError } from "axios";
 import { userData } from "../../../services/userService";
 import { addRide } from "../../../services/rideService";
+import { isAuthenticated } from "../../../services/tokenService";
+import { NotAuthenticated } from "../../error/NotAuthenticated";
+import { ShowVerification } from "../../verification/ShowVerification";
 
 interface IHorseProps {
     horseList: IHorseData[]
@@ -20,11 +23,16 @@ export function AddRideForm({horseList}: IHorseProps) {
     const [dateInput, setDateInput] = useState('');
     const [horseId, setSelectedHorseId] = useState('');
     const [selectedDiscipline, setSelectedDiscipline] = useState('');
+    const [dataCreated, setDataCreated] = useState(false);
     const userId = userData ? userData.id : null;
     const localHorses = localStorage.getItem('horses');
 
     function navigateToHome() {
         navigate('/app/home');
+    }
+
+    function resetDataCreated() {
+        setDataCreated(false);
     }
 
     function handleTitleInputChange(e: ChangeEvent<HTMLInputElement>) {
@@ -54,7 +62,6 @@ export function AddRideForm({horseList}: IHorseProps) {
     }
 
     async function tryToAddRide(e: FormEvent) {
-        console.log('Skapa pass');
         e.preventDefault();
 
         try{
@@ -62,13 +69,12 @@ export function AddRideForm({horseList}: IHorseProps) {
                 title: titleInput,
                 date: dateInput,
                 discipline: selectedDiscipline,
-                notes: "Nej",
-                rating: "3",
                 userId: userId,
                 horseId: horseId
             })
 
             console.log('Ride added', rideData);
+            setDataCreated(true);
         } catch(error: unknown) {
             if(isAxiosError(error)) {
                 const axiosError = error as AxiosError;
@@ -81,50 +87,58 @@ export function AddRideForm({horseList}: IHorseProps) {
     }
 
     return(
-        <>
-            <div className="container">
-                    <div className="headingContainer">
-                        <SvgLogo height={50} width={50} outline="5A9378" fill="161414"></SvgLogo>
-                        <h1>Planera ridpass</h1>
-                    </div>
-                    <div className="divider"></div>
-                    <form onSubmit={tryToAddRide}>
-                        <div className="inputContainer">
-                            <label htmlFor="title">Titel</label>
-                            <input type="text" name="title" placeholder="Titel" required onChange={handleTitleInputChange}></input>
+        isAuthenticated() ? (
+            <>
+                {dataCreated ? 
+                    <ShowVerification resetData={resetDataCreated} verificationMessage="Ridpass planerat"></ShowVerification>   
+                    : 
+                    <div className="container">
+                        <div className="headingContainer">
+                            <SvgLogo height={50} width={50} outline="5A9378" fill="161414"></SvgLogo>
+                            <h1>Planera ridpass</h1>
                         </div>
-                        <div className="inputContainer">
-                            <label htmlFor="date">Välj datum</label>
-                            <input type="date" name="date" required onChange={handleDateInputChange}></input>
-                        </div>
-                        <div className="inputContainer">
-                        <span>Välj häst</span>
-                            <select required onChange={handleSelectedHorseChange}>
-                                <option value={""} hidden disabled>Välj häst</option>
-                                {
-                                    horseList.map((horse) => (
-                                        <option value={horse.name} key={horse.name}>{horse.name}</option>
-                                    ))
-                                }
-                            </select>
-                        </div>
-                        <div className="inputContainer">
-                            <span>Inriktning</span>
-                            <select required onChange={handleSelectedDisciplineChange}>
-                                <option value={""} hidden disabled>Inriktning</option>
-                                {
-                                    allDisciplines.map(discipline => (
-                                        <option value={discipline} key={discipline}>{discipline}</option>
-                                    ))
-                                }
-                            </select>
-                        </div>
-                        <div className="formButtonContainer">
-                            <button className="secondaryButton" onClick={navigateToHome}>Avbryt</button>
-                            <button className="primaryButton">Skapa pass</button>
-                        </div>
-                    </form>
-                </div>
-        </>
+                        <div className="divider"></div>
+                        <form onSubmit={tryToAddRide}>
+                            <div className="inputContainer">
+                                <label htmlFor="title">Titel</label>
+                                <input type="text" name="title" placeholder="Titel" required onChange={handleTitleInputChange}></input>
+                            </div>
+                            <div className="inputContainer">
+                                <label htmlFor="date">Välj datum</label>
+                                <input type="date" name="date" required onChange={handleDateInputChange}></input>
+                            </div>
+                            <div className="inputContainer">
+                            <span>Välj häst</span>
+                                <select required onChange={handleSelectedHorseChange}>
+                                    <option value={""} hidden>Välj häst</option>
+                                    {
+                                        horseList.map((horse) => (
+                                            <option value={horse.name} key={horse.name}>{horse.name}</option>
+                                        ))
+                                    }
+                                </select>
+                            </div>
+                            <div className="inputContainer">
+                                <span>Inriktning</span>
+                                <select required onChange={handleSelectedDisciplineChange}>
+                                    <option value={""} hidden>Inriktning</option>
+                                    {
+                                        allDisciplines.map(discipline => (
+                                            <option value={discipline} key={discipline}>{discipline}</option>
+                                        ))
+                                    }
+                                </select>
+                            </div>
+                            <div className="formButtonContainer">
+                                <button className="secondaryButton" onClick={navigateToHome}>Avbryt</button>
+                                <button className="primaryButton">Skapa pass</button>
+                            </div>
+                        </form>
+                    </div> 
+                }
+            </>
+        ):(
+            <NotAuthenticated></NotAuthenticated>
+        )
     )
 }

@@ -107,8 +107,6 @@ ridingSessionRouter.post('/add', function(req: Request, res: Response) {
         title: connection.escape(req.body.title),
         date: connection.escape(req.body.date),
         discipline: connection.escape(req.body.discipline),
-        notes: connection.escape(req.body.notes),
-        rating: connection.escape(req.body.rating)
     };    
 
     let userId = {
@@ -125,7 +123,7 @@ ridingSessionRouter.post('/add', function(req: Request, res: Response) {
             return res.status(500).json({ error: 'Database connection error' });
         };
 
-        let sql: string = `INSERT INTO rides (title, date, discipline, notes, rating) VALUES (${newRidingSession.title}, ${newRidingSession.date}, ${newRidingSession.discipline}, ${newRidingSession.notes}, ${newRidingSession.rating})`;
+        let sql: string = `INSERT INTO rides (title, date, discipline) VALUES (${newRidingSession.title}, ${newRidingSession.date}, ${newRidingSession.discipline})`;
 
         connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
             if(err) {
@@ -134,17 +132,9 @@ ridingSessionRouter.post('/add', function(req: Request, res: Response) {
             }
 
             const rideId = result.insertId;
-            const userJunctionSql: string = `
-            INSERT INTO rides_users
-            (ride_id, user_id) 
-            VALUES 
-            ('${rideId}', '${userId.id}')`;
+            const userJunctionSql: string = `INSERT INTO rides_users (ride_id, user_id) VALUES ('${rideId}', '${userId.id}')`;
 
-            const horseJunctionSql: string = `
-            INSERT INTO rides_horses
-            (ride_id, horse_id)
-            VALUES
-            ('${rideId}', '${horseId.id}')`;
+            const horseJunctionSql: string = `INSERT INTO rides_horses (ride_id, horse_id) VALUES ('${rideId}', '${horseId.id}')`;
 
             connection.query(userJunctionSql, function(err: QueryError | null, result: ResultSetHeader) {
                 if(err) {

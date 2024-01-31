@@ -1,4 +1,6 @@
 .headingContainer {
+    width: 85%;
+    margin: 0 auto;
     display: flex;
     padding: 1em;
 
@@ -65,5 +67,20 @@
         margin-top: 9em;
         display: flex;
         justify-content: space-evenly;
+    }
+
+    .infoContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 3em;
+
+        p {
+            text-align: left;
+        }
+
+        button {
+            margin-top: 25em;
+        }
     }
 }

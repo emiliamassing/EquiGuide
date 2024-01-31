@@ -30,4 +30,5 @@ export function removeFromLocalStorage() {
 }
 
 const userDataString = localStorage.getItem('user');
+
 export const userData = userDataString ? JSON.parse(userDataString) : null;
