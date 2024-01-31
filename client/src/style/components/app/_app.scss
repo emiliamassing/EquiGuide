@@ -21,7 +21,7 @@ main.app {
 @media screen and (min-width: 992px) {
     #root {
         display: grid;
-        grid-template-columns: 200px 50px 50px 50px;
+        grid-template-columns: 200px 1fr;
         grid-template-rows: auto;
         grid-template-areas:
             "menu main main main"
@@ -32,8 +32,8 @@ main.app {
         main.app {
             overflow-y: unset;
             max-width: unset;
-            width: 89.5vw;
             min-height: 100vh;
+            margin: 0;
         }
     }
 }
