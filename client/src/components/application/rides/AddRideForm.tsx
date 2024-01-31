@@ -9,7 +9,8 @@ import { userData } from "../../../services/userService";
 import { addRide } from "../../../services/rideService";
 import { isAuthenticated } from "../../../services/tokenService";
 import { NotAuthenticated } from "../../error/NotAuthenticated";
-import { ShowVerification } from "../../verification/ShowVerification";
+import { ShowVerification } from "../verification/ShowVerification";
+import { AppHeading } from "../layouts/AppHeading";
 
 interface IHorseProps {
     horseList: IHorseData[]
@@ -93,11 +94,7 @@ export function AddRideForm({horseList}: IHorseProps) {
                     <ShowVerification resetData={resetDataCreated} verificationMessage="Ridpass planerat"></ShowVerification>   
                     : 
                     <div className="container">
-                        <div className="headingContainer">
-                            <SvgLogo height={50} width={50} outline="5A9378" fill="161414"></SvgLogo>
-                            <h1>Planera ridpass</h1>
-                        </div>
-                        <div className="divider"></div>
+                        <AppHeading title="Planera ridpass"></AppHeading>
                         <form onSubmit={tryToAddRide}>
                             <div className="inputContainer">
                                 <label htmlFor="title">Titel</label>
