@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../../services/tokenService"
 import { removeFromLocalStorage } from "../../../services/userService";
 import { NotAuthenticated } from "../../error/NotAuthenticated";
+import { AppHeading } from "../layouts/AppHeading";
 
 export function ExplorePage() {
     const navigate = useNavigate();
@@ -14,8 +15,9 @@ export function ExplorePage() {
     return(
         isAuthenticated() ? (
             <>
-                <h1>Hitta övningar</h1>
-                <button className="primaryButton" onClick={logout}>Logga ut</button>
+                <div className="container">
+                    <AppHeading title="Utforska"></AppHeading>
+                </div>
             </>
         ):(
             <NotAuthenticated></NotAuthenticated>

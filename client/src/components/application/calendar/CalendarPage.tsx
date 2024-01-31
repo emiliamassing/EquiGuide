@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../../services/tokenService"
 import { removeFromLocalStorage } from "../../../services/userService";
 import { NotAuthenticated } from "../../error/NotAuthenticated";
+import { AppHeading } from "../layouts/AppHeading";
 
 export function CalendarPage() {
     const navigate = useNavigate();
@@ -14,8 +15,9 @@ export function CalendarPage() {
     return(
         isAuthenticated() ? (
             <>
-                <h1>Kalender</h1>
-                <button className="primaryButton" onClick={logout}>Logga ut</button>
+                <div className="container">
+                    <AppHeading title="Kalender"></AppHeading>
+                </div>
             </>
         ):(
             <NotAuthenticated></NotAuthenticated>
