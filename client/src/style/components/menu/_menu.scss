@@ -41,18 +41,18 @@ nav {
 @media screen and (min-width: 992px) {
     nav {
         position: relative;
-        box-shadow: none;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
         ul.menuList {
-            justify-content: space-evenly;
+            flex-direction: column;
             margin-block-start: 0;
-            padding: 1em;
 
             li {
 
                 a {
                     display: flex;
                     text-decoration: none;
+                    padding: 15px;
 
                     span {
                         font-size: 25px;
@@ -71,6 +71,8 @@ nav {
                 }
 
                 a.active {
+                    background-color: var.$neutralLightGreen;
+                    border-left: 7px solid var.$darkGreen;
                     border-bottom: none;
                 }
             }
