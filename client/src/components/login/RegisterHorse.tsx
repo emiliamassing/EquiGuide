@@ -1,9 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userData } from "../../services/userService";
-import { isAxiosError } from "../../services/serviceBase";
+import { capitalizeWords, isAxiosError } from "../../services/serviceBase";
 import { AxiosError } from "axios";
 import { addHorse } from "../../services/horseService";
+import { disciplines } from "../../models/disciplines";
+
+const allDisciplines = capitalizeWords(disciplines);
 
 export function RegisterHorse() {
     const navigate = useNavigate();
@@ -62,9 +65,7 @@ export function RegisterHorse() {
                     setErrorMessage('Något gick fel, försök igen');
                 }
             }
-        }
-
-        console.log(userId);        
+        }      
     }
 
     return(
@@ -73,19 +74,19 @@ export function RegisterHorse() {
             <span className="infoText">Du kan lägga till flera hästar senare</span>
             <form className="registerHorseForm" onSubmit={tryToRegisterHorse}>
             <div className="inputDivider">
-                <div className="inputContainer">
+                <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">border_color</span>
                     <input type="text" name="name" placeholder="Namn" required onChange={handleNameInputChange}></input>
                 </div>
-                <div className="inputContainer">
+                <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">border_color</span>
                     <input type="text" name="breed" placeholder="Ras" required onChange={handleBreedInputChange}></input>
                 </div>
-                <div className="inputContainer">
+                <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">cake</span>
                     <input type="number" name="age" placeholder="Ålder" required onChange={handleAgeInputChange}></input>
                 </div>
-                <div className="inputContainer">
+                <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">male</span>
                     <select name="gender" value={selectedGender} onChange={handleSelectedGenderChange} required>
                         <option value={""} disabled hidden>Kön</option>
@@ -95,13 +96,15 @@ export function RegisterHorse() {
                     </select>
                 </div>
             </div>
-            <div className="inputContainer">
+            <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">trophy</span>
                     <select name="discipline" value={selectedDiscipline} onChange={handleSelectedDisciplineChange} required>
                         <option value={""} disabled hidden>Inriktning</option>
-                        <option value={"dressyr"}>Dressyr</option>
-                        <option value={"hoppning"}>Hoppning</option>
-                        <option value={"Allround"}>Allround</option>
+                        {
+                            allDisciplines.map(discipline => (
+                                <option value={discipline}>{discipline}</option>
+                            ))
+                        }
                     </select>
                 </div>
             <span className="errorMessage">{errorMessage}</span>

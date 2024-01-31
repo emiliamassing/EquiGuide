@@ -2,7 +2,9 @@
 @import './utils/normalize';
 @import './components/startpage/startpage';
 @import './components/login/loginpage';
-@import './components/menu/mobileMenu';
+@import './components/menu/menu';
+@import './components/app/app';
+@import './components/app/AddRidePage';
 
 * {
   font-family: var.$fontFamily;
@@ -21,7 +23,7 @@ body {
 
 button {
   font-size: var.$buttonText;
-  font-weight: 500;
+  font-weight: 400;
   color: var.$white;
   width: 9.5em;
   padding: 17px 25px 17px 25px;
@@ -38,4 +40,5 @@ button.primaryButton {
 button.secondaryButton {
   background-color: var.$gray;
   color: var.$black;
+  font-weight: 500;
 }

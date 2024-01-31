@@ -52,11 +52,11 @@ export function LoginUser() {
         <> 
             <h1>Logga in</h1>
             <form onSubmit={tryToLoginUser} className="loginForm">
-                <div className="inputContainer">
+                <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">mail</span>
                     <input type="text" name="email" placeholder="Email" onChange={handleEmailChange} required></input>
                 </div>
-                <div className="inputContainer">
+                <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">lock</span>
                     <input type="password" name="password" placeholder="Lösenord" onChange={handlePasswordChange} required></input>
                 </div>
