@@ -17,6 +17,7 @@ export function HomePage() {
             <>
                 <div className="container">
                     <AppHeading title="Hem"></AppHeading>
+                    <h2>Välkommen</h2>
                 </div>
             </>
         ):(
