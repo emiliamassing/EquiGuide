@@ -33,7 +33,7 @@ main.app {
 }
 
 @media screen and (min-width: 992px) {
-    #root {
+    #wrapper {
         display: grid;
         grid-template-columns: 200px 1fr;
         grid-template-rows: auto;
