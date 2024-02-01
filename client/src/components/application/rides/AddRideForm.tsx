@@ -104,7 +104,7 @@ export function AddRideForm({horseList}: IHorseProps) {
                                 <input type="date" name="date" required onChange={handleDateInputChange}></input>
                             </div>
                             <div className="inputContainer">
-                            <span>Välj häst</span>
+                                <span>Välj häst</span>
                                 <select required onChange={handleSelectedHorseChange}>
                                     <option value={""} hidden>Välj häst</option>
                                     {

@@ -5,12 +5,16 @@ main.app {
 
     section {
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+        margin-bottom: 1em;
 
         .container {
             display: inline-block;
             width: 95%;
             margin-top: 1em;
+            margin-bottom: 1em;
             border-radius: 10px;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
             background-color: var.$bgColor;
@@ -27,12 +31,78 @@ main.app {
                     margin-left: 5px;
                     font-weight: 500;
                 }
+
+                h2 {
+                    font-size: var.$headingTwo;
+                    margin-block-end: 0;
+                    margin-top: 15px;
+                    margin-left: 5px;
+                    font-weight: 500;
+                }
             }
         }
+    }
+
+    form {
+        margin-top: 2em;
+
+        .inputContainer {
+            width: 19em;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1em;
+
+            label,
+            span {
+                color: var.$darkGreen;
+                font-weight: 500;
+            }
+
+            input[type=text],
+            input[type=date],
+            select {
+                height: 1em;
+                width: 18em;
+                border-radius: 20px;
+                border: 2px solid var.$gray;
+                position: relative;
+                margin: 5px;
+                padding: 10px;
+                align-self: center;
+
+                &:focus {
+                    border: 2px solid var.$darkGreen;
+                }
+            }
+
+            select {
+                padding: 0;
+                height: 2.5em;
+                width: 19.5em;
+            }
+        }
+    }
+
+    .tertriaryButtonContainer {
+        width: 22em;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1em;
     }
 }
 
 @media screen and (min-width: 992px) {
+    main.app {
+        section {
+            flex-direction: row;
+            justify-content: space-around;
+            gap: 1em;
+        }
+    }
+
     #wrapper {
         display: grid;
         grid-template-columns: 200px 1fr;

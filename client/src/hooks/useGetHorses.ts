@@ -36,6 +36,7 @@ export function useGetHorses() {
 
         if(localHorses) {
             setHorses(JSON.parse(localHorses));
+            setIsLoading(false);
         } else {
             fetchHorses();
         }

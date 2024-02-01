@@ -7,49 +7,6 @@
         border-bottom: 2px solid var.$lightGray;
     }
 
-    form {
-        margin-top: 2em;
-
-        .inputContainer {
-            width: 19em;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 1em;
-
-            label,
-            span {
-                color: var.$darkGreen;
-                font-weight: 500;
-            }
-
-            input[type=text],
-            input[type=date],
-            select {
-                height: 1em;
-                width: 18em;
-                border-radius: 20px;
-                border: 2px solid var.$gray;
-                position: relative;
-                margin: 5px;
-                padding: 10px;
-                align-self: center;
-
-                &:focus {
-                    border: 2px solid var.$darkGreen;
-                }
-            }
-
-            select {
-                padding: 0;
-                height: 2.5em;
-                width: 19.5em;
-            }
-
-
-        }
-    }
-
     .formButtonContainer {
         margin-top: 9em;
         display: flex;
