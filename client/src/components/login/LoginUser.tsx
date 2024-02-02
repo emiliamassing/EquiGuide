@@ -32,12 +32,11 @@ export function LoginUser() {
                 password: passwordInput
             });
 
-            console.log('Userdata from api', userData);
-
             setErrorMessage('');
 
             dispatch({type: 'login', payload: JSON.stringify(userData)});
             addUserToLocalStorage(userData.token);
+            
             navigate('/app/home');
         } catch(error: unknown) {
             if(isAxiosError(error)) {
