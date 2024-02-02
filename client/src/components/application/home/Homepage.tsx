@@ -6,9 +6,12 @@ import { ShowLoader } from "../../loader/ShowLoader";
 import { RideContainer } from "./RideContainer";
 import { ViewRidesForm } from "./ViewRidesForm";
 import { SecondaryHeading } from "../layouts/SecondaryHeading";
+import { useContext } from "react";
+import { UserContext } from "../../../contexts/UserContext";
 
 export function HomePage() {
     const { horses, isLoading } = useGetHorses();
+    const userData = useContext(UserContext);
 
     return(
         isAuthenticated() ? (
@@ -18,8 +21,12 @@ export function HomePage() {
             <>
                 <div className="container">
                     <AppHeading title="Hem"></AppHeading>
-                    <h2>Välkommen</h2>
-                    <RideContainer horses={horses}></RideContainer>
+                    <div className="innerContainer">
+                        <h2>
+                            Välkommen, {userData[0].user.firstname} <span className="material-symbols-outlined icon">favorite</span>
+                        </h2>
+                        <RideContainer horses={horses}></RideContainer>
+                    </div>
                 </div>
                 <div className="container">
                     <SecondaryHeading title="Ridpass"></SecondaryHeading>

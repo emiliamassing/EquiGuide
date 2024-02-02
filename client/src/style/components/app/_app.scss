@@ -3,6 +3,17 @@ main.app {
     height: 90vh;
     overflow-y: scroll;
 
+    h2 {
+        font-size: var.$headingTwo;
+        font-weight: 500;
+
+        span.icon {
+            position: absolute;
+            font-size: 30px;
+            color: var.$darkGreen;
+        }
+    }
+
     section {
         display: flex;
         flex-direction: column;
@@ -13,8 +24,8 @@ main.app {
         .container {
             display: inline-block;
             width: 95%;
-            margin-top: 1em;
-            margin-bottom: 1em;
+            margin-top: 0.4em;
+            margin-bottom: 0.3em;
             border-radius: 10px;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
             background-color: var.$bgColor;
@@ -39,6 +50,17 @@ main.app {
                     margin-left: 5px;
                     font-weight: 500;
                 }
+            }
+
+            .divider {
+                width: 85%;
+                margin: 0 auto;
+                border-bottom: 2px solid var.$lightGray;
+            }
+
+            .innerContainer {
+                width: 70vw;
+                margin: 0 auto;
             }
         }
     }

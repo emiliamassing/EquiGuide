@@ -2,7 +2,7 @@ import { RouterProvider } from 'react-router-dom'
 import { router } from './router'
 import { useReducer } from 'react'
 import { UserReducer } from './reducer/userReducer'
-import { UserContext } from './contexts/userContext';
+import { UserContext } from './contexts/UserContext';
 import { UserDispatchContext } from './contexts/UserDispatchContext';
 
 function App() {
