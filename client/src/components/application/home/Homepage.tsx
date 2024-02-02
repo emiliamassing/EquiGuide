@@ -29,11 +29,14 @@ export function HomePage() {
                     </div>
                 </div>
                 <div className="container">
-                    <SecondaryHeading title="Ridpass"></SecondaryHeading>
-                    <div className="tertriaryButtonContainer">
-                       <button className="tertriaryButton">Se alla tidigare ridpass</button>
+                <SecondaryHeading title="Ridpass"></SecondaryHeading>
+                    <div className="innerContainer">
+                            <div className="tertriaryButtonContainer">
+                                <button className="tertriaryButton">Se alla tidigare ridpass</button>
+                            </div>
+                        <ViewRidesForm horses={horses}></ViewRidesForm>
                     </div>
-                    <ViewRidesForm horses={horses}></ViewRidesForm>
+                    
                 </div>
             </>
         ):(
