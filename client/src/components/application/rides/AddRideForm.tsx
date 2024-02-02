@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { IHorseData } from "../../../models/IHorseData"
 import { disciplines } from "../../../models/disciplines";
 import { capitalizeWords, isAxiosError } from "../../../services/serviceBase";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { AxiosError } from "axios";
-import { userData } from "../../../services/userService";
 import { addRide } from "../../../services/rideService";
 import { isAuthenticated } from "../../../services/tokenService";
 import { NotAuthenticated } from "../../error/NotAuthenticated";
 import { ShowVerification } from "../verification/ShowVerification";
 import { AppHeading } from "../layouts/AppHeading";
+import { UserContext } from "../../../contexts/userContext";
 
 interface IHorseProps {
     horseList: IHorseData[]
@@ -24,7 +24,7 @@ export function AddRideForm({horseList}: IHorseProps) {
     const [horseId, setSelectedHorseId] = useState('');
     const [selectedDiscipline, setSelectedDiscipline] = useState('');
     const [dataCreated, setDataCreated] = useState(false);
-    const userId = userData ? userData.id : null;
+    const userData = useContext(UserContext);
     const localHorses = localStorage.getItem('horses');
 
     function navigateToHome() {
@@ -63,6 +63,9 @@ export function AddRideForm({horseList}: IHorseProps) {
 
     async function tryToAddRide(e: FormEvent) {
         e.preventDefault();
+
+        const user = userData[0].user.id;
+        const userId = user.toString();
 
         try{
             const rideData = await addRide({

@@ -8,7 +8,7 @@ export async function getAllHorses() {
     return response;
 }
 
-export async function getHorses(query: Record<string, string | number>) {
+export async function getHorses(query: string) {
     const response = await get<IHorseData[]>(BASEURL + 'horses/user?userId=' + query);
     return response;
 }

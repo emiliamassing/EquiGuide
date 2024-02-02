@@ -8,7 +8,7 @@ export function RideContainer({ horses }: IRideContainerProps) {
     return(
         <>
             {horses.map((horse)  => (
-                <p>{horse.name}</p>
+                <p key={horse.name}>{horse.name}</p>
             ))}
         </>
     )

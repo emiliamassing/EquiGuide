@@ -7,7 +7,19 @@ export interface IUserAction {
 
 export function UserReducer(userdata: IUserData[], action: IUserAction) {
     switch(action.type) {
+        case 'login': {
+            const userValues = JSON.parse(action.payload);
 
-        default: return userdata;
+            return [...userdata, userValues];
+        }
+        case 'logout': {
+            return [...userdata.filter((user) => user.user.id !== +action.payload)];
+        }
+
+        default: {
+           break;
+        }
     }
+
+    return userdata;
 }

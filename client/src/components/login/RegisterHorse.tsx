@@ -1,10 +1,10 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { userData } from "../../services/userService";
 import { capitalizeWords, isAxiosError } from "../../services/serviceBase";
 import { AxiosError } from "axios";
 import { addHorse } from "../../services/horseService";
 import { disciplines } from "../../models/disciplines";
+import { UserContext } from "../../contexts/userContext";
 
 const allDisciplines = capitalizeWords(disciplines);
 
@@ -16,7 +16,7 @@ export function RegisterHorse() {
     const [selectedGender, setSelectedGender] = useState('');
     const [selectedDiscipline, setSelectedDiscipline] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const userId = userData ? userData.id : null;
+    const userData = useContext(UserContext);
 
     function directToUserVerification() {
         navigate('/login/userVerification');
@@ -50,12 +50,11 @@ export function RegisterHorse() {
                 age: ageInput,
                 gender: selectedGender,
                 discipline: selectedDiscipline,
-                userId: userId
+                userId: userData[0].user.id
             });
 
             console.log('Horse created', horseData);
             setErrorMessage('');
-
             navigate('/app/home');
         } catch(error: unknown) {
             if(isAxiosError(error)) {
@@ -102,7 +101,7 @@ export function RegisterHorse() {
                         <option value={""} disabled hidden>Inriktning</option>
                         {
                             allDisciplines.map(discipline => (
-                                <option value={discipline}>{discipline}</option>
+                                <option value={discipline} key={discipline}>{discipline}</option>
                             ))
                         }
                     </select>

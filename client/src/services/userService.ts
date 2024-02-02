@@ -18,17 +18,11 @@ export async function loginUser(data: object) {
     }
 }
 
-export function addUserToLocalStorage(user: object, token: string) {
-    localStorage.setItem('user', JSON.stringify(user));
+export function addUserToLocalStorage(token: string) {
     localStorage.setItem('token', token);
 }
 
 export function removeFromLocalStorage() {
-    localStorage.removeItem('user');
     localStorage.removeItem('token');
     localStorage.removeItem('horses');
 }
-
-const userDataString = localStorage.getItem('user');
-
-export const userData = userDataString ? JSON.parse(userDataString) : null;
