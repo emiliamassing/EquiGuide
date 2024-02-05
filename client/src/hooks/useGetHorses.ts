@@ -8,11 +8,11 @@ export function useGetHorses() {
     const [horses, setHorses] = useState<IHorseData[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [hasFetchedData, setHasFetchedData] = useState<boolean>(false);
-    const userData = useContext(UserContext);
+    const { userData } = useContext(UserContext);
 
     useEffect(() => {
         async function fetchHorses() {
-            const user = userData.userData[0].user.id;
+            const user = userData[0].user.id;
             const userId = user.toString();
 
             try{

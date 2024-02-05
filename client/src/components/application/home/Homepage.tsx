@@ -8,11 +8,14 @@ import { ViewRidesForm } from "./ViewRidesForm";
 import { SecondaryHeading } from "../layouts/SecondaryHeading";
 import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
+import { useGetContext } from "../../../hooks/useGetContext";
 
 export function HomePage() {
     const { horses, isLoading } = useGetHorses();
-    const userData = useContext(UserContext);
-    const user = userData.userData[0].user;
+    const { userData }  = useContext(UserContext);
+    const user = userData.length > 0 ? userData[0].user : null;    
+
+    useGetContext();
 
     return(
         isAuthenticated() ? (
@@ -24,7 +27,7 @@ export function HomePage() {
                     <AppHeading title="Hem"></AppHeading>
                     <div className="innerContainer">
                         <h2>
-                            Välkommen, {user.id} <span className="material-symbols-outlined icon">favorite</span>
+                            Välkommen, {user? user.firstname : 'Kunde inte hämta data'} <span className="material-symbols-outlined icon">favorite</span>
                         </h2>
                         <RideContainer horses={horses}></RideContainer>
                     </div>

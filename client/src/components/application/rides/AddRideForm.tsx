@@ -24,8 +24,8 @@ export function AddRideForm({horseList}: IHorseProps) {
     const [horseId, setSelectedHorseId] = useState('');
     const [selectedDiscipline, setSelectedDiscipline] = useState('');
     const [dataCreated, setDataCreated] = useState(false);
-    const userData = useContext(UserContext);
-    const user = userData.userData[0].user;
+    const { userData } = useContext(UserContext);
+    const user = userData[0].user;
     const localHorses = localStorage.getItem('horses');
 
     function navigateToHome() {

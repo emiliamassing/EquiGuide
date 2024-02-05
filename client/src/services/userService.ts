@@ -24,5 +24,4 @@ export function addUserToLocalStorage(token: string) {
 
 export function removeFromLocalStorage() {
     localStorage.removeItem('token');
-    localStorage.removeItem('horses');
 }
