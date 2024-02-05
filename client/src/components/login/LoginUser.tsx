@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { addUserToLocalStorage, loginUser } from "../../services/userService";
 import { AxiosError } from "axios";
 import { isAxiosError } from "../../services/serviceBase";
-import { UserDispatchContext } from "../../contexts/UserDispatchContext";
+import { UserContext } from "../../contexts/UserContext";
+import { ActionTypes } from "../../types/ActionTypes";
 
 export function LoginUser() {
     const navigate = useNavigate();
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const dispatch = useContext(UserDispatchContext);
+    const  { dispatch } = useContext(UserContext);
 
     function directToLogin() {
         navigate('/login');
@@ -34,7 +35,7 @@ export function LoginUser() {
 
             setErrorMessage('');
 
-            dispatch({type: 'login', payload: JSON.stringify(userData)});
+            dispatch({ type: ActionTypes.LOGIN, payload: JSON.stringify(userData) });
             addUserToLocalStorage(userData.token);
             
             navigate('/app/home');

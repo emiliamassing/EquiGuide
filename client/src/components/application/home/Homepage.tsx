@@ -12,6 +12,7 @@ import { UserContext } from "../../../contexts/UserContext";
 export function HomePage() {
     const { horses, isLoading } = useGetHorses();
     const userData = useContext(UserContext);
+    const user = userData.userData[0].user;
 
     return(
         isAuthenticated() ? (
@@ -23,7 +24,7 @@ export function HomePage() {
                     <AppHeading title="Hem"></AppHeading>
                     <div className="innerContainer">
                         <h2>
-                            Välkommen, {userData[0].user.firstname} <span className="material-symbols-outlined icon">favorite</span>
+                            Välkommen, {user.id} <span className="material-symbols-outlined icon">favorite</span>
                         </h2>
                         <RideContainer horses={horses}></RideContainer>
                     </div>

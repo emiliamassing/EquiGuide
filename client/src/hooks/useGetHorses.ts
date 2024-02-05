@@ -12,7 +12,7 @@ export function useGetHorses() {
 
     useEffect(() => {
         async function fetchHorses() {
-            const user = userData[0].user.id;
+            const user = userData.userData[0].user.id;
             const userId = user.toString();
 
             try{

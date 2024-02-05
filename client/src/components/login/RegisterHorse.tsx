@@ -4,7 +4,7 @@ import { capitalizeWords, isAxiosError } from "../../services/serviceBase";
 import { AxiosError } from "axios";
 import { addHorse } from "../../services/horseService";
 import { disciplines } from "../../models/disciplines";
-import { UserContext } from "../../contexts/userContext";
+import { UserContext } from "../../contexts/UserContext";
 
 const allDisciplines = capitalizeWords(disciplines);
 
@@ -17,6 +17,7 @@ export function RegisterHorse() {
     const [selectedDiscipline, setSelectedDiscipline] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const userData = useContext(UserContext);
+    const user = userData.userData[0].user;
 
     function directToUserVerification() {
         navigate('/login/userVerification');
@@ -50,11 +51,12 @@ export function RegisterHorse() {
                 age: ageInput,
                 gender: selectedGender,
                 discipline: selectedDiscipline,
-                userId: userData[0].user.id
+                userId: user.id
             });
 
             console.log('Horse created', horseData);
             setErrorMessage('');
+            
             navigate('/app/home');
         } catch(error: unknown) {
             if(isAxiosError(error)) {

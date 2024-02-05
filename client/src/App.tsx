@@ -1,19 +1,16 @@
 import { RouterProvider } from 'react-router-dom'
 import { router } from './router'
 import { useReducer } from 'react'
-import { UserReducer } from './reducer/userReducer'
+import { UserReducer } from './reducer/UserReducer'
 import { UserContext } from './contexts/UserContext';
-import { UserDispatchContext } from './contexts/UserDispatchContext';
 
 function App() {
-  const [userdata, dispatch] = useReducer(UserReducer, []);
+  const [userData, dispatch] = useReducer(UserReducer, []);
 
   return (
     <>
-      <UserContext.Provider value={userdata}>
-        <UserDispatchContext.Provider value={dispatch}>
+      <UserContext.Provider value={{ userData, dispatch }}>
           <RouterProvider router={router}></RouterProvider>
-        </UserDispatchContext.Provider>
       </UserContext.Provider>
     </>
   )

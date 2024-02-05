@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { addUserToLocalStorage, addUser, loginUser } from "../../services/userService";
 import { isAxiosError } from "../../services/serviceBase";
 import { AxiosError } from "axios";
-import { UserDispatchContext } from "../../contexts/UserDispatchContext";
+import { ActionTypes } from "../../types/ActionTypes";
+import { UserContext } from "../../contexts/UserContext";
 
 export function RegisterUser() {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ export function RegisterUser() {
     const [passwordInput, setPasswordInput] = useState('');
     const [confirmPasswordInput, setConfirmPasswordInput] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const dispatch = useContext(UserDispatchContext);
+    const { dispatch } = useContext(UserContext);
 
     function directToLogin() {
         navigate('/login');
@@ -60,8 +61,9 @@ export function RegisterUser() {
 
                 setErrorMessage('');
     
-                dispatch({type: 'login', payload: JSON.stringify(logInUserData)});
+                dispatch({ type: ActionTypes.LOGIN, payload: JSON.stringify(logInUserData) });
                 addUserToLocalStorage(logInUserData.token);
+
                 navigate('/login/userVerification');
             } catch(error: unknown) {
                 if(isAxiosError(error)) {

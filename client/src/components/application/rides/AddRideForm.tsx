@@ -9,7 +9,7 @@ import { isAuthenticated } from "../../../services/tokenService";
 import { NotAuthenticated } from "../../error/NotAuthenticated";
 import { ShowVerification } from "../verification/ShowVerification";
 import { AppHeading } from "../layouts/AppHeading";
-import { UserContext } from "../../../contexts/userContext";
+import { UserContext } from "../../../contexts/UserContext";
 
 interface IHorseProps {
     horseList: IHorseData[]
@@ -25,6 +25,7 @@ export function AddRideForm({horseList}: IHorseProps) {
     const [selectedDiscipline, setSelectedDiscipline] = useState('');
     const [dataCreated, setDataCreated] = useState(false);
     const userData = useContext(UserContext);
+    const user = userData.userData[0].user;
     const localHorses = localStorage.getItem('horses');
 
     function navigateToHome() {
@@ -64,8 +65,7 @@ export function AddRideForm({horseList}: IHorseProps) {
     async function tryToAddRide(e: FormEvent) {
         e.preventDefault();
 
-        const user = userData[0].user.id;
-        const userId = user.toString();
+        const userId = user.id.toString();
 
         try{
             const rideData = await addRide({
@@ -97,42 +97,44 @@ export function AddRideForm({horseList}: IHorseProps) {
                     : 
                     <div className="container">
                         <AppHeading title="Planera ridpass"></AppHeading>
-                        <form onSubmit={tryToAddRide}>
-                            <div className="inputContainer">
-                                <label htmlFor="title">Titel</label>
-                                <input type="text" name="title" placeholder="Titel" required onChange={handleTitleInputChange}></input>
-                            </div>
-                            <div className="inputContainer">
-                                <label htmlFor="date">Välj datum</label>
-                                <input type="date" name="date" required onChange={handleDateInputChange}></input>
-                            </div>
-                            <div className="inputContainer">
-                                <span>Välj häst</span>
-                                <select required onChange={handleSelectedHorseChange}>
-                                    <option value={""} hidden>Välj häst</option>
-                                    {
-                                        horseList.map((horse) => (
-                                            <option value={horse.name} key={horse.name}>{horse.name}</option>
-                                        ))
-                                    }
-                                </select>
-                            </div>
-                            <div className="inputContainer">
-                                <span>Inriktning</span>
-                                <select required onChange={handleSelectedDisciplineChange}>
-                                    <option value={""} hidden>Inriktning</option>
-                                    {
-                                        allDisciplines.map(discipline => (
-                                            <option value={discipline} key={discipline}>{discipline}</option>
-                                        ))
-                                    }
-                                </select>
-                            </div>
-                            <div className="formButtonContainer">
-                                <button className="secondaryButton" onClick={navigateToHome}>Avbryt</button>
-                                <button className="primaryButton">Skapa pass</button>
-                            </div>
-                        </form>
+                        <div className="innerContainer">
+                            <form onSubmit={tryToAddRide}>
+                                <div className="inputContainer">
+                                    <label htmlFor="title">Titel</label>
+                                    <input type="text" name="title" placeholder="Titel" required onChange={handleTitleInputChange}></input>
+                                </div>
+                                <div className="inputContainer">
+                                    <label htmlFor="date">Välj datum</label>
+                                    <input type="date" name="date" required onChange={handleDateInputChange}></input>
+                                </div>
+                                <div className="inputContainer">
+                                    <span>Välj häst</span>
+                                    <select required onChange={handleSelectedHorseChange}>
+                                        <option value={""} hidden>Välj häst</option>
+                                        {
+                                            horseList.map((horse) => (
+                                                <option value={horse.name} key={horse.name}>{horse.name}</option>
+                                            ))
+                                        }
+                                    </select>
+                                </div>
+                                <div className="inputContainer">
+                                    <span>Inriktning</span>
+                                    <select required onChange={handleSelectedDisciplineChange}>
+                                        <option value={""} hidden>Inriktning</option>
+                                        {
+                                            allDisciplines.map(discipline => (
+                                                <option value={discipline} key={discipline}>{discipline}</option>
+                                            ))
+                                        }
+                                    </select>
+                                </div>
+                                <div className="formButtonContainer">
+                                    <button className="secondaryButton" onClick={navigateToHome}>Avbryt</button>
+                                    <button className="primaryButton">Skapa pass</button>
+                                </div>
+                            </form>
+                        </div>
                     </div> 
                 }
             </>

@@ -1,18 +1,19 @@
 import { IUserData } from "../models/IUserData";
+import { ActionTypes } from "../types/ActionTypes";
 
 export interface IUserAction {
-    type: string,
+    type: ActionTypes,
     payload: string
 }
 
 export function UserReducer(userdata: IUserData[], action: IUserAction) {
     switch(action.type) {
-        case 'login': {
+        case ActionTypes.LOGIN: {
             const userValues = JSON.parse(action.payload);
 
             return [...userdata, userValues];
         }
-        case 'logout': {
+        case ActionTypes.LOGOUT: {
             return [...userdata.filter((user) => user.user.id !== +action.payload)];
         }
 
