@@ -8,14 +8,11 @@ import { ViewRidesForm } from "./ViewRidesForm";
 import { SecondaryHeading } from "../layouts/SecondaryHeading";
 import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
-import { useGetContext } from "../../../hooks/useGetContext";
 
 export function HomePage() {
     const { horses, isLoading } = useGetHorses();
     const { userData }  = useContext(UserContext);
-    const user = userData.length > 0 ? userData[0].user : null;    
-
-    useGetContext();
+    const user = userData.length > 0 ? userData[0].user : null;
 
     return(
         isAuthenticated() ? (
