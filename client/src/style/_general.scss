@@ -42,3 +42,13 @@ button.secondaryButton {
   color: var.$black;
   font-weight: 500;
 }
+
+button.tertriaryButton {
+  background-color: unset;
+  color: var.$darkGreen;
+  font-weight: 500;
+  font-size: var.$buttonText;
+  text-decoration: underline;
+  width: unset;
+  padding: 0;
+}

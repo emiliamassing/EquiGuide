@@ -19,3 +19,15 @@ export function capitalizeWords(words: string[]): string[] {
         return word.charAt(0).toUpperCase() + word.slice(1);
     });
 }
+
+export function compareDates(dateA: Date, dateB: Date) {
+    return dateA.getFullYear() === dateB.getFullYear() &&
+    dateA.getMonth() === dateB.getMonth() &&
+    dateA.getDate() === dateB.getDate();
+}
+
+export function comparePassedDates(dateA: Date, dateB: Date) {
+    return dateA.getFullYear() === dateB.getFullYear() &&
+    (dateA.getMonth() < dateB.getMonth() || 
+    (dateA.getMonth() === dateB.getMonth() && dateA.getDate() <= dateB.getDate()));
+}

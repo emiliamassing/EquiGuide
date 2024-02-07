@@ -14,8 +14,10 @@
     "@tinymce/tinymce-react": "^4.3.2",
     "axios": "^1.6.5",
     "react": "^18.2.0",
+    "react-cookie": "^7.0.2",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.1"
+    "react-router-dom": "^6.21.1",
+    "react-spinners": "^0.13.8"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

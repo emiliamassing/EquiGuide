@@ -35,10 +35,14 @@ ridingSessionRouter.get('/user', function(req: Request, res: Response) {
         };
 
         let sql: string = `
-        SELECT * FROM rides
-        JOIN rides_users ON rides.id = rides_users.ride_id
-        JOIN users ON rides_users.user_id = users.id
-        WHERE users.id =${userId}`;
+            SELECT rides.*, horses.name AS horse_name
+            FROM rides
+            JOIN rides_users ON rides.id = rides_users.ride_id
+            JOIN users ON rides_users.user_id = users.id
+            JOIN rides_horses ON rides.id = rides_horses.ride_id
+            JOIN horses ON rides_horses.horse_id = horses.id
+            WHERE users.id =${userId}
+        `;
 
         connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
             if(err) {

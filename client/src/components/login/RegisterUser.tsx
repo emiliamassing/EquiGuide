@@ -1,8 +1,10 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addUserToLocalStorage, addUser, loginUser } from "../../services/userService";
 import { isAxiosError } from "../../services/serviceBase";
 import { AxiosError } from "axios";
+import { ActionTypes } from "../../types/ActionTypes";
+import { UserContext } from "../../contexts/UserContext";
 
 export function RegisterUser() {
     const navigate = useNavigate();
@@ -12,6 +14,7 @@ export function RegisterUser() {
     const [passwordInput, setPasswordInput] = useState('');
     const [confirmPasswordInput, setConfirmPasswordInput] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const { dispatch } = useContext(UserContext);
 
     function directToLogin() {
         navigate('/login');
@@ -48,9 +51,8 @@ export function RegisterUser() {
                     email: emailInput,
                     password: passwordInput
                 });
-    
-                console.log(userData);
-                console.log('User created');
+
+                console.log('User created', userData);
     
                 const logInUserData = await loginUser({
                     email: emailInput,
@@ -59,7 +61,9 @@ export function RegisterUser() {
 
                 setErrorMessage('');
     
-                addUserToLocalStorage(logInUserData.user, logInUserData.token);
+                dispatch({ type: ActionTypes.LOGIN, payload: JSON.stringify(logInUserData) });
+                addUserToLocalStorage(logInUserData.token);
+
                 navigate('/login/userVerification');
             } catch(error: unknown) {
                 if(isAxiosError(error)) {
