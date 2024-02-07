@@ -26,7 +26,6 @@ export function AddRideForm({horseList}: IHorseProps) {
     const [dataCreated, setDataCreated] = useState(false);
     const { userData } = useContext(UserContext);
     const user = userData[0].user;
-    const localHorses = localStorage.getItem('horses');
 
     function navigateToHome() {
         navigate('/app/home');
@@ -47,14 +46,10 @@ export function AddRideForm({horseList}: IHorseProps) {
     function handleSelectedHorseChange(e: ChangeEvent<HTMLSelectElement>) {
         const selectedHorseName = e.target.value;
 
-        if(localHorses) {
-            const parsedHorses: IHorseData[] = JSON.parse(localHorses);
-            
-            const selectedHorse = parsedHorses.find((horse) => horse.name === selectedHorseName);
-            
-            if(selectedHorse) {
-                setSelectedHorseId(selectedHorse.id);
-            }
+        const selectedHorse = horseList.find((horse) => horse.name === selectedHorseName);
+        
+        if(selectedHorse) {
+            setSelectedHorseId(selectedHorse.id);
         }
     }
 

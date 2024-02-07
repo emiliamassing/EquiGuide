@@ -7,8 +7,8 @@ import { AxiosError } from "axios";
 
 export function useGetRides() {
     const [rides, setRides] = useState<IRideData[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [hasFetchedData, setHasFetchedData] = useState<boolean>(true);
+    const [ridesIsLoading, setRidesIsLoading] = useState<boolean>(true);
+    const [hasFetchedData, setHasFetchedData] = useState<boolean>(false);
     const { userData } = useContext(UserContext);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ export function useGetRides() {
                     }
                 }
             } finally {
-                setIsLoading(false);
+                setRidesIsLoading(false);
                 setHasFetchedData(true);
             }
         }
@@ -39,5 +39,5 @@ export function useGetRides() {
         }
     });
 
-    return { rides, isLoading, hasFetchedData } as const;
+    return { rides, ridesIsLoading, hasFetchedData } as const;
 }

@@ -4,5 +4,6 @@ export interface IRideData {
     date: Date,
     discipline: string,
     notes: string,
-    rating: number
+    rating: number,
+    horse_name: string
 }

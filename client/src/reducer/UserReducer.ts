@@ -16,11 +16,6 @@ export function UserReducer(userdata: IUserData[], action: IUserAction) {
         case ActionTypes.LOGOUT: {
             return [...userdata.filter((user) => user.user.id !== +action.payload)];
         }
-        case ActionTypes.UPDATE_CONTEXT: {
-            const userValues = JSON.parse(action.payload);
-
-            return [userValues];
-        }
 
         default: {
            break;

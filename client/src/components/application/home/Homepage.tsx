@@ -8,15 +8,17 @@ import { ViewRidesForm } from "./ViewRidesForm";
 import { SecondaryHeading } from "../layouts/SecondaryHeading";
 import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
+import { useGetRides } from "../../../hooks/useGetRides";
 
 export function HomePage() {
-    const { horses, isLoading } = useGetHorses();
+    const { rides, ridesIsLoading } = useGetRides();
+    const { horses } = useGetHorses();
     const { userData }  = useContext(UserContext);
     const user = userData.length > 0 ? userData[0].user : null;
 
     return(
         isAuthenticated() ? (
-            isLoading ? 
+            ridesIsLoading ? 
                 <ShowLoader></ShowLoader>
             :
             <>
@@ -26,7 +28,7 @@ export function HomePage() {
                         <h2>
                             Välkommen, {user? user.firstname : 'Kunde inte hämta data'} <span className="material-symbols-outlined icon">favorite</span>
                         </h2>
-                        <RideContainer horses={horses}></RideContainer>
+                        <RideContainer rides={rides}></RideContainer>
                     </div>
                 </div>
                 <div className="container">
