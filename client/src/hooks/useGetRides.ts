@@ -1,24 +1,25 @@
 import { useContext, useEffect, useState } from "react";
-import { IHorseData } from "../models/IHorseData";
-import { getHorses } from "../services/horseService";
-import { AxiosError, isAxiosError } from "axios";
+import { IRideData } from "../models/IRideData";
 import { UserContext } from "../contexts/UserContext";
+import { getRidesByUserId } from "../services/rideService";
+import { isAxiosError } from "../services/serviceBase";
+import { AxiosError } from "axios";
 
-export function useGetHorses() {
-    const [horses, setHorses] = useState<IHorseData[]>([]);
+export function useGetRides() {
+    const [rides, setRides] = useState<IRideData[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [hasFetchedData, setHasFetchedData] = useState<boolean>(false);
+    const [hasFetchedData, setHasFetchedData] = useState<boolean>(true);
     const { userData } = useContext(UserContext);
 
     useEffect(() => {
-        async function fetchHorses() {
+        async function fetchRides() {
             const userId = userData[0].user.id;
             const idString = userId.toString();
 
             try{
-                const horseData = await getHorses(idString);
-
-                setHorses(horseData);
+                const rideData = await getRidesByUserId(idString);
+                
+                setRides(rideData);
             } catch(error: unknown) {
                 if(isAxiosError(error)) {
                     const axiosError = error as AxiosError;
@@ -34,10 +35,9 @@ export function useGetHorses() {
         }
 
         if(!hasFetchedData) {
-            fetchHorses();
+            fetchRides();
         }
+    });
 
-    }, [ hasFetchedData, userData]);
-
-    return { horses, isLoading, hasFetchedData } as const;
+    return { rides, isLoading, hasFetchedData } as const;
 }
