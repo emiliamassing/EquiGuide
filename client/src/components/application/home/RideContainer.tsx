@@ -9,8 +9,6 @@ export function RideContainer({ rides }: IRideContainerProps) {
     const todaysDate = new Date();
     const todaysRide = rides.find((ride) => compareDates(todaysDate, new Date(ride.date)));
     const earlierRides = rides.filter((ride) => comparePassedDates(todaysDate, new Date(ride.date)));
-
-    console.log(earlierRides);
         
     return(
         <>
