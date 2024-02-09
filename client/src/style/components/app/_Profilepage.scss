@@ -1,0 +1,37 @@
+main.app {
+    section {
+        .container {
+            .innerContainer {
+                .profileContainer {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    .profileHolder {
+                        position: relative;
+                        background-color: var.$viridianGreen;
+                        width: 150px;
+                        height: 150px;
+                        border-radius: 50%;
+                        margin-top: 1em;
+
+                        svg {
+                            position: absolute;
+                            width: 130px;
+                            height: 130px;
+                            top: 15px;
+                            left: 23px;
+                        }
+                    }
+                }
+
+                .horseContainer {
+                    h3 {
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+}
