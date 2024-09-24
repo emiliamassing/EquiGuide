@@ -5,9 +5,23 @@ import { NotAuthenticated } from "../../error/NotAuthenticated";
 import { AppHeading } from "../layouts/AppHeading";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import { useGetRides } from "../../../hooks/useGetRides";
+import { ShowLoader } from "../../loader/ShowLoader";
+import { compareUpcomingDates } from "../../../services/serviceBase";
 
 export function CalendarPage() {
+    const { rides, ridesIsLoading} = useGetRides();
     const navigate = useNavigate();
+    const todaysDate = new Date();
+    const upcomingRides = rides.filter((ride) => compareUpcomingDates(todaysDate, new Date(ride.date)));
+    
+    const calendarEvents = upcomingRides.map((ride) => ({
+        title: `${ride.discipline}, ${ride.horse_name}`,
+        date: new Date(ride.date).toISOString().split('T')[0],
+    }));
+
+    console.log(calendarEvents);
+    
 
     function logout() {
         removeFromLocalStorage(); 
@@ -16,10 +30,18 @@ export function CalendarPage() {
 
     return(
         isAuthenticated() ? (
+            ridesIsLoading ? 
+                <ShowLoader></ShowLoader>
+            :
             <>
                 <div className="container">
                     <AppHeading title="Kalender"></AppHeading>
-                    <FullCalendar plugins={[ dayGridPlugin ]} initialView="dayGridMonth"></FullCalendar>
+                    <FullCalendar 
+                        plugins={[ dayGridPlugin ]} 
+                        initialView="dayGridMonth" 
+                        events={calendarEvents} 
+                        weekNumberCalculation={"ISO"}>
+                     </FullCalendar>
                 </div>
             </>
         ):(
