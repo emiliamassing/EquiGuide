@@ -26,8 +26,14 @@ export function compareDates(dateA: Date, dateB: Date) {
     dateA.getDate() === dateB.getDate();
 }
 
-export function comparePassedDates(dateA: Date, dateB: Date) {
+export function compareUpcomingDates(dateA: Date, dateB: Date) {
     return dateA.getFullYear() === dateB.getFullYear() &&
     (dateA.getMonth() < dateB.getMonth() || 
     (dateA.getMonth() === dateB.getMonth() && dateA.getDate() <= dateB.getDate()));
+}
+
+export function comparePassedDates(dateA: Date, dateB: Date) {
+    return dateA.getFullYear() === dateB.getFullYear() &&
+    (dateA.getMonth() > dateB.getMonth() || 
+    (dateA.getMonth() === dateB.getMonth() && dateA.getDate() > dateB.getDate()));
 }
