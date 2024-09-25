@@ -1,0 +1,34 @@
+:root {
+    .fc-header-toolbar.fc-toolbar {
+        flex-direction: column;
+
+        .fc-toolbar-chunk {
+            margin-top: 1rem;
+
+            h2 {
+                font-size: var.$headingTwo;
+            }
+
+            button {
+                width: 6em;
+            }
+
+            button.fc-prev-button,
+            button.fc-next-button {
+                background-color: var.$darkGreen;
+                border-color: #325d50;
+            }
+
+            .fc-button-group {}
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    :root {
+        .fc-header-toolbar.fc-toolbar {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    }
+}
