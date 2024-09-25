@@ -36,12 +36,20 @@ button {
 
 button.primaryButton {
   background-color: var.$darkGreen;
+
+  &:hover {
+    background-color: #0f523e;
+  }
 }
 
 button.secondaryButton {
   background-color: var.$gray;
   color: var.$black;
   font-weight: 500;
+
+  &:hover {
+    background-color: #abacab;
+  }
 }
 
 button.tertriaryButton {
@@ -52,4 +60,12 @@ button.tertriaryButton {
   text-decoration: underline;
   width: unset;
   padding: 0;
+
+  &:hover {
+    color: #0f523e;
+  }
+}
+
+select {
+  cursor: pointer;
 }

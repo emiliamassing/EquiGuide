@@ -20,6 +20,7 @@ nav {
             list-style-type: none;
             display: flex;
             flex-direction: column;
+            transition: 0.3s ease-in-out;
 
             span {
                 font-size: 40px;
@@ -78,6 +79,26 @@ nav {
                     background-color: var.$neutralLightGreen;
                     border-left: 7px solid var.$darkGreen;
                     border-bottom: none;
+                }
+
+                &:hover {
+                    background-color: var.$menuHoverGreen;
+
+                    a {
+                        border-left: 7px solid #0a3b2c5b;
+
+                        span {
+                            color: #0a3b2c79;
+                        }
+                    }
+
+                    a.active {
+                        border-left: 7px solid var.$darkGreen;
+
+                        span {
+                            color: var.$darkGreen;
+                        }
+                    }
                 }
             }
         }
