@@ -93,42 +93,44 @@ export function AddRideForm({horseList}: IHorseProps) {
                     <div className="container">
                         <AppHeading title="Planera ridpass"></AppHeading>
                         <div className="innerContainer">
-                            <form onSubmit={tryToAddRide}>
-                                <div className="inputContainer">
-                                    <label htmlFor="title">Titel</label>
-                                    <input type="text" name="title" placeholder="Titel" required onChange={handleTitleInputChange}></input>
-                                </div>
-                                <div className="inputContainer">
-                                    <label htmlFor="date">Välj datum</label>
-                                    <input type="date" name="date" required onChange={handleDateInputChange}></input>
-                                </div>
-                                <div className="inputContainer">
-                                    <span>Välj häst</span>
-                                    <select required onChange={handleSelectedHorseChange}>
-                                        <option value={""} hidden>Välj häst</option>
-                                        {
-                                            horseList.map((horse) => (
-                                                <option value={horse.name} key={horse.name}>{horse.name}</option>
-                                            ))
-                                        }
-                                    </select>
-                                </div>
-                                <div className="inputContainer">
-                                    <span>Inriktning</span>
-                                    <select required onChange={handleSelectedDisciplineChange}>
-                                        <option value={""} hidden>Inriktning</option>
-                                        {
-                                            allDisciplines.map(discipline => (
-                                                <option value={discipline} key={discipline}>{discipline}</option>
-                                            ))
-                                        }
-                                    </select>
-                                </div>
-                                <div className="formButtonContainer">
-                                    <button className="secondaryButton" onClick={navigateToHome}>Avbryt</button>
-                                    <button className="primaryButton">Skapa pass</button>
-                                </div>
-                            </form>
+                            <div className="formFlexContainer">
+                                <form onSubmit={tryToAddRide}>
+                                    <div className="inputContainer">
+                                        <label htmlFor="title">Titel</label>
+                                        <input type="text" name="title" placeholder="Titel" required onChange={handleTitleInputChange}></input>
+                                    </div>
+                                    <div className="inputContainer">
+                                        <label htmlFor="date">Välj datum</label>
+                                        <input type="date" name="date" required onChange={handleDateInputChange}></input>
+                                    </div>
+                                    <div className="inputContainer">
+                                        <span>Välj häst</span>
+                                        <select required onChange={handleSelectedHorseChange}>
+                                            <option value={""} hidden>Välj häst</option>
+                                            {
+                                                horseList.map((horse) => (
+                                                    <option value={horse.name} key={horse.name}>{horse.name}</option>
+                                                ))
+                                            }
+                                        </select>
+                                    </div>
+                                    <div className="inputContainer">
+                                        <span>Inriktning</span>
+                                        <select required onChange={handleSelectedDisciplineChange}>
+                                            <option value={""} hidden>Inriktning</option>
+                                            {
+                                                allDisciplines.map(discipline => (
+                                                    <option value={discipline} key={discipline}>{discipline}</option>
+                                                ))
+                                            }
+                                        </select>
+                                    </div>
+                                    <div className="formButtonContainer">
+                                        <button className="secondaryButton" onClick={navigateToHome}>Avbryt</button>
+                                        <button className="primaryButton">Skapa pass</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div> 
                 }

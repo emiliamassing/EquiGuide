@@ -1,6 +1,11 @@
 .container {
     min-height: 87vh;
 
+    .formFlexContainer {
+        display: flex;
+        justify-content: center;
+    }
+
     .formButtonContainer {
         margin-top: 9em;
         display: flex;
@@ -30,11 +35,6 @@
             .inputContainer {
                 margin-left: 5em;
             }
-
-            .formButtonContainer {
-                justify-content: unset;
-                margin-left: 5em;
-            }
         }
     }
 }
@@ -47,6 +47,10 @@
 
                 .headingContainer {
                     margin-top: 1em;
+                }
+
+                .formFlexContainer {
+                    justify-content: flex-start;
                 }
             }
         }
