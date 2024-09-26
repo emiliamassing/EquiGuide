@@ -9,7 +9,8 @@ export function RideContainer({ rides }: IRideContainerProps) {
     const todaysDate = new Date();
     const todaysRide = rides.find((ride) => compareDates(todaysDate, new Date(ride.date)));
     const earlierRides = rides.filter((ride) => comparePassedDates(todaysDate, new Date(ride.date)));
-        
+    const latestFiveEarlierRides = earlierRides.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 5);
+    
     return(
         <>
             <div className="ridesContainer">
@@ -32,7 +33,7 @@ export function RideContainer({ rides }: IRideContainerProps) {
                 earlierRides.length < 1 ?
                 <p>Inga tidigare ridpass hittade</p>
                 :
-                earlierRides.map((ride) => (
+                latestFiveEarlierRides.map((ride) => (
                     <div className="earlierRidesContainer">
                         <p key={ride.id}>{ride.title}, {ride.horse_name}</p>
                         <div className="ridesButtonContainer">

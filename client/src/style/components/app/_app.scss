@@ -148,6 +148,7 @@ main.app {
         section {
             flex-direction: row;
             justify-content: space-around;
+            align-items: flex-start;
             gap: 1em;
 
             .container {
