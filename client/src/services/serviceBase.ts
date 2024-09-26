@@ -26,8 +26,24 @@ export function compareDates(dateA: Date, dateB: Date) {
     dateA.getDate() === dateB.getDate();
 }
 
-export function comparePassedDates(dateA: Date, dateB: Date) {
+export function compareUpcomingDates(dateA: Date, dateB: Date) {
     return dateA.getFullYear() === dateB.getFullYear() &&
     (dateA.getMonth() < dateB.getMonth() || 
     (dateA.getMonth() === dateB.getMonth() && dateA.getDate() <= dateB.getDate()));
+}
+
+export function comparePassedDates(dateA: Date, dateB: Date) {
+    return dateA.getFullYear() === dateB.getFullYear() &&
+    (dateA.getMonth() > dateB.getMonth() || 
+    (dateA.getMonth() === dateB.getMonth() && dateA.getDate() > dateB.getDate()));
+}
+
+export function compareDatesInNextWeek(dateA: Date, dateB: Date) {
+    const startOfToday = new Date(dateB);
+    startOfToday.setHours(0, 0, 0, 0); // Ignore time to compare only the date
+
+    const oneWeekAhead = new Date(startOfToday);
+    oneWeekAhead.setDate(startOfToday.getDate() + 7); // Add 7 days to today
+
+    return dateA >= startOfToday && dateA <= oneWeekAhead;
 }

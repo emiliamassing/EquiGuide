@@ -1,0 +1,95 @@
+:root {
+    .fc-header-toolbar.fc-toolbar {
+        flex-direction: column;
+
+        .fc-toolbar-chunk {
+            margin-top: 1rem;
+
+            h2 {
+                font-size: var.$headingTwo;
+            }
+
+            button {
+                width: 6em;
+            }
+
+            button.fc-prev-button,
+            button.fc-next-button {
+                background-color: var.$darkGreen;
+                border-color: #325d50;
+            }
+        }
+    }
+
+    .fc-view-harness.fc-view-harness-active {
+        min-height: 450px;
+    }
+
+    .fc-h-event {
+        background-color: #0a3b2cd6;
+        border: 1px solid #0a3b2cd6;
+    }
+
+    .fc.fc-daygrid-day.fc-day-today {
+        background-color: #8197b326;
+    }
+
+    .fc-today-button.fc-button.fc-button-primary {
+        opacity: 100%;
+        background-color: var.$gray;
+        color: var.$textColor;
+        border: none;
+    }
+
+    .fc-today-button.fc-button-primary:disabled {
+        opacity: 0.7;
+    }
+}
+
+.upcomingContainer {
+    width: 95%;
+
+    .upcomingRideContainer {
+        background-color: var.$white;
+        padding: 1rem;
+        margin-top: 10px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 0px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        border-radius: 10px;
+
+        h3 {
+            font-weight: 500;
+
+            span {
+                font-weight: 400;
+            }
+        }
+
+        .upcomingRideBtnContainer {
+            display: flex;
+            column-gap: 5px;
+
+            button {
+                padding: 12px;
+                width: 7em;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    :root {
+        .fc-header-toolbar.fc-toolbar {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    }
+
+    .upcomingContainer {
+        width: unset;
+        padding: 0.5rem;
+
+        h3 {
+            margin-block-start: 0;
+        }
+    }
+}
