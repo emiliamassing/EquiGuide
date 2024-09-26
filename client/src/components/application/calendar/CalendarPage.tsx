@@ -14,17 +14,12 @@ export function CalendarPage() {
     const { rides, ridesIsLoading} = useGetRides();
     const navigate = useNavigate();
     const todaysDate = new Date();
-    const upcomingRides = rides.filter((ride) => compareUpcomingDates(todaysDate, new Date(ride.date)));
-    
-    const calendarEvents = upcomingRides.map((ride) => ({
-        title: `${ride.discipline}, ${ride.horse_name}`,
-        date: new Date(ride.date).toISOString().split('T')[0],
-    }));
+    const upcomingRides = rides.filter((ride) => compareUpcomingDates(todaysDate, new Date(ride.date)));    
 
-    function logout() {
-        removeFromLocalStorage(); 
-        navigate('/login');
-    }
+    const calendarEvents = upcomingRides.map((ride) => ({
+        title: `${ride.title}, ${ride.horse_name}`,
+        date: new Date(ride.date).toLocaleDateString(),
+    }));
 
     return(
         isAuthenticated() ? (

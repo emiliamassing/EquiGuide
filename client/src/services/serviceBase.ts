@@ -39,8 +39,11 @@ export function comparePassedDates(dateA: Date, dateB: Date) {
 }
 
 export function compareDatesInNextWeek(dateA: Date, dateB: Date) {
-    const oneWeekAhead = new Date(dateB);
-    oneWeekAhead.setDate(dateB.getDate() + 7); // Add 7 days to the current date
+    const startOfToday = new Date(dateB);
+    startOfToday.setHours(0, 0, 0, 0); // Ignore time to compare only the date
 
-    return dateA >= dateB && dateA <= oneWeekAhead;
+    const oneWeekAhead = new Date(startOfToday);
+    oneWeekAhead.setDate(startOfToday.getDate() + 7); // Add 7 days to today
+
+    return dateA >= startOfToday && dateA <= oneWeekAhead;
 }

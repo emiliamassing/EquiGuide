@@ -18,9 +18,31 @@
                 background-color: var.$darkGreen;
                 border-color: #325d50;
             }
-
-            .fc-button-group {}
         }
+    }
+
+    .fc-view-harness.fc-view-harness-active {
+        min-height: 450px;
+    }
+
+    .fc-h-event {
+        background-color: #0a3b2cd6;
+        border: 1px solid #0a3b2cd6;
+    }
+
+    .fc.fc-daygrid-day.fc-day-today {
+        background-color: #8197b326;
+    }
+
+    .fc-today-button.fc-button.fc-button-primary {
+        opacity: 100%;
+        background-color: var.$gray;
+        color: var.$textColor;
+        border: none;
+    }
+
+    .fc-today-button.fc-button-primary:disabled {
+        opacity: 0.7;
     }
 }
 
@@ -41,6 +63,16 @@
                 font-weight: 400;
             }
         }
+
+        .upcomingRideBtnContainer {
+            display: flex;
+            column-gap: 5px;
+
+            button {
+                padding: 12px;
+                width: 7em;
+            }
+        }
     }
 }
 
@@ -49,6 +81,15 @@
         .fc-header-toolbar.fc-toolbar {
             flex-direction: row;
             justify-content: space-around;
+        }
+    }
+
+    .upcomingContainer {
+        width: unset;
+        padding: 0.5rem;
+
+        h3 {
+            margin-block-start: 0;
         }
     }
 }
