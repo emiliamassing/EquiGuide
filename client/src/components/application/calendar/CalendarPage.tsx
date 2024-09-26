@@ -8,6 +8,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import { useGetRides } from "../../../hooks/useGetRides";
 import { ShowLoader } from "../../loader/ShowLoader";
 import { compareUpcomingDates } from "../../../services/serviceBase";
+import { UpcomingRideContainer } from "./UpcomingRideContainer";
 
 export function CalendarPage() {
     const { rides, ridesIsLoading} = useGetRides();
@@ -19,9 +20,6 @@ export function CalendarPage() {
         title: `${ride.discipline}, ${ride.horse_name}`,
         date: new Date(ride.date).toISOString().split('T')[0],
     }));
-
-    console.log(calendarEvents);
-    
 
     function logout() {
         removeFromLocalStorage(); 
@@ -43,6 +41,7 @@ export function CalendarPage() {
                         weekNumberCalculation={"ISO"}>
                      </FullCalendar>
                 </div>
+                <UpcomingRideContainer rides={rides}></UpcomingRideContainer>
             </>
         ):(
             <NotAuthenticated></NotAuthenticated>
