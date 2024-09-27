@@ -1,8 +1,26 @@
 import { IRideData } from "../../../models/IRideData";
-import { compareDatesInNextWeek } from "../../../services/serviceBase";
+import { compareDatesInNextWeek, isAxiosError } from "../../../services/serviceBase";
+import { deleteRide } from "../../../services/rideService";
+import { AxiosError } from "axios";
 
 interface IUpcomingRideContainerProps {
     rides: IRideData[]
+}
+
+async function tryToDeleteRide(rideId: number) {
+    try {
+        const rideData = await deleteRide(rideId);
+        
+        console.log('Ride deleted', rideData);
+    } catch(error: unknown) {
+        if(isAxiosError(error)) {
+            const axiosError = error as AxiosError;
+
+            if(axiosError && axiosError.response?.status === 500) {
+                console.log('Något gick fel');
+            }
+        }
+    }
 }
 
 export function UpcomingRideContainer({ rides }: IUpcomingRideContainerProps) {
@@ -34,7 +52,7 @@ export function UpcomingRideContainer({ rides }: IUpcomingRideContainerProps) {
                                 </div>
                                 ) : (
                                 <div className="upcomingRideBtnContainer">
-                                    <button className="secondaryButton">Radera</button>
+                                    <button className="secondaryButton" onClick={() => tryToDeleteRide(ride.id)}>Radera</button>
                                 </div>
                             )}
                         </div>

@@ -18,3 +18,8 @@ export async function addRide(data: object) {
     return response;
 }
 
+export async function deleteRide(id: number) {
+    const response = await post(BASEURL + `ridingSessions/delete/${id}`, {});
+    return response;
+}
+

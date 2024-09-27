@@ -76,6 +76,15 @@
     }
 }
 
+@media screen and (min-width: 710px) {
+    :root {
+        .fc-header-toolbar.fc-toolbar {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    }
+}
+
 @media screen and (min-width: 992px) {
     :root {
         .fc-header-toolbar.fc-toolbar {

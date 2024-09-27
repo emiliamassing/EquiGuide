@@ -11,7 +11,7 @@ import { compareUpcomingDates } from "../../../services/serviceBase";
 import { UpcomingRideContainer } from "./UpcomingRideContainer";
 
 export function CalendarPage() {
-    const { rides, ridesIsLoading} = useGetRides();
+    const { rides, ridesIsLoading } = useGetRides();
     const navigate = useNavigate();
     const todaysDate = new Date();
     const upcomingRides = rides.filter((ride) => compareUpcomingDates(todaysDate, new Date(ride.date)));    
