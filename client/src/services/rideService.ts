@@ -13,6 +13,11 @@ export async function getRidesByHorseId(query: string) {
     return response;
 }
 
+export async function getRideById(query: string) {
+    const response = await get<IRideData[]>(BASEURL + `ridingSessions/${query}`);
+    return response;
+}
+
 export async function addRide(data: object) {
     const response = await post(BASEURL + 'ridingSessions/add', data);
     return response;
