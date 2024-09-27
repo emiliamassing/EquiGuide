@@ -7,19 +7,24 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { useGetRides } from "../../../hooks/useGetRides";
 import { ShowLoader } from "../../loader/ShowLoader";
-import { compareUpcomingDates } from "../../../services/serviceBase";
 import { UpcomingRideContainer } from "./UpcomingRideContainer";
 
 export function CalendarPage() {
-    const { rides, ridesIsLoading} = useGetRides();
+    const { rides, ridesIsLoading } = useGetRides();
     const navigate = useNavigate();
     const todaysDate = new Date();
-    const upcomingRides = rides.filter((ride) => compareUpcomingDates(todaysDate, new Date(ride.date)));    
 
-    const calendarEvents = upcomingRides.map((ride) => ({
-        title: `${ride.title}, ${ride.horse_name}`,
-        date: new Date(ride.date).toLocaleDateString(),
-    }));
+    const calendarEvents = rides.map((ride) => {
+        const rideDate = new Date(ride.date);
+        const isUpcoming = rideDate >= todaysDate;
+        const isToday = rideDate.toDateString() === todaysDate.toDateString();
+
+        return {
+            title: `${ride.title}, ${ride.horse_name}`,
+            date: new Date(ride.date).toLocaleDateString(),
+            classNames: isUpcoming || isToday ? 'upcomingEvent' : 'passedEvent'
+        }
+    }); 
 
     return(
         isAuthenticated() ? (

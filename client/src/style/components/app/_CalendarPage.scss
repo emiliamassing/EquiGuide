@@ -44,6 +44,10 @@
     .fc-today-button.fc-button-primary:disabled {
         opacity: 0.7;
     }
+
+    .passedEvent {
+        opacity: 0.7;
+    }
 }
 
 .upcomingContainer {
@@ -72,6 +76,15 @@
                 padding: 12px;
                 width: 7em;
             }
+        }
+    }
+}
+
+@media screen and (min-width: 710px) {
+    :root {
+        .fc-header-toolbar.fc-toolbar {
+            flex-direction: row;
+            justify-content: space-around;
         }
     }
 }

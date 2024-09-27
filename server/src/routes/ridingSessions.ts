@@ -42,6 +42,7 @@ ridingSessionRouter.get('/user', function(req: Request, res: Response) {
             JOIN rides_horses ON rides.id = rides_horses.ride_id
             JOIN horses ON rides_horses.horse_id = horses.id
             WHERE users.id =${userId}
+            AND rides.is_deleted = 0
         `;
 
         connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
