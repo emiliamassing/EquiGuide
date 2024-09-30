@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+    border-top-right-radius: 10px;
+}
+
 main.app {
     background-color: var.$bgColorApp;
     min-height: 90vh;
@@ -28,12 +32,13 @@ main.app {
         .container {
             display: inline-block;
             width: 95%;
-            min-height: 90vh;
+            height: 90vh;
             margin-top: 0.5em;
             margin-bottom: 0.5em;
             border-radius: 10px;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 0px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
             background-color: var.$bgColor;
+            overflow-x: scroll;
 
             .headingContainer {
                 width: 85%;
@@ -153,6 +158,8 @@ main.app {
             gap: 1em;
 
             .container {
+                overflow-x: auto;
+
                 .innerContainer {
                     width: 75%;
                     margin: 0 auto;
