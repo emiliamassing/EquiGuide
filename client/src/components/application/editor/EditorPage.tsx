@@ -130,7 +130,7 @@ export function EditorPage() {
                                         </div>
                                     </div>
                                     <div className="mceContainer">
-                                        <span className="mceSpan">Egna anteckningar</span>
+                                        <span>Egna anteckningar</span>
                                         {
                                             <Editor 
                                                 apiKey='iy5bvilu7ilzw9hu3vysmdbj7wufisn2soy5c9l1o2ybkw4s'

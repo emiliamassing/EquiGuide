@@ -2,6 +2,7 @@ main.app {
     background-color: var.$bgColorApp;
     min-height: 90vh;
     overflow-y: scroll;
+    padding-bottom: 6em;
 
     h2 {
         font-size: var.$headingTwo;
@@ -146,6 +147,8 @@ main.app {
 
 @media screen and (min-width: 992px) {
     main.app {
+        padding-bottom: 0;
+
         section {
             flex-direction: row;
             justify-content: space-around;
