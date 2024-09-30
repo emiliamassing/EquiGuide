@@ -14,6 +14,7 @@ import { CalendarPage } from "./components/application/calendar/CalendarPage";
 import { ExplorePage } from "./components/application/explore/ExplorePage";
 import { ProfilePage } from "./components/application/profile/Profilepage";
 import { AddRidePage } from "./components/application/rides/AddRidepage";
+import { EditorPage } from "./components/application/editor/EditorPage";
 
 export const router = createBrowserRouter([
     {
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
             {
                 path: '/app/profile',
                 element: <ProfilePage />
+            },
+            {
+                path: '/app/editor',
+                element: <EditorPage />
             }
         ]
     }

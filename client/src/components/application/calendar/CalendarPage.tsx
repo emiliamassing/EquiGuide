@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../../services/tokenService"
-import { removeFromLocalStorage } from "../../../services/userService";
 import { NotAuthenticated } from "../../error/NotAuthenticated";
 import { AppHeading } from "../layouts/AppHeading";
 import FullCalendar from "@fullcalendar/react";

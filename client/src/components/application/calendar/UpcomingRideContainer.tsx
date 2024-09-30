@@ -2,6 +2,10 @@ import { IRideData } from "../../../models/IRideData";
 import { compareDatesInNextWeek, isAxiosError } from "../../../services/serviceBase";
 import { deleteRide } from "../../../services/rideService";
 import { AxiosError } from "axios";
+import { RideActionTypes } from "../../../types/ActionTypes";
+import { useContext } from "react";
+import { RideContext } from "../../../contexts/RideContext";
+import { useNavigate } from "react-router-dom";
 
 interface IUpcomingRideContainerProps {
     rides: IRideData[]
@@ -24,9 +28,17 @@ async function tryToDeleteRide(rideId: number) {
 }
 
 export function UpcomingRideContainer({ rides }: IUpcomingRideContainerProps) {
+    const { rideDispatch } = useContext(RideContext);
+    const navigate = useNavigate();
     const todaysDate = new Date();
     let nextWeeksRides = rides.filter((ride) => compareDatesInNextWeek(new Date(ride.date), todaysDate));
     nextWeeksRides = nextWeeksRides.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+    function directToEditor(ride: IRideData) {
+        rideDispatch({ type: RideActionTypes.PASS_DATA, payload: JSON.stringify(ride) });
+        navigate('/app/editor');
+    }
+
     return (
         <div className="upcomingContainer">
             {
@@ -48,7 +60,7 @@ export function UpcomingRideContainer({ rides }: IUpcomingRideContainerProps) {
                             {isToday ? (
                                 <div className="upcomingRideBtnContainer">
                                     <button className="secondaryButton">Radera</button>
-                                    <button className="primaryButton">Utvärdera</button>
+                                    <button className="primaryButton" onClick={() => directToEditor(ride)}>Utvärdera</button>
                                 </div>
                                 ) : (
                                 <div className="upcomingRideBtnContainer">
