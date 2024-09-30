@@ -1,0 +1,25 @@
+.container {
+    .innerContainer {
+        .formFlexContainer {
+            .inputContainer {
+                span.star {
+                    font-size: 40px;
+                    color: var.$gray;
+                    transition: color 0.2s;
+                    cursor: pointer;
+                }
+
+                .star.filled {
+                    color: var.$viridianGreen;
+                }
+            }
+        }
+
+        .buttonContainer {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+    }
+}

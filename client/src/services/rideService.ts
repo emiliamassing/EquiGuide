@@ -23,6 +23,11 @@ export async function addRide(data: object) {
     return response;
 }
 
+export async function editRide(data: object, id: number) {
+    const response = await post(BASEURL + `ridingSessions/edit/${id}`, data);
+    return response;
+}
+
 export async function deleteRide(id: number) {
     const response = await post(BASEURL + `ridingSessions/delete/${id}`, {});
     return response;
