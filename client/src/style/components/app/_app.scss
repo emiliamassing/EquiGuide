@@ -1,6 +1,6 @@
 main.app {
     background-color: var.$bgColorApp;
-    height: 90vh;
+    min-height: 90vh;
     overflow-y: scroll;
 
     h2 {
@@ -28,6 +28,7 @@ main.app {
         .container {
             display: inline-block;
             width: 95%;
+            min-height: 90vh;
             margin-top: 0.5em;
             margin-bottom: 0.5em;
             border-radius: 10px;
@@ -152,7 +153,6 @@ main.app {
             gap: 1em;
 
             .container {
-
                 .innerContainer {
                     width: 75%;
                     margin: 0 auto;
