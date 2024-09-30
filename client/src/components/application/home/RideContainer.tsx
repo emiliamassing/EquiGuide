@@ -48,7 +48,7 @@ export function RideContainer({ rides }: IRideContainerProps) {
                     <div className="earlierRidesContainer">
                         <p key={ride.id}>{ride.title}, {ride.horse_name}</p>
                         <div className="ridesButtonContainer">
-                            <button className="secondaryButton">Redigera</button>
+                            <button className="secondaryButton" onClick={() => directToEditor(ride)}>Redigera</button>
                             <button className="primaryButton">Visa</button>
                         </div>
                     </div>

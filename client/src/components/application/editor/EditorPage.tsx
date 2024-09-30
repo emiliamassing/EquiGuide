@@ -3,7 +3,6 @@ import { AppHeading } from "../layouts/AppHeading";
 import { RideContext } from "../../../contexts/RideContext";
 import { isAuthenticated } from "../../../services/tokenService";
 import { NotAuthenticated } from "../../error/NotAuthenticated";
-import { useGetRidesById } from "../../../hooks/useGetRidesById";
 import { capitalizeWords, isAxiosError } from "../../../services/serviceBase";
 import { disciplines } from "../../../models/disciplines";
 import { Editor } from "@tinymce/tinymce-react";
