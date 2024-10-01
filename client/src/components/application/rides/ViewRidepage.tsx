@@ -26,8 +26,8 @@ export function ViewRidepage() {
                 <AppHeading title="Visa ridpass"></AppHeading>
                 <div className="innerContainer">
                     <h2>{rideData[0].title}, {rideData[0].horse_name}</h2>
-                    <p>{new Date(rideData[0].date).toLocaleDateString()}</p>
-                    <p>{rideData[0].discipline}</p>
+                    <p className="dateParagraph">{new Date(rideData[0].date).toLocaleDateString()}</p>
+                    <p className="disciplineParagraph">{rideData[0].discipline}</p>
                     <div className="starRating">
                         {[1, 2, 3, 4, 5].map((star) => (
                             <span
@@ -38,9 +38,7 @@ export function ViewRidepage() {
                             </span>
                         ))}
                     </div>
-                    <div dangerouslySetInnerHTML={{ __html: rideData[0].notes }}>
-
-                    </div>
+                    <div dangerouslySetInnerHTML={{ __html: rideData[0].notes }}></div>
 
                     <div className="buttonContainer">
                         <button className="secondaryButton" onClick={directToHome}>Tillbaka</button>
