@@ -23,9 +23,6 @@ export function RideContainer({ rides }: IRideContainerProps) {
     }
 
     function directToViewRide(ride: IRideData) {
-        console.log("Viewing ride:", ride);
-
-        
         rideDispatch({ type: RideActionTypes.PASS_DATA, payload: JSON.stringify(ride) });
         navigate('/app/viewRide');
     }

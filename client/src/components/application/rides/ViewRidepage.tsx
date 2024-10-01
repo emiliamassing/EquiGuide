@@ -20,9 +20,6 @@ export function ViewRidepage() {
         navigate('/app/editor');
     }
 
-    console.log("viewing ride", rideData);
-    
-
     return (
         isAuthenticated() ? (
             <div className="container">
