@@ -88,7 +88,7 @@ export function AddRideForm({horseList}: IHorseProps) {
         isAuthenticated() ? (
             <>
                 {dataCreated ? 
-                    <ShowVerification resetData={resetDataCreated} verificationMessage="Ridpass planerat"></ShowVerification>   
+                    <ShowVerification resetData={resetDataCreated} verificationMessage="Ridpass planerat" heading="Planera ridpass"></ShowVerification>   
                     : 
                     <div className="container">
                         <AppHeading title="Planera ridpass"></AppHeading>

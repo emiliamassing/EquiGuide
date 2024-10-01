@@ -83,7 +83,7 @@ export function EditorPage() {
         isAuthenticated() ? (
             <>
                 {dataCreated ?
-                    <ShowVerification resetData={resetDataCreated} verificationMessage="Ridpass utvärderat"></ShowVerification>
+                    <ShowVerification resetData={resetDataCreated} verificationMessage="Ridpass utvärderat" heading="Utvärdera ridpass"></ShowVerification>
                     :
                     <div className="container">
                         <AppHeading title="Utvärdera ridpass"></AppHeading>

@@ -16,6 +16,7 @@ import { ProfilePage } from "./components/application/profile/Profilepage";
 import { AddRidePage } from "./components/application/rides/AddRidepage";
 import { EditorPage } from "./components/application/editor/EditorPage";
 import { ViewRidepage } from "./components/application/rides/ViewRidepage";
+import { VerifyDeletingRide } from "./components/application/rides/VerifyDeletingRide";
 
 export const router = createBrowserRouter([
     {
@@ -88,6 +89,10 @@ export const router = createBrowserRouter([
                 path: '/app/viewRide',
                 element: <ViewRidepage />
             },
+            {
+                path: '/app/verifyDeleting',
+                element: <VerifyDeletingRide />
+            }
         ]
     }
 ]);

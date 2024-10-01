@@ -65,7 +65,7 @@ main.app {
             }
 
             .innerContainer {
-                width: 70vw;
+                width: 78vw;
                 margin: 0 auto;
 
                 form {
@@ -102,8 +102,15 @@ main.app {
 
                         select {
                             padding: 0;
+                            margin: 0;
+                            margin-top: 5px;
                             height: 2.5em;
-                            width: 19.5em;
+                            width: 19.2em;
+                            align-self: flex-start;
+                        }
+
+                        select.homeSelect {
+                            width: 17em;
                         }
                     }
                 }
