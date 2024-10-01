@@ -22,6 +22,14 @@ export function RideContainer({ rides }: IRideContainerProps) {
         navigate('/app/editor');
     }
 
+    function directToViewRide(ride: IRideData) {
+        console.log("Viewing ride:", ride);
+
+        
+        rideDispatch({ type: RideActionTypes.PASS_DATA, payload: JSON.stringify(ride) });
+        navigate('/app/viewRide');
+    }
+
     return(
         <>
             <div className="ridesContainer">
@@ -45,11 +53,11 @@ export function RideContainer({ rides }: IRideContainerProps) {
                 <p>Inga tidigare ridpass hittade</p>
                 :
                 latestFiveEarlierRides.map((ride) => (
-                    <div className="earlierRidesContainer">
-                        <p key={ride.id}>{ride.title}, {ride.horse_name}</p>
+                    <div key={ride.id} className="earlierRidesContainer">
+                        <p>{ride.title}, {ride.horse_name}</p>
                         <div className="ridesButtonContainer">
                             <button className="secondaryButton" onClick={() => directToEditor(ride)}>Redigera</button>
-                            <button className="primaryButton">Visa</button>
+                            <button className="primaryButton" onClick={() => directToViewRide(ride)}>Visa</button>
                         </div>
                     </div>
                 ))

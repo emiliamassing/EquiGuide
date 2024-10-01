@@ -15,6 +15,7 @@ import { ExplorePage } from "./components/application/explore/ExplorePage";
 import { ProfilePage } from "./components/application/profile/Profilepage";
 import { AddRidePage } from "./components/application/rides/AddRidepage";
 import { EditorPage } from "./components/application/editor/EditorPage";
+import { ViewRidepage } from "./components/application/rides/ViewRidepage";
 
 export const router = createBrowserRouter([
     {
@@ -82,7 +83,11 @@ export const router = createBrowserRouter([
             {
                 path: '/app/editor',
                 element: <EditorPage />
-            }
+            },
+            {
+                path: '/app/viewRide',
+                element: <ViewRidepage />
+            },
         ]
     }
 ]);

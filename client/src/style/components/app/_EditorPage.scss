@@ -1,19 +1,18 @@
 .container {
     .innerContainer {
+
+        span.star {
+            font-size: 40px;
+            color: var.$gray;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .star.filled {
+            color: var.$viridianGreen;
+        }
+
         .formFlexContainer {
-            .inputContainer {
-                span.star {
-                    font-size: 40px;
-                    color: var.$gray;
-                    transition: color 0.2s;
-                    cursor: pointer;
-                }
-
-                .star.filled {
-                    color: var.$viridianGreen;
-                }
-            }
-
             .mceContainer {
                 .tox {
                     margin-top: 5px;
