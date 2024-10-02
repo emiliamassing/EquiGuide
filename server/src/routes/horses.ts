@@ -107,4 +107,43 @@ horseRouter.post('/add', function(req: Request, res: Response) {
     });
 });
 
+horseRouter.post('/edit/:id', function(req: Request, res: Response) {
+    let updatedHorseData = {
+        name: connection.escape(req.body.name),
+        breed: connection.escape(req.body.breed),
+        age: connection.escape(req.body.age),
+        gender: connection.escape(req.body.gender),
+        discipline: connection.escape(req.body.discipline)
+    };
+
+    let horseId = req.params.id;
+    
+    connection.connect(function(err: QueryError | null) {
+        if(err) {
+            console.log('Error connecting to database');
+            return res.status(500).json({ error: 'Database connection error' });
+        };
+
+        let sql: string = `
+        UPDATE horses
+        SET
+        name =${updatedHorseData.name},
+        breed =${updatedHorseData.breed},
+        age =${updatedHorseData.age},
+        gender =${updatedHorseData.gender},
+        discipline =${updatedHorseData.discipline}
+        WHERE id=${horseId}`;
+
+        connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
+            if(err) {
+                console.log('Error updating ride', err);
+                return res.status(500).json({ error: 'Error updating ride' });
+            }
+    
+            console.log('Updated ride');
+            res.status(200).json(result);
+        });
+    });
+});
+
 export default horseRouter;
