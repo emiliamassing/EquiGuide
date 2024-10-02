@@ -25,21 +25,22 @@ export function ViewRidepage() {
             <div className="container">
                 <AppHeading title="Visa ridpass"></AppHeading>
                 <div className="innerContainer">
-                    <h2>{rideData[0].title}, {rideData[0].horse_name}</h2>
-                    <p className="dateParagraph">{new Date(rideData[0].date).toLocaleDateString()}</p>
-                    <p className="disciplineParagraph">{rideData[0].discipline}</p>
-                    <div className="starRating">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                            <span
-                                key={star}
-                                className={`material-symbols-outlined star ${rideData[0].rating >= star ? 'filled' : ''}`}
-                            >
-                                star
-                            </span>
-                        ))}
+                    <div className="viewRideContainer">
+                        <h2>{rideData[0].title}, {rideData[0].horse_name}</h2>
+                        <p className="dateParagraph">{new Date(rideData[0].date).toLocaleDateString()}</p>
+                        <p className="disciplineParagraph">{rideData[0].discipline}</p>
+                        <div className="starRating">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                                <span
+                                    key={star}
+                                    className={`material-symbols-outlined star ${rideData[0].rating >= star ? 'filled' : ''}`}
+                                >
+                                    star
+                                </span>
+                            ))}
+                        </div>
+                        <div dangerouslySetInnerHTML={{ __html: rideData[0].notes }}></div>
                     </div>
-                    <div dangerouslySetInnerHTML={{ __html: rideData[0].notes }}></div>
-
                     <div className="buttonContainer">
                         <button className="secondaryButton" onClick={directToHome}>Tillbaka</button>
                         <button className="primaryButton" onClick={() => directToEditRide(rideData[0])}>Redigera</button>
