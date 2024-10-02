@@ -2,15 +2,17 @@
     .innerContainer {
         .formFlexContainer {
             .inputContainer {
-                span.star {
-                    font-size: 40px;
-                    color: var.$gray;
-                    transition: color 0.2s;
-                    cursor: pointer;
-                }
+                .starRating {
+                    span.star {
+                        font-size: 40px;
+                        color: var.$gray;
+                        transition: color 0.2s;
+                        cursor: pointer;
+                    }
 
-                .star.filled {
-                    color: var.$viridianGreen;
+                    .star.filled {
+                        color: var.$viridianGreen;
+                    }
                 }
             }
 
@@ -23,22 +25,19 @@
 
         .buttonContainer {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+            column-gap: 10px;
             margin-top: 1em;
             margin-bottom: 1em;
         }
     }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 710px) {
     .container {
         .innerContainer {
             .buttonContainer {
-                display: flex;
                 justify-content: flex-start;
-                column-gap: 10px;
-                margin-top: 1em;
-                margin-bottom: 1em;
             }
         }
     }

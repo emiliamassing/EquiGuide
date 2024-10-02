@@ -1,6 +1,6 @@
 import { createContext, Dispatch } from "react";
 import { IRideData } from "../models/IRideData";
-import { IRideAction } from "../reducer/RIdeReducer";
+import { IRideAction } from "../reducer/RideReducer";
 
 export interface IRideContext {
     rideData: IRideData[];

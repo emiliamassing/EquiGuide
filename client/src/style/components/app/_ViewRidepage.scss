@@ -1,0 +1,32 @@
+.container {
+    .innerContainer {
+        .viewRideContainer {
+            min-height: 62vh;
+
+            h2 {
+                margin-block-end: 0;
+            }
+
+            .dateParagraph {
+                margin-block-start: 0;
+            }
+
+            .disciplineParagraph {
+                font-weight: 500;
+            }
+
+            .starRating {
+                span.star {
+                    font-size: 40px;
+                    color: var.$gray;
+                    transition: color 0.2s;
+                    cursor: pointer;
+                }
+
+                .star.filled {
+                    color: var.$viridianGreen;
+                }
+            }
+        }
+    }
+}

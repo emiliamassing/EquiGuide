@@ -10,7 +10,7 @@ export function ViewRidesForm({ horses }: IViewRidesFormProps) {
             <form>
                 <div className="inputContainer">
                     <span>Se ridpass baserat på häst</span>
-                    <select>
+                    <select className="homeSelect">
                         <option value={""} hidden>Välj häst</option>
                         {horses.map((horse) => (
                             <option value={horse.name} key={horse.name}>{horse.name}</option>

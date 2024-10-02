@@ -10,8 +10,8 @@ export function RideReducer(rideData: IRideData[], action: IRideAction) {
     switch(action.type) {
         case RideActionTypes.PASS_DATA: {
             const rideValues = JSON.parse(action.payload);
-
-            return [...rideData, rideValues];
+            
+            return [rideValues];
         }
 
         default: {

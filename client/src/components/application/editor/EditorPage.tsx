@@ -18,8 +18,8 @@ export function EditorPage() {
     const [titleInput, setTitleInput] = useState(rideData[0].title);
     const [dateInput, setDateInput] = useState(new Date(rideData[0].date).toLocaleDateString());
     const [selectedDiscipline, setSelectedDiscipline] = useState(rideData[0].discipline);
-    const [rating, setRating] = useState(0);
-    const [notes, setNotes] = useState('');
+    const [rating, setRating] = useState(rideData[0].rating);
+    const [notes, setNotes] = useState(rideData[0].notes);
     const [dataCreated, setDataCreated] = useState(false);
     const navigate = useNavigate();
 
@@ -83,7 +83,7 @@ export function EditorPage() {
         isAuthenticated() ? (
             <>
                 {dataCreated ?
-                    <ShowVerification resetData={resetDataCreated} verificationMessage="Ridpass utvärderat"></ShowVerification>
+                    <ShowVerification resetData={resetDataCreated} verificationMessage="Ridpass utvärderat" heading="Utvärdera ridpass"></ShowVerification>
                     :
                     <div className="container">
                         <AppHeading title="Utvärdera ridpass"></AppHeading>

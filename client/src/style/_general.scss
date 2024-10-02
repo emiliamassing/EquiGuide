@@ -8,10 +8,12 @@
 @import './components/app/Profilepage';
 @import './components/app/CalendarPage';
 @import './components/app/EditorPage';
+@import './components/app/ViewRidepage';
 
 * {
   font-family: var.$fontFamily;
 }
+
 
 h1 {
   margin-block-start: 0;
