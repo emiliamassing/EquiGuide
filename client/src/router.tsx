@@ -17,6 +17,7 @@ import { AddRidePage } from "./components/application/rides/AddRidepage";
 import { EditorPage } from "./components/application/editor/EditorPage";
 import { ViewRidepage } from "./components/application/rides/ViewRidepage";
 import { VerifyDeletingRide } from "./components/application/rides/VerifyDeletingRide";
+import { AddHorsePage } from "./components/application/profile/AddHorsePage";
 
 export const router = createBrowserRouter([
     {
@@ -74,6 +75,14 @@ export const router = createBrowserRouter([
                 element: <AddRidePage/>
             },
             {
+                path: '/app/editor',
+                element: <EditorPage />
+            },
+            {
+                path: '/app/viewRide',
+                element: <ViewRidepage />
+            },
+            {
                 path: '/app/explore',
                 element: <ExplorePage />
             },
@@ -82,12 +91,8 @@ export const router = createBrowserRouter([
                 element: <ProfilePage />
             },
             {
-                path: '/app/editor',
-                element: <EditorPage />
-            },
-            {
-                path: '/app/viewRide',
-                element: <ViewRidepage />
+                path: '/app/profile/addHorse',
+                element: <AddHorsePage />
             },
             {
                 path: '/app/verifyDeleting',
