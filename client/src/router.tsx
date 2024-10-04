@@ -18,6 +18,8 @@ import { EditorPage } from "./components/application/editor/EditorPage";
 import { ViewRidepage } from "./components/application/rides/ViewRidepage";
 import { VerifyDeletingRide } from "./components/application/rides/VerifyDeletingRide";
 import { AddHorsePage } from "./components/application/profile/AddHorsePage";
+import { ViewHorsePage } from "./components/application/profile/ViewHorsePage";
+import { EditHorsePage } from "./components/application/profile/EditHorsePage";
 
 export const router = createBrowserRouter([
     {
@@ -91,8 +93,16 @@ export const router = createBrowserRouter([
                 element: <ProfilePage />
             },
             {
+                path: '/app/profile/viewHorse',
+                element: <ViewHorsePage />
+            },
+            {
                 path: '/app/profile/addHorse',
                 element: <AddHorsePage />
+            },
+            {
+                path: '/app/profile/editHorse',
+                element: <EditHorsePage />
             },
             {
                 path: '/app/verifyDeleting',

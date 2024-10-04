@@ -17,3 +17,8 @@ export async function addHorse(data: object) {
     const response = await post(BASEURL + 'horses/add', data);
     return response;
 }
+
+export async function editHorse(data: object, id: number) {
+    const response = await post(BASEURL + `horses/edit/${id}`, data);
+    return response;
+}

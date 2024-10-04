@@ -5,6 +5,9 @@ export enum ActionTypes {
 }
 
 export enum RideActionTypes {
-    PASS_ID,
+    PASS_DATA
+}
+
+export enum HorseActionTypes {
     PASS_DATA
 }

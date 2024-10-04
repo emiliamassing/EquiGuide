@@ -1,7 +1,15 @@
-export function SvgHorse() {
+interface SvgHorseProps {
+    height: number;
+    width: number;
+}
+
+export function SvgHorse({height, width}: SvgHorseProps) {
+    const heightPx = `${height}px`;
+    const widthPx = `${width}px`;
+
     return(
         <>
-            <svg height="55px" width="55px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xmlSpace="preserve" fill="#0A3B2C" className="horseSvg">
+            <svg height={heightPx} width={widthPx} version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xmlSpace="preserve" fill="#0A3B2C" className="horseSvg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                     <g id="SVGRepo_iconCarrier"><g> 

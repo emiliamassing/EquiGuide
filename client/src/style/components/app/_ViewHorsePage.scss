@@ -1,0 +1,34 @@
+.container {
+    .innerContainer {
+        .viewHorseContainer {
+            height: 62vh;
+
+            .horseProfileImgHolder {
+                position: relative;
+                height: 120px;
+                width: 120px;
+                margin: 0 auto;
+                margin-top: 1em;
+                margin-bottom: 1em;
+                background-color: var.$viridianGreen;
+                border-radius: 50%;
+
+                .horseSvg {
+                    position: absolute;
+                    top: 20px;
+                    left: 22px;
+                }
+            }
+
+            .horseInfoContainer {
+                p {
+                    font-size: 18px;
+
+                    span {
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+}
