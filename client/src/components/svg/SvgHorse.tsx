@@ -10,8 +10,8 @@ export function SvgHorse({height, width}: SvgHorseProps) {
     return(
         <>
             <svg height={heightPx} width={widthPx} version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xmlSpace="preserve" fill="#0A3B2C" className="horseSvg">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                     <g id="SVGRepo_iconCarrier"><g> 
                         <path className="st0" d="M371.729,129.381c29.32-67.012,5.924-128.456-8.26-129.373c-14.184-0.923-60.556,77.069-60.556,77.069h-93.59 
                             c0,0-46.379-77.986-60.556-77.069c-14.185,0.909-37.58,62.36-8.26,129.373c19.269,44.042-22.955,89.77-14.604,134.884 

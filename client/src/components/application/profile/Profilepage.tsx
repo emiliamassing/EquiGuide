@@ -17,6 +17,10 @@ export function ProfilePage() {
     const { userData, dispatch } = useContext(UserContext);
     const user = userData[0].user;
 
+    function directToEditUser() {
+        navigate('/app/profile/editUser');
+    }
+
     function logout() {
         removeFromLocalStorage();
         dispatch({ type: ActionTypes.LOGOUT, payload: JSON.stringify(user.id) }); 
@@ -37,7 +41,7 @@ export function ProfilePage() {
                                 <SvgProfile></SvgProfile>
                             </div>
                             <h2>{user.firstname} {user.lastname}</h2>
-                            <button className="tertriaryButton">Redigera profil</button>
+                            <button className="tertriaryButton" onClick={directToEditUser}>Redigera profil</button>
                         </div>
                         <div className="horseContainer">
                             <h2>Mina hästar</h2>

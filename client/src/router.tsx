@@ -20,6 +20,7 @@ import { VerifyDeletingRide } from "./components/application/rides/VerifyDeletin
 import { AddHorsePage } from "./components/application/profile/AddHorsePage";
 import { ViewHorsePage } from "./components/application/profile/ViewHorsePage";
 import { EditHorsePage } from "./components/application/profile/EditHorsePage";
+import { EditUserPage } from "./components/application/profile/EditUserPage";
 
 export const router = createBrowserRouter([
     {
@@ -91,6 +92,10 @@ export const router = createBrowserRouter([
             {
                 path: '/app/profile',
                 element: <ProfilePage />
+            },
+            {
+                path: '/app/profile/editUser',
+                element: <EditUserPage />
             },
             {
                 path: '/app/profile/viewHorse',
