@@ -24,7 +24,7 @@ export function HorseContainer({ horses }: IHorseContainerProps) {
                             </div>
                             <h3>{horse.name}</h3>
                         </div>
-                        <button className="secondaryButton">Redigera</button>
+                        <button className="secondaryButton">Visa</button>
                     </div>
                     <div className="divider"></div>
                 </div>

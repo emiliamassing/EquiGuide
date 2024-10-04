@@ -10,19 +10,20 @@ import { NotAuthenticated } from "../../error/NotAuthenticated";
 import { ShowVerification } from "../verification/ShowVerification";
 import { AppHeading } from "../layouts/AppHeading";
 import { UserContext } from "../../../contexts/UserContext";
+import { activities } from "../../../models/activities";
 
 interface IHorseProps {
     horseList: IHorseData[]
 }
 
-const allDisciplines = capitalizeWords(disciplines);
+const allActivities = capitalizeWords(activities);
 
 export function AddRideForm({horseList}: IHorseProps) {
     const navigate = useNavigate();
     const [titleInput, setTitleInput] = useState('');
     const [dateInput, setDateInput] = useState('');
     const [horseId, setSelectedHorseId] = useState('');
-    const [selectedDiscipline, setSelectedDiscipline] = useState('');
+    const [selectedActivity, setSelectedActivity] = useState('');
     const [dataCreated, setDataCreated] = useState(false);
     const { userData } = useContext(UserContext);
     const user = userData[0].user;
@@ -54,7 +55,7 @@ export function AddRideForm({horseList}: IHorseProps) {
     }
 
     function handleSelectedDisciplineChange(e: ChangeEvent<HTMLSelectElement>) {
-        setSelectedDiscipline(e.target.value);
+        setSelectedActivity(e.target.value);
     }
 
     async function tryToAddRide(e: FormEvent) {
@@ -66,7 +67,7 @@ export function AddRideForm({horseList}: IHorseProps) {
             const rideData = await addRide({
                 title: titleInput,
                 date: dateInput,
-                discipline: selectedDiscipline,
+                discipline: selectedActivity,
                 userId: userId,
                 horseId: horseId
             })
@@ -119,8 +120,8 @@ export function AddRideForm({horseList}: IHorseProps) {
                                         <select required onChange={handleSelectedDisciplineChange}>
                                             <option value={""} hidden>Inriktning</option>
                                             {
-                                                allDisciplines.map(discipline => (
-                                                    <option value={discipline} key={discipline}>{discipline}</option>
+                                                allActivities.map(activity => (
+                                                    <option value={activity} key={activity}>{activity}</option>
                                                 ))
                                             }
                                         </select>
