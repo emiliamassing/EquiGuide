@@ -22,7 +22,7 @@ export function HomePage() {
                 <ShowLoader></ShowLoader>
             :
             <>
-                <div className="container">
+                <div className="container containerInRow">
                     <AppHeading title="Hem"></AppHeading>
                     <div className="innerContainer">
                         <h2>
@@ -31,7 +31,7 @@ export function HomePage() {
                         <RideContainer rides={rides}></RideContainer>
                     </div>
                 </div>
-                <div className="container">
+                <div className="container containerInRow">
                 <SecondaryHeading title="Ridpass"></SecondaryHeading>
                     <div className="innerContainer">
                             <div className="tertriaryButtonContainer">

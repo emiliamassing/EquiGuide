@@ -1,7 +1,10 @@
 main.app {
     section {
         .container {
-            .innerContainer {
+            .innerContainer.innerProfileContainer {
+                display: flex;
+                flex-direction: column;
+
                 .profileContainer {
                     display: flex;
                     flex-direction: column;
@@ -79,6 +82,12 @@ main.app {
                         margin-bottom: 1em;
                         align-self: center;
                     }
+                }
+
+                button.tertriaryButton.logoutButton {
+                    margin: 0 auto;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
                 }
             }
         }
