@@ -28,9 +28,7 @@ main.app {
 
         .container {
             display: inline-block;
-            width: 80vw;
-            /* min-height: 87vh;
-            max-height: 93vh; */
+            width: 90%;
             height: 95vh;
             overflow-y: auto;
             margin-top: 0.5em;
@@ -141,10 +139,6 @@ main.app {
                 }
             }
         }
-
-        .container.containerInRow {
-            width: 42vw;
-        }
     }
 }
 
@@ -172,6 +166,8 @@ main.app {
             gap: 1em;
 
             .container {
+                width: 80vw;
+
                 .innerContainer {
                     width: 75%;
                     margin: 0 auto;
@@ -180,6 +176,10 @@ main.app {
                         width: unset;
                     }
                 }
+            }
+
+            .container.containerInRow {
+                width: 40vw;
             }
         }
     }
