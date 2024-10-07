@@ -1,6 +1,11 @@
 .container {
     .innerContainer {
         .viewHorseContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            row-gap: 2em;
             height: 62vh;
 
             .horseProfileImgHolder {
@@ -8,7 +13,7 @@
                 height: 120px;
                 width: 120px;
                 margin: 0 auto;
-                margin-top: 1em;
+                margin-top: 2.5em;
                 margin-bottom: 1em;
                 background-color: var.$viridianGreen;
                 border-radius: 50%;
@@ -20,15 +25,23 @@
                 }
             }
 
-            .horseInfoContainer {
-                p {
-                    font-size: 18px;
+            .horseInfoWrapper {
+                .horseInfoContainer {
+                    width: 15em;
 
-                    span {
-                        font-weight: 500;
+                    p {
+                        font-size: 18px;
+
+                        span {
+                            font-weight: 500;
+                        }
                     }
                 }
             }
+        }
+
+        .buttonContainer.viewHorseButtonContainer {
+            justify-content: center;
         }
     }
 }

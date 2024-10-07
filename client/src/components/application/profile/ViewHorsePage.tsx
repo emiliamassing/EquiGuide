@@ -27,38 +27,40 @@ export function ViewHorsePage() {
                         <div className="horseProfileImgHolder">
                             <SvgHorse height={75} width={75}></SvgHorse>
                         </div>
-                        <div className="horseInfoContainer">
-                            <p>
-                                <span>Namn: </span>
-                                {horseData[0].name}
-                            </p>
-                        </div>
-                        <div className="horseInfoContainer">
-                            <p>
-                                <span>Ras: </span>
-                                {horseData[0].breed}
-                            </p>
-                        </div>
-                        <div className="horseInfoContainer">
-                            <p>
-                                <span>Ålder: </span>
-                                {horseData[0].age}
-                            </p>
-                        </div>
-                        <div className="horseInfoContainer">
-                            <p>
-                                <span>Kön: </span>
-                                {horseData[0].gender}
-                            </p>
-                        </div>
-                        <div className="horseInfoContainer">
-                            <p>
-                                <span>Inriktning: </span>
-                                {horseData[0].discipline}
-                            </p>
+                        <div className="horseInfoWrapper">
+                            <div className="horseInfoContainer">
+                                <p>
+                                    <span>Namn: </span>
+                                    {horseData[0].name}
+                                </p>
+                            </div>
+                            <div className="horseInfoContainer">
+                                <p>
+                                    <span>Ras: </span>
+                                    {horseData[0].breed}
+                                </p>
+                            </div>
+                            <div className="horseInfoContainer">
+                                <p>
+                                    <span>Ålder: </span>
+                                    {horseData[0].age}
+                                </p>
+                            </div>
+                            <div className="horseInfoContainer">
+                                <p>
+                                    <span>Kön: </span>
+                                    {horseData[0].gender}
+                                </p>
+                            </div>
+                            <div className="horseInfoContainer">
+                                <p>
+                                    <span>Inriktning: </span>
+                                    {horseData[0].discipline}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div className="buttonContainer">
+                    <div className="buttonContainer viewHorseButtonContainer">
                         <button className="secondaryButton" onClick={directToProfile}>Tillbaka</button>
                         <button className="primaryButton" onClick={directToEditHorse}>Redigera</button>
                     </div>
