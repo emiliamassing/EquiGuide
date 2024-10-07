@@ -11,7 +11,7 @@ export function LoginUser() {
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const  { dispatch } = useContext(UserContext);
+    const { dispatch } = useContext(UserContext);
 
     function directToLogin() {
         navigate('/login');

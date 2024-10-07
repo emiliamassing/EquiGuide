@@ -1,5 +1,6 @@
+import { IUpdatedUser } from "../models/IUpdatedUser";
 import { IUserData } from "../models/IUserData";
-import { post } from "./serviceBase";
+import { get, post } from "./serviceBase";
 
 const BASEURL = import.meta.env.VITE_API_URL;
 
@@ -16,6 +17,16 @@ export async function loginUser(data: object) {
     } catch(error) {
         throw error;
     }
+}
+
+export async function getUserById(query: string): Promise<IUpdatedUser> {
+    const response = await get<IUpdatedUser>(BASEURL + `users/${query}`);
+    return response;
+}
+
+export async function editUser(data: object, id: number) {
+    const response = await post(BASEURL + `users/edit/${id}`, data);
+    return response;
 }
 
 export function addUserToLocalStorage(token: string) {

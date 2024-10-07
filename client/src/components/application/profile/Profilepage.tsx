@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { isAuthenticated } from "../../../services/tokenService"
+import { isAuthenticated } from "../../../services/tokenService";
 import { removeFromLocalStorage } from "../../../services/userService";
 import { NotAuthenticated } from "../../error/NotAuthenticated";
 import { AppHeading } from "../layouts/AppHeading";
@@ -35,7 +35,7 @@ export function ProfilePage() {
             <>
                 <div className="container">
                     <AppHeading title="Profil"></AppHeading>
-                    <div className="innerContainer">
+                    <div className="innerContainer innerProfileContainer">
                         <div className="profileContainer">
                             <div className="profileHolder">
                                 <SvgProfile></SvgProfile>
@@ -47,7 +47,7 @@ export function ProfilePage() {
                             <h2>Mina hästar</h2>
                             <HorseContainer horses={horses}></HorseContainer>
                         </div>
-                        <button className="primaryButton" onClick={logout}>Logga ut</button>
+                        <button className="tertriaryButton logoutButton" onClick={logout}>Logga ut</button>
                     </div>
                 </div>
             </>
