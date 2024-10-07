@@ -49,47 +49,6 @@ export function EditUserPage() {
         setConfirmPasswordInput(e.target.value);
     }
 
-    /* async function tryToEditUser(e: FormEvent) {
-        e.preventDefault();
-        
-        if(passwordInput && passwordInput !== confirmPasswordInput) {
-            setErrorMessage('Lösenorden matchar inte');
-            return;
-        }
-        
-        const userId = userData[0].user.id;
-
-        console.log('Payload being sent:', {
-            first_name: firstNameInput,
-            last_name: lastNameInput,
-            email: emailInput,
-            password: passwordInput || undefined,
-        });
-
-        try {
-            const updatedData = await editUser({
-                first_name: firstNameInput,
-                last_name: lastNameInput,
-                email: emailInput,
-                password: passwordInput || undefined,
-            }, userId);
-
-            console.log('Användare redigerad', updatedData);
-            setErrorMessage('');
-            //updateUserData();
-            setDataUpdated(true);
-        } catch(error: unknown) {
-            if(isAxiosError(error)) {
-                const axiosError = error as AxiosError;
-
-                if(axiosError && axiosError.response?.status === 500) {
-                    setErrorMessage('Något gick fel, försök igen');
-                }
-            }
-        }
-    }
-    */
-
     async function tryToEditUser(e: FormEvent) {
         e.preventDefault();
     
@@ -100,24 +59,17 @@ export function EditUserPage() {
     
         const userId = userData[0].user.id;
     
-        // Create the user payload
-        const userPayload = {
-            first_name: firstNameInput,
-            last_name: lastNameInput,
-            email: emailInput,
-            password: passwordInput || undefined,
-        };
-    
-        // Log the payload and URL for debugging
-        console.log('User ID:', userId);
-        console.log('Payload being sent:', userPayload);
-    
         try {
-            const updatedData = await editUser(userPayload, userId);
+            const updatedData = await editUser({
+                first_name: firstNameInput,
+                last_name: lastNameInput,
+                email: emailInput,
+                password: passwordInput || undefined,
+            }, userId);
     
             console.log('Användare redigerad', updatedData);
             setErrorMessage('');
-            // updateUserData();
+            updateUserData();
             setDataUpdated(true);
         } catch (error: unknown) {
             if (isAxiosError(error)) {
@@ -137,22 +89,20 @@ export function EditUserPage() {
         }
     }
     
-
     async function updateUserData() { 
         const userId = userData[0].user.id;
 
         try{
             const updatedData = await getUserById(JSON.stringify(userId));
+
             dispatch({ type: ActionTypes.UPDATE_CONTEXT, 
                 payload: JSON.stringify({
-                    email: updatedData.email,
-                    id: updatedData.id,
-                    first_name: updatedData.first_name,
-                    last_name: updatedData.last_name
+                    email: updatedData[0].email,
+                    id: updatedData[0].id,
+                    first_name: updatedData[0].first_name,
+                    last_name: updatedData[0].last_name
                 }) 
             });
-
-            console.log(updatedData, 'hämtat ny data');
         } catch(error: unknown) {
             if(isAxiosError(error)) {
                 const axiosError = error as AxiosError;

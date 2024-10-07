@@ -19,8 +19,8 @@ export async function loginUser(data: object) {
     }
 }
 
-export async function getUserById(query: string): Promise<IUpdatedUser> {
-    const response = await get<IUpdatedUser>(BASEURL + `users/${query}`);
+export async function getUserById(query: string): Promise<IUpdatedUser[]> {
+    const response = await get<IUpdatedUser[]>(BASEURL + `users/${query}`);
     return response;
 }
 
