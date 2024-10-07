@@ -1,7 +1,10 @@
 main.app {
     section {
         .container {
-            .innerContainer {
+            .innerContainer.innerProfileContainer {
+                display: flex;
+                flex-direction: column;
+
                 .profileContainer {
                     display: flex;
                     flex-direction: column;
@@ -27,9 +30,64 @@ main.app {
                 }
 
                 .horseContainer {
-                    h3 {
-                        font-weight: 500;
+                    display: flex;
+                    flex-direction: column;
+
+                    .horseProfile {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: 0.5rem;
+                        margin-bottom: 0.5rem;
+
+                        .wrapper {
+                            display: flex;
+                            flex-direction: row;
+                            column-gap: 7px;
+
+                            .horseProfileHolder {
+                                position: relative;
+                                width: 65px;
+                                height: 65px;
+                                background-color: var.$viridianGreen;
+                                border-radius: 50%;
+
+                                .horseSvg {
+                                    position: absolute;
+                                    top: 5px;
+                                    left: 5px;
+                                }
+                            }
+
+                            h3 {
+                                font-weight: 500;
+                                align-self: flex-end;
+                            }
+                        }
+
+                        button.secondaryButton {
+                            height: 3em;
+                            width: 7em;
+                            padding: 12px 19px 12px 19px;
+                            align-self: center;
+                            justify-self: flex-end;
+                        }
                     }
+
+                    .divider {
+                        width: 100%;
+                    }
+
+                    button.primaryButton {
+                        margin-top: 1em;
+                        margin-bottom: 1em;
+                        align-self: center;
+                    }
+                }
+
+                button.tertriaryButton.logoutButton {
+                    margin: 0 auto;
+                    margin-top: 2em;
+                    margin-bottom: 2em;
                 }
             }
         }

@@ -1,0 +1,60 @@
+.container {
+    .innerContainer {
+        .viewHorseContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            row-gap: 2em;
+            height: 62vh;
+
+            .horseProfileImgHolder {
+                position: relative;
+                height: 120px;
+                width: 120px;
+                margin: 0 auto;
+                margin-top: 2.5em;
+                margin-bottom: 1em;
+                background-color: var.$viridianGreen;
+                border-radius: 50%;
+
+                .horseSvg {
+                    position: absolute;
+                    top: 20px;
+                    left: 22px;
+                }
+            }
+
+            .horseInfoWrapper {
+                .horseInfoContainer {
+                    width: 15em;
+
+                    p {
+                        font-size: 18px;
+
+                        span {
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+
+        .buttonContainer.viewHorseButtonContainer {
+            justify-content: center;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        .innerContainer {
+            .viewHorseContainer {
+                .horseProfileImgHolder {
+                    margin: unset;
+                    margin-top: 2em;
+                }
+            }
+        }
+    }
+}

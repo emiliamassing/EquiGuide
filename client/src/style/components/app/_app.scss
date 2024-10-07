@@ -28,8 +28,9 @@ main.app {
 
         .container {
             display: inline-block;
-            width: 95%;
-            min-height: 87vh;
+            width: 90%;
+            height: 95vh;
+            overflow-y: auto;
             margin-top: 0.5em;
             margin-bottom: 0.5em;
             border-radius: 10px;
@@ -85,6 +86,8 @@ main.app {
 
                         input[type=text],
                         input[type=date],
+                        input[type=number],
+                        input[type=password],
                         select {
                             height: 1.2em;
                             width: 18em;
@@ -163,7 +166,7 @@ main.app {
             gap: 1em;
 
             .container {
-
+                width: 80vw;
 
                 .innerContainer {
                     width: 75%;
@@ -173,6 +176,10 @@ main.app {
                         width: unset;
                     }
                 }
+            }
+
+            .container.containerInRow {
+                width: 40vw;
             }
         }
     }

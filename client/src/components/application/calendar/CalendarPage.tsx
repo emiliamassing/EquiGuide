@@ -31,7 +31,7 @@ export function CalendarPage() {
                 <ShowLoader></ShowLoader>
             :
             <>
-                <div className="container">
+                <div className="container containerInRow">
                     <AppHeading title="Kalender"></AppHeading>
                     <FullCalendar 
                         plugins={[ dayGridPlugin ]} 
