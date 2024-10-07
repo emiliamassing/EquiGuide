@@ -140,11 +140,11 @@ export function EditUserPage() {
                                 </div>
                                 <div className="inputContainer">
                                     <span>Nytt lösenord</span>
-                                    <input type="password" placeholder="Lösenord" onChange={handlePasswordChange}></input>
+                                    <input type="password" placeholder="Lösenord" autoComplete="off" onChange={handlePasswordChange}></input>
                                 </div>
                                 <div className="inputContainer">
                                     <span>Bekräfta nytt lösenord</span>
-                                    <input type="password" placeholder="Bekräfta lösenord" onChange={handlePasswordConfirmationChange}></input>
+                                    <input type="password" placeholder="Bekräfta lösenord" autoComplete="off" onChange={handlePasswordConfirmationChange}></input>
                                 </div>
                                     <span className="errorMessage">{errorMessage}</span>
                                 <div className="buttonContainer">

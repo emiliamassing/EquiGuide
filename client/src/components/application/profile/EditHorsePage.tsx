@@ -87,47 +87,49 @@ export function EditHorsePage() {
                     <div className="container">
                         <AppHeading title="Ändra uppgifter"></AppHeading>
                         <div className="innerContainer">
-                            <form onSubmit={tryToAddHorse}>
-                                <div className="inputDivider">
-                                    <div className="inputContainer">
-                                        <label htmlFor="name">Namn</label>
-                                        <input type="text" name="name" value={nameInput} required onChange={handleNameInputChange}></input>
+                            <div className="formFlexContainer">
+                                <form onSubmit={tryToAddHorse}>
+                                    <div className="inputDivider">
+                                        <div className="inputContainer">
+                                            <label htmlFor="name">Namn</label>
+                                            <input type="text" name="name" value={nameInput} required onChange={handleNameInputChange}></input>
+                                        </div>
+                                        <div className="inputContainer">
+                                            <label htmlFor="breed">Ras</label>
+                                            <input type="text" name="breed" value={breedInput} required onChange={handleBreedInputChange}></input>
+                                        </div>
+                                        <div className="inputContainer">
+                                            <label htmlFor="age">Ålder</label>
+                                            <input type="number" name="age" value={ageInput} required onChange={handleAgeInputChange}></input>
+                                        </div>
+                                        <div className="inputContainer">
+                                            <span>Kön</span>
+                                            <select name="gender" value={selectedGender} onChange={handleSelectedGenderChange} required>
+                                                <option value={horseData[0].gender} disabled hidden>Kön</option>
+                                                <option value={"hingst"}>Hingst</option>
+                                                <option value={"valack"}>Valack</option>
+                                                <option value={"sto"}>Sto</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div className="inputContainer">
-                                        <label htmlFor="breed">Ras</label>
-                                        <input type="text" name="breed" value={breedInput} required onChange={handleBreedInputChange}></input>
+                                            <span>Inriktning</span>
+                                            <select name="discipline" value={selectedDiscipline} onChange={handleSelectedDisciplineChange} required>
+                                                <option value={horseData[0].discipline} disabled hidden>Inriktning</option>
+                                                {
+                                                    allDisciplines.map(discipline => (
+                                                        <option value={discipline} key={discipline}>{discipline}</option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </div>
+                                    <span className="errorMessage">{errorMessage}</span>
+                                    <div className="formButtonContainer">
+                                        <button className="secondaryButton" onClick={directToProfile}>Tillbaka</button>
+                                        <button className="primaryButton">Ändra</button>
                                     </div>
-                                    <div className="inputContainer">
-                                        <label htmlFor="age">Ålder</label>
-                                        <input type="number" name="age" value={ageInput} required onChange={handleAgeInputChange}></input>
-                                    </div>
-                                    <div className="inputContainer">
-                                        <span>Kön</span>
-                                        <select name="gender" value={selectedGender} onChange={handleSelectedGenderChange} required>
-                                            <option value={horseData[0].gender} disabled hidden>Kön</option>
-                                            <option value={"hingst"}>Hingst</option>
-                                            <option value={"valack"}>Valack</option>
-                                            <option value={"sto"}>Sto</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="inputContainer">
-                                        <span>Inriktning</span>
-                                        <select name="discipline" value={selectedDiscipline} onChange={handleSelectedDisciplineChange} required>
-                                            <option value={horseData[0].discipline} disabled hidden>Inriktning</option>
-                                            {
-                                                allDisciplines.map(discipline => (
-                                                    <option value={discipline} key={discipline}>{discipline}</option>
-                                                ))
-                                            }
-                                        </select>
-                                    </div>
-                                <span className="errorMessage">{errorMessage}</span>
-                                <div className="formButtonContainer">
-                                    <button className="secondaryButton" onClick={directToProfile}>Tillbaka</button>
-                                    <button className="primaryButton">Ändra</button>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 }

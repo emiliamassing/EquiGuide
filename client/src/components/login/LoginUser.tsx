@@ -62,7 +62,7 @@ export function LoginUser() {
                 </div>
                 <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">lock</span>
-                    <input type="password" name="password" placeholder="Lösenord" onChange={handlePasswordChange} required></input>
+                    <input type="password" name="password" placeholder="Lösenord" autoComplete="off" onChange={handlePasswordChange} required></input>
                 </div>
                 <span className="errorMessage">{errorMessage}</span>
                 <div className="loginButtonContainer">
