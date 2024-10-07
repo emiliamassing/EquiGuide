@@ -85,7 +85,7 @@ export function EditHorsePage() {
                     <ShowVerification resetData={resetDataCreated} verificationMessage="Uppgifter ändrade" heading={horseData[0].name}></ShowVerification>
                     :
                     <div className="container">
-                        <AppHeading title="Lägg till häst"></AppHeading>
+                        <AppHeading title="Ändra uppgifter"></AppHeading>
                         <div className="innerContainer">
                             <form onSubmit={tryToAddHorse}>
                                 <div className="inputDivider">
@@ -125,7 +125,7 @@ export function EditHorsePage() {
                                 <span className="errorMessage">{errorMessage}</span>
                                 <div className="formButtonContainer">
                                     <button className="secondaryButton" onClick={directToProfile}>Tillbaka</button>
-                                    <button className="primaryButton">Lägg till</button>
+                                    <button className="primaryButton">Ändra</button>
                                 </div>
                             </form>
                         </div>
