@@ -57,28 +57,30 @@ ridingSessionRouter.get('/user', function(req: Request, res: Response) {
     });
 });
 
-ridingSessionRouter.get('/horse', function(req: Request, res: Response) {
-    let horseId = req.query.horseId
+ridingSessionRouter.get('/horse', function(req, res) {
+    let horseId = req.query.horseId;
 
-    connection.connect(function(err: QueryError | null) {
-        if(err) {
-            console.log('Error connecting to database', err);
+    connection.connect(function(err) {
+        if (err) {
+            console.log('Error connecting to database:', err);
             return res.status(500).json({ error: 'Database connection error' });
-        };
+        }
 
         let sql: string = `
-        SELECT * FROM rides
-        JOIN rides_horses ON rides.id = rides_horses.ride_id
-        JOIN horses ON rides_horses.horse_id = horses.id
-        WHERE horses.id =${horseId}`;
+            SELECT rides.id as ride_id, rides.title, rides.discipline, rides.date, rides.is_deleted,
+            horses.id as horse_id, horses.name as horse_name, horses.breed, horses.age
+            FROM rides
+            JOIN rides_horses ON rides.id = rides_horses.ride_id
+            JOIN horses ON rides_horses.horse_id = horses.id
+            WHERE horses.id = ? AND rides.is_deleted = 0
+        `;
 
-        connection.query(sql, function(err: QueryError | null, result: ResultSetHeader) {
-            if(err) {
-                console.log('Error selecting rides by horseId', err);
+        connection.query(sql, [horseId], function(err, result) {
+            if (err) {
+                console.error('Error selecting rides by horseId:', err);
                 return res.status(500).json({ error: 'Error selecting rides by horseId' });
             }
 
-            console.log('All rides with horseId:', result);
             res.send(result);
         });
     });

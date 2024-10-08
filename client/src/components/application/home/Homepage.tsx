@@ -9,12 +9,18 @@ import { SecondaryHeading } from "../layouts/SecondaryHeading";
 import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import { useGetRides } from "../../../hooks/useGetRides";
+import { useNavigate } from "react-router-dom";
 
 export function HomePage() {
     const { rides, ridesIsLoading } = useGetRides();
     const { horses } = useGetHorses();
     const { userData }  = useContext(UserContext);
     const user = userData.length > 0 ? userData[0].user : null;
+    const navigate = useNavigate();
+
+    function directToViewAllRides() {
+        navigate('/app/viewAllRides');
+    }
 
     return(
         isAuthenticated() ? (
@@ -35,7 +41,7 @@ export function HomePage() {
                 <SecondaryHeading title="Ridpass"></SecondaryHeading>
                     <div className="innerContainer">
                             <div className="tertriaryButtonContainer">
-                                <button className="tertriaryButton">Se alla tidigare ridpass</button>
+                                <button className="tertriaryButton" onClick={directToViewAllRides}>Se alla tidigare ridpass</button>
                             </div>
                         <ViewRidesForm horses={horses}></ViewRidesForm>
                     </div>

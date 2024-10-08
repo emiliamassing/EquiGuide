@@ -21,6 +21,8 @@ import { AddHorsePage } from "./components/application/profile/AddHorsePage";
 import { ViewHorsePage } from "./components/application/profile/ViewHorsePage";
 import { EditHorsePage } from "./components/application/profile/EditHorsePage";
 import { EditUserPage } from "./components/application/profile/EditUserPage";
+import { ViewAllRides } from "./components/application/rides/ViewAllRides";
+import { ViewRideWithHorse } from "./components/application/rides/ViewRideWithHorse";
 
 export const router = createBrowserRouter([
     {
@@ -78,12 +80,20 @@ export const router = createBrowserRouter([
                 element: <AddRidePage/>
             },
             {
-                path: '/app/editor',
-                element: <EditorPage />
-            },
-            {
                 path: '/app/viewRide',
                 element: <ViewRidepage />
+            },
+            {
+                path: '/app/viewAllRides', 
+                element: <ViewAllRides />
+            },
+            {
+                path: '/app/viewRides/horse',
+                element: <ViewRideWithHorse />
+            },
+            {
+                path: '/app/editor',
+                element: <EditorPage />
             },
             {
                 path: '/app/explore',

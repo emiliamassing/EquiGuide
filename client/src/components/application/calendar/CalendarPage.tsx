@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../../services/tokenService"
 import { NotAuthenticated } from "../../error/NotAuthenticated";
 import { AppHeading } from "../layouts/AppHeading";
@@ -10,7 +9,6 @@ import { UpcomingRideContainer } from "./UpcomingRideContainer";
 
 export function CalendarPage() {
     const { rides, ridesIsLoading } = useGetRides();
-    const navigate = useNavigate();
     const todaysDate = new Date();
 
     const calendarEvents = rides.map((ride) => {

@@ -1,13 +1,10 @@
 import { IRideData } from "../../../models/IRideData";
-import { compareDatesInNextWeek, isAxiosError } from "../../../services/serviceBase";
-import { deleteRide } from "../../../services/rideService";
-import { AxiosError } from "axios";
+import { compareDatesInNextWeek } from "../../../services/serviceBase";
 import { RideActionTypes } from "../../../types/ActionTypes";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { RideContext } from "../../../contexts/RideContext";
 import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../../services/tokenService";
-import { ShowVerification } from "../verification/ShowVerification";
 import { NotAuthenticated } from "../../error/NotAuthenticated";
 
 interface IUpcomingRideContainerProps {
@@ -17,14 +14,9 @@ interface IUpcomingRideContainerProps {
 export function UpcomingRideContainer({ rides }: IUpcomingRideContainerProps) {
     const { rideDispatch } = useContext(RideContext);
     const navigate = useNavigate();
-    const [dataDeleted, setDataDeleted] = useState(false);
     const todaysDate = new Date();
     let nextWeeksRides = rides.filter((ride) => compareDatesInNextWeek(new Date(ride.date), todaysDate));
     nextWeeksRides = nextWeeksRides.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-
-    /* function resetDataDeleted() {
-        setDataDeleted(false);
-    } */
 
     function directToEditor(ride: IRideData) {
         rideDispatch({ type: RideActionTypes.PASS_DATA, payload: JSON.stringify(ride) });
