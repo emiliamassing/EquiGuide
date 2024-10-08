@@ -7,11 +7,12 @@
             align-items: center;
             row-gap: 2em;
             height: 62vh;
+            margin-top: 2em;
 
             .horseProfileImgHolder {
                 position: relative;
-                height: 120px;
-                width: 120px;
+                height: 150px;
+                width: 150px;
                 margin: 0 auto;
                 margin-top: 2.5em;
                 margin-bottom: 1em;
@@ -20,8 +21,8 @@
 
                 .horseSvg {
                     position: absolute;
-                    top: 20px;
-                    left: 22px;
+                    top: 27px;
+                    left: 30px;
                 }
             }
 
@@ -29,11 +30,17 @@
                 .horseInfoContainer {
                     width: 15em;
 
-                    p {
-                        font-size: 18px;
+                    ul {
+                        padding-inline-start: 0;
 
-                        span {
-                            font-weight: 500;
+                        li {
+                            list-style-type: none;
+                            font-size: 18px;
+                            margin: 10px;
+
+                            span {
+                                font-weight: 500;
+                            }
                         }
                     }
                 }
