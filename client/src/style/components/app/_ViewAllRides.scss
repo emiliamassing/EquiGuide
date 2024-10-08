@@ -1,0 +1,22 @@
+.container {
+    .innerContainer {
+        .allRidesWrapper {
+            margin-top: 1em;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+            .viewAllRidesContainer {
+                background-color: #ededed;
+                width: 17em;
+                padding: 1.2em;
+                margin: 10px 5px 10px 5px;
+                border-radius: 20px;
+
+                .ridesButtonContainer {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
