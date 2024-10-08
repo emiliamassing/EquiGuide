@@ -24,6 +24,7 @@ export function AddRideForm({horseList}: IHorseProps) {
     const [horseId, setSelectedHorseId] = useState('');
     const [selectedActivity, setSelectedActivity] = useState('');
     const [dataCreated, setDataCreated] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const { userData } = useContext(UserContext);
     const user = userData[0].user;
 
@@ -78,7 +79,7 @@ export function AddRideForm({horseList}: IHorseProps) {
                 const axiosError = error as AxiosError;
 
                 if(axiosError && axiosError.response?.status === 500) {
-                    console.log('Något gick fel'); 
+                    setErrorMessage('Något gick fel, testa igen');
                 }
             }
         }
@@ -125,6 +126,7 @@ export function AddRideForm({horseList}: IHorseProps) {
                                             }
                                         </select>
                                     </div>
+                                    <span>{errorMessage}</span>
                                     <div className="formButtonContainer">
                                         <button className="secondaryButton" onClick={navigateToHome}>Avbryt</button>
                                         <button className="primaryButton">Skapa pass</button>

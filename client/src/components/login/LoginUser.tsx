@@ -58,7 +58,7 @@ export function LoginUser() {
             <form onSubmit={tryToLoginUser} className="loginForm">
                 <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">mail</span>
-                    <input type="text" name="email" placeholder="Email" onChange={handleEmailChange} required></input>
+                    <input type="text" name="email" placeholder="Email" autoComplete="on" onChange={handleEmailChange} required></input>
                 </div>
                 <div className="loginInputContainer">
                     <span className="material-symbols-outlined inputSymbol">lock</span>
