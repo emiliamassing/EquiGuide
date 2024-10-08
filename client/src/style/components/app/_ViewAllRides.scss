@@ -1,5 +1,12 @@
 .container {
     .innerContainer {
+        .viewRidesWithHorseForm {
+            span.errorMessage {
+                color: var.$darkRed;
+                margin: 10px;
+            }
+        }
+
         .allRidesWrapper {
             margin-top: 1em;
             display: flex;

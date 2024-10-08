@@ -54,7 +54,3 @@ export function ViewRideWithHorse() {
         )
     )
 }
-
-function rideDispatch(arg0: { type: RideActionTypes; payload: string; }) {
-    throw new Error("Function not implemented.");
-}

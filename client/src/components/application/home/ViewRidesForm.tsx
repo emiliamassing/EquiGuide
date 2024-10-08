@@ -10,6 +10,7 @@ interface IViewRidesFormProps{
 
 export function ViewRidesForm({ horses }: IViewRidesFormProps) {
     const [selectedHorseName, setSelectedHorseName] = useState<string>('');
+    const [errorMessage, setErrorMessage] = useState<string>('');
     const { horseDispatch } = useContext(HorseContext);
     const navigate = useNavigate();
 
@@ -26,13 +27,13 @@ export function ViewRidesForm({ horses }: IViewRidesFormProps) {
             horseDispatch({ type: HorseActionTypes.PASS_DATA, payload: JSON.stringify(selectedHorse) });
             navigate('/app/viewRides/horse');
         } else {
-            console.log('Ingen häst vald');
+            setErrorMessage('Ingen häst vald')
         }
     }
 
     return(
         <>
-            <form onSubmit={directToViewRideWithHorse}>
+            <form onSubmit={directToViewRideWithHorse} className="viewRidesWithHorseForm">
                 <div className="inputContainer">
                     <span>Se ridpass baserat på häst</span>
                     <select className="homeSelect" value={selectedHorseName} onChange={handleHorseSelect}>
@@ -42,9 +43,10 @@ export function ViewRidesForm({ horses }: IViewRidesFormProps) {
                         ))}
                     </select>
                 </div>
-                <div className="inputContainer">
+                <div className="inputContainer formButton">
                     <button className="primaryButton">Visa ridpass</button>  
-                </div> 
+                </div>
+                <span className="errorMessage">{errorMessage}</span> 
             </form>
         </>
     )
