@@ -16,11 +16,12 @@ const allDisciplines = capitalizeWords(disciplines);
 export function EditorPage() {
     const { rideData } = useContext(RideContext);
     const [titleInput, setTitleInput] = useState(rideData[0].title);
-    const [dateInput, setDateInput] = useState(new Date(rideData[0].date).toLocaleDateString());
+    const [dateInput, setDateInput] = useState(formatDateForInput(rideData[0].date));
     const [selectedDiscipline, setSelectedDiscipline] = useState(rideData[0].discipline);
     const [rating, setRating] = useState(rideData[0].rating);
     const [notes, setNotes] = useState(rideData[0].notes);
     const [dataCreated, setDataCreated] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     function resetDataCreated() {
@@ -46,11 +47,34 @@ export function EditorPage() {
     function handleEditorChange(content: string) {
         setNotes(content);
     }
+
+    function formatDateForInput(date: string | Date): string {
+        const d = new Date(date);
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0'); // Months are zero-based, so add 1
+        const day = String(d.getDate()).padStart(2, '0'); // Pad day with a leading zero if necessary
+    
+        return `${year}-${month}-${day}`;
+    }
+    
     
     async function tryToEditRide(e: FormEvent) {
         e.preventDefault();
 
         const rideId = rideData[0].id;
+        const formattedRideDate = formatDateForInput(rideData[0].date);
+
+        const hasDataChanged =
+            titleInput !== rideData[0].title ||
+            dateInput !== formattedRideDate ||  // Compare formatted date with input date
+            selectedDiscipline !== rideData[0].discipline || 
+            rating !== rideData[0].rating ||
+            notes !== rideData[0].notes;
+    
+        if (!hasDataChanged) {
+            setErrorMessage('Ingen ändring gjord');
+            return;
+        }
         
         try {
             const editedData = await editRide({
@@ -96,7 +120,7 @@ export function EditorPage() {
                                     </div>
                                     <div className="inputContainer">
                                         <label htmlFor="date">Välj datum</label>
-                                        <input type="date" name="date" required onChange={handleDateInputChange} value={new Date(rideData[0].date).toLocaleDateString()}></input>
+                                        <input type="date" name="date" required onChange={handleDateInputChange} value={dateInput}></input>
                                     </div>
                                     <div className="inputContainer">
                                         <span>Välj häst</span>
@@ -143,6 +167,7 @@ export function EditorPage() {
                                             />
                                         }
                                     </div>
+                                    <span>{errorMessage}</span>
                                     <div className="buttonContainer">
                                         <button className="secondaryButton" onClick={directToHome}>Avbryt</button>
                                         <button className="primaryButton">Spara</button>

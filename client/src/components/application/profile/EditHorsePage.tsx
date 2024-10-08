@@ -53,6 +53,16 @@ export function EditHorsePage() {
         e.preventDefault();
 
         const horseId = Number(horseData[0].id);
+        const hasDataChanged =
+        nameInput !== horseData[0].name ||
+        breedInput !== horseData[0].breed ||
+        ageInput !== horseData[0].age.toString() ||
+        selectedDiscipline !== horseData[0].discipline;
+
+        if(!hasDataChanged) {
+            setErrorMessage('Ingen förändring gjord');
+            return;
+        }
 
         try {
             const horseData = await editHorse({

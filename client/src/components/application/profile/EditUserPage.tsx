@@ -51,13 +51,23 @@ export function EditUserPage() {
 
     async function tryToEditUser(e: FormEvent) {
         e.preventDefault();
+        const userId = userData[0].user.id;
     
         if (passwordInput && passwordInput !== confirmPasswordInput) {
             setErrorMessage('Lösenorden matchar inte');
             return;
         }
-    
-        const userId = userData[0].user.id;
+
+        const hasDataChanged =
+        firstNameInput !== user.firstname ||
+        lastNameInput !== user.lastname ||
+        emailInput !== user.email ||
+        (passwordInput && passwordInput !== '');
+
+        if(!hasDataChanged) {
+            setErrorMessage('Ingen ändring gjord');
+            return;
+        }
     
         try {
             const updatedData = await editUser({
@@ -123,7 +133,7 @@ export function EditUserPage() {
                     <div className="container">
                         <AppHeading title="Redigera profil"></AppHeading>
                         <div className="innerContainer">
-                            <form onSubmit={tryToEditUser} className="registerUserForm">
+                            <form onSubmit={tryToEditUser}>
                                 <div className="inputDivider">
                                     <div className="inputContainer">
                                         <span>Förnamn</span>
@@ -146,7 +156,7 @@ export function EditUserPage() {
                                     <span>Bekräfta nytt lösenord</span>
                                     <input type="password" placeholder="Bekräfta lösenord" autoComplete="off" onChange={handlePasswordConfirmationChange}></input>
                                 </div>
-                                    <span className="errorMessage">{errorMessage}</span>
+                                <span className="errorMessage">{errorMessage}</span>
                                 <div className="buttonContainer">
                                     <button className="secondaryButton" onClick={directToProfile}>Tillbaka</button>
                                     <button className="primaryButton">Redigera</button>

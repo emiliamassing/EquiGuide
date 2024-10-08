@@ -138,6 +138,10 @@ main.app {
                     }
                 }
             }
+
+            span.errorMessage {
+                color: var.$darkRed;
+            }
         }
     }
 }
