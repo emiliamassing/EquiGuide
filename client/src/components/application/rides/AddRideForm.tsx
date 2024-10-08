@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { IHorseData } from "../../../models/IHorseData"
-import { disciplines } from "../../../models/disciplines";
 import { capitalizeWords, isAxiosError } from "../../../services/serviceBase";
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { AxiosError } from "axios";

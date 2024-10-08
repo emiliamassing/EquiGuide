@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { RideContext } from "../../../contexts/RideContext"
 import { isAuthenticated } from "../../../services/tokenService";
 import { NotAuthenticated } from "../../error/NotAuthenticated";
