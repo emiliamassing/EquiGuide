@@ -9,7 +9,7 @@ export async function getRidesByUserId(query: string) {
 }
 
 export async function getRidesByHorseId(query: string) {
-    const response = await get<IRideData[]>(BASEURL + 'ridingSessions/user?horseId=' + query);
+    const response = await get<IRideData[]>(BASEURL + 'ridingSessions/horse?horseId=' + query);
     return response;
 }
 

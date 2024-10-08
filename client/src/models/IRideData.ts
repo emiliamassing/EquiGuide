@@ -5,5 +5,6 @@ export interface IRideData {
     discipline: string,
     notes: string,
     rating: number,
-    horse_name: string
+    horse_name: string,
+    ride_id?: number
 }
