@@ -106,7 +106,7 @@ export function AddRideForm({horseList}: IHorseProps) {
                                     </div>
                                     <div className="inputContainer">
                                         <span>Välj häst</span>
-                                        <select required onChange={handleSelectedHorseChange}>
+                                        <select required onChange={handleSelectedHorseChange} className="horseSelect">
                                             <option value={""} hidden>Välj häst</option>
                                             {
                                                 horseList.map((horse) => (
@@ -117,7 +117,7 @@ export function AddRideForm({horseList}: IHorseProps) {
                                     </div>
                                     <div className="inputContainer">
                                         <span>Inriktning</span>
-                                        <select required onChange={handleSelectedDisciplineChange}>
+                                        <select required onChange={handleSelectedDisciplineChange} className="disciplineSelect">
                                             <option value={""} hidden>Inriktning</option>
                                             {
                                                 allActivities.map(activity => (
