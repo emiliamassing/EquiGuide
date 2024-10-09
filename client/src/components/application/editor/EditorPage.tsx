@@ -51,8 +51,8 @@ export function EditorPage() {
     function formatDateForInput(date: string | Date): string {
         const d = new Date(date);
         const year = d.getFullYear();
-        const month = String(d.getMonth() + 1).padStart(2, '0'); // Months are zero-based, so add 1
-        const day = String(d.getDate()).padStart(2, '0'); // Pad day with a leading zero if necessary
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
     
         return `${year}-${month}-${day}`;
     }
@@ -146,7 +146,7 @@ export function EditorPage() {
                                                 <span
                                                     key={star}
                                                     className={`material-symbols-outlined star ${rating >= star ? 'filled' : ''}`}
-                                                    onClick={() => handleStarClick(star)} // Set rating on star click
+                                                    onClick={() => handleStarClick(star)}
                                                 >
                                                     star
                                                 </span>
