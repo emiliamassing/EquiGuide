@@ -48,11 +48,15 @@ export function EditorPage() {
         setNotes(content);
     }
 
+    /*
+        Following function are used to ensure the date fetched from database is the same format as a new chosen date.
+        This prevents form from getting submitted if date hasn't been changed.
+    */
     function formatDateForInput(date: string | Date): string {
         const d = new Date(date);
         const year = d.getFullYear();
-        const month = String(d.getMonth() + 1).padStart(2, '0');
-        const day = String(d.getDate()).padStart(2, '0');
+        const month = String(d.getMonth() + 1).padStart(2, '0');  // Months are zero-based, so add 1
+        const day = String(d.getDate()).padStart(2, '0'); // Pad day with a leading zero if necessary
     
         return `${year}-${month}-${day}`;
     }
@@ -146,7 +150,7 @@ export function EditorPage() {
                                                 <span
                                                     key={star}
                                                     className={`material-symbols-outlined star ${rating >= star ? 'filled' : ''}`}
-                                                    onClick={() => handleStarClick(star)}
+                                                    onClick={() => handleStarClick(star)}  // Set rating on star click
                                                 >
                                                     star
                                                 </span>
