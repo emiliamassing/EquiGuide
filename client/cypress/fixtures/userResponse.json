@@ -1,0 +1,13 @@
+[
+    {
+        "message": "User login successful",
+        "user": {
+          "email": "amren@mail.com",
+          "id": 12,
+          "firstname": "Amren",
+          "lastname": "Doe"
+        },
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+      }
+      
+]
