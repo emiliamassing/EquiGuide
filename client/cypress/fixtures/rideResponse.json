@@ -1,0 +1,22 @@
+[
+    {
+        "id": 2,
+        "title": "Uteritt",
+        "date": "2024-01-23T23:00:00.000Z",
+        "discipline": "Allround",
+        "notes": "Allt gick bra",
+        "rating": 5,
+        "is_deleted": 0,
+        "horse_name": "Andor"
+    },
+    {
+        "id": 13,
+        "title": "Dressyr",
+        "date": "2024-02-10T23:00:00.000Z",
+        "discipline": "Dressyr",
+        "notes": "Kändes inte så bra idag",
+        "rating": 0,
+        "is_deleted": 0,
+        "horse_name": "Andor"
+    }   
+]

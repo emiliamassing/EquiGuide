@@ -24,6 +24,9 @@ export function ViewAllRides() {
         navigate('/app/viewRide')
     }
 
+    console.log(rides);
+    
+
     return(
         isAuthenticated() ? (
             ridesIsLoading ?

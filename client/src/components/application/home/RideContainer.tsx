@@ -16,7 +16,7 @@ export function RideContainer({ rides }: IRideContainerProps) {
     const todaysRide = rides.find((ride) => compareDates(todaysDate, new Date(ride.date)));
     const earlierRides = rides.filter((ride) => comparePassedDates(todaysDate, new Date(ride.date)));
     const latestFiveEarlierRides = earlierRides.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 5);
-    
+
     function directToEditor(ride: IRideData) {
         rideDispatch({ type: RideActionTypes.PASS_DATA, payload: JSON.stringify(ride) });
         navigate('/app/editor');
