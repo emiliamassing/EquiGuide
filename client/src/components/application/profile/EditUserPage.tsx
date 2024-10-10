@@ -137,24 +137,24 @@ export function EditUserPage() {
                                 <div className="inputDivider">
                                     <div className="inputContainer">
                                         <span>Förnamn</span>
-                                        <input type="text" placeholder="Förnamn" value={firstNameInput} onChange={handleFirstNameChange}></input>
+                                        <input type="text" name="firstName" placeholder="Förnamn" value={firstNameInput} onChange={handleFirstNameChange}></input>
                                     </div>
                                     <div className="inputContainer">
                                         <span>Efternamn</span>
-                                        <input type="text" placeholder="Efternamn" value={lastNameInput} onChange={handleLastNameChange}></input>
+                                        <input type="text" name="lastName" placeholder="Efternamn" value={lastNameInput} onChange={handleLastNameChange}></input>
                                     </div>
                                 </div>
                                 <div className="inputContainer">
                                     <span>E-mail</span>
-                                    <input type="text" placeholder="E-Mail" value={emailInput} onChange={handleEmailChange}></input>
+                                    <input type="text" name="email" placeholder="E-Mail" value={emailInput} onChange={handleEmailChange}></input>
                                 </div>
                                 <div className="inputContainer">
                                     <span>Nytt lösenord</span>
-                                    <input type="password" placeholder="Lösenord" autoComplete="off" onChange={handlePasswordChange}></input>
+                                    <input type="password" name="password" placeholder="Lösenord" autoComplete="off" onChange={handlePasswordChange}></input>
                                 </div>
                                 <div className="inputContainer">
                                     <span>Bekräfta nytt lösenord</span>
-                                    <input type="password" placeholder="Bekräfta lösenord" autoComplete="off" onChange={handlePasswordConfirmationChange}></input>
+                                    <input type="password" name="verifyPassword" placeholder="Bekräfta lösenord" autoComplete="off" onChange={handlePasswordConfirmationChange}></input>
                                 </div>
                                 <span className="errorMessage">{errorMessage}</span>
                                 <div className="buttonContainer">

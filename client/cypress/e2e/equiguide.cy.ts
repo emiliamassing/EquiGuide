@@ -15,14 +15,14 @@ beforeEach(() => {
   cy.login(email, password);
 })
 
-/* describe('Tests for confirming login works', () => {
+describe('Tests for confirming login works', () => {
   it('Should display home page of application', () => {
     cy.url().should('include', '/app/home')
     cy.get('h1').contains('Hem')
   });
-}); */
+});
 
-/* describe('Test for adding ride', () => {
+describe('Test for adding ride', () => {
   it('Should fill and submit ride form', () => {
     cy.url().should('include', '/app/home')
     cy.get('nav').contains('Planera ridpass').click()
@@ -35,9 +35,9 @@ beforeEach(() => {
     cy.get('button').contains('Skapa pass').click()
     cy.get('p').contains('Ridpass planerat')
   });
-}); */
+});
 
-/* describe('Test for viewing horse', () => {
+describe('Test for viewing horse', () => {
   it('Should fill and submit ride form', () => {
     cy.url().should('include', '/app/home')
     cy.get('nav').contains('Profil').click()
@@ -45,9 +45,9 @@ beforeEach(() => {
     cy.get('div.horseProfile').get('button.secondaryButton').contains('Visa').click()
     cy.get('div.viewHorseContainer').find('div.horseInfoContainer').find('ul').should('exist').children('li').should('have.length',5)
   });
-}); */
+});
 
-/* describe('Test for sign out', () => {
+describe('Test for sign out', () => {
   it('Should logout user', () => {
     cy.url().should('include', '/app/home')
     cy.get('nav').contains('Profil').click()
@@ -55,4 +55,4 @@ beforeEach(() => {
     cy.get('button.tertriaryButton.logoutButton').click()
     cy.url().should('include', '/login')
   });
-}); */
+});
