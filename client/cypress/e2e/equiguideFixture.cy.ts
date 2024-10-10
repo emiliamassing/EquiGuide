@@ -23,6 +23,9 @@ describe('Equiguide API test for viewing ride', () => {
         cy.get('button').contains('Visa ridpass').click()
 
         cy.get('div.allRidesWrapper').children().should('have.length', 2);
+        cy.get('div.allRidesWrapper').children().first().within(() => {
+            cy.get('h3').should('contain', 'Uteritt')
+        })
     })
 })
 
