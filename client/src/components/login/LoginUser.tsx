@@ -42,6 +42,7 @@ export function LoginUser() {
         } catch(error: unknown) {
             if(isAxiosError(error)) {
                 const axiosError = error as AxiosError;
+                setErrorMessage('Något gick fel, testa igen');
 
                 if(axiosError.response && axiosError.response.status === 400) {
                     setErrorMessage('Felaktig email');

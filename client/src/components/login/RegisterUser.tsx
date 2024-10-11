@@ -68,6 +68,7 @@ export function RegisterUser() {
             } catch(error: unknown) {
                 if(isAxiosError(error)) {
                     const axiosError = error as AxiosError;
+                    setErrorMessage('Något gick fel, testa igen');
 
                     if(axiosError && axiosError.response?.status === 400) {
                         setErrorMessage('Email-adressen är redan registrerad');
