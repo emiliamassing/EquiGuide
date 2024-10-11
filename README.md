@@ -63,7 +63,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#contact">Kontakt</a></li>
     <li><a href="#acknowledgments">Tillägg</a></li>
   </ol>
 </details>
@@ -107,7 +106,6 @@
 <p align="right">(<a href="#readme-top">Till toppen</a>)</p>
 
 
-
 <!-- GETTING STARTED -->
 ## Kom igång
 
@@ -125,7 +123,7 @@ This is an example of how to list things you need to use the software and how to
 ### Installation
 
 1. Kontakta Emilia för exportering av databas
-2. Klona redo
+2. Klona repo
    ```sh
    git clone https://github.com/emiliamassing/Equiguide.git
    ```
@@ -136,12 +134,13 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    cd/server npm install
    ```
-4. Starta server
+4. Skapa ENV-variabler 
+5. Starta server
    ```sh
    nodemon start
    ```
   
-5. Starta clienten
+6. Starta clienten
   ```sh
    npm run dev
    ```
@@ -152,16 +151,6 @@ This is an example of how to list things you need to use the software and how to
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- CONTACT -->
-## Kontakt
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#readme-top">Till toppen</a>)</p>
-
-
 
 <!-- ACKNOWLEDGMENTS -->
 ## Tillägg
