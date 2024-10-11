@@ -141,16 +141,16 @@ This is an example of how to list things you need to use the software and how to
    ```
   
 6. Starta clienten
-  ```sh
+   ```sh
    npm run dev
    ```
-7. Change git remote url to avoid accidental pushes to base project
+7. Ändra git remote url för att undvika pushar till basprojektet
    ```sh
    git remote set-url origin emiliamassing/Equiguide
    git remote -v # confirm the changes
    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Till toppen</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 ## Tillägg
