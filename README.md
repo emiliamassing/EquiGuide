@@ -22,8 +22,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -75,12 +73,18 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Om projektet
+<p>
+  Idén bakom Equiguide grundades när genom att jag började fundera på vilka webbapplikationer eller verktyg jag själv hade nyttjat och funnit användbara. Ett vanligt uppstående problem för både mig
+  och min vänskapskrets är att bibehålla en rolig, varierande, nyttig och givande planering för aktivering av hästarna - därför var tanken att Equiguide skulle tillgodose just detta behov.
+  Equiguide lämpar sig i nuläget för den som vill planera och utvärdera ridpass eller andra aktiviteter tillsammans med sin häst. Det finns översikter för att se tidigare träningar samt en kalender
+  som visar hur följande veckor kommer se ut.
+</p>
+<p>
+  Projektet är responsivt och lämpar sig både om du är på språng med enbart en mobil tillgänglig men även om du sitter tillbakalutad framför datorn och funderar på hur kommande vecka borde se ut. Allt du ser i webbapplikationen
+  går att interagera med. Allt som krävs av användaren är ett konto, därefter lagras all data.
+</p> 
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Till toppen</a>)</p>
 
 
 
@@ -101,7 +105,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ![GithubPages][GithubPages]
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Till toppen</a>)</p>
 
 
 
@@ -151,7 +155,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Till toppen</a>)</p>
 
 
 <!-- CONTACT -->
@@ -159,7 +163,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Till toppen</a>)</p>
 
 
 
@@ -169,7 +173,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 * För att examensarbetet skulle kunna slutföras inom avsatt tidsgräns har projektet tillfälligt skalats ner mot dess originella idé
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Till toppen</a>)</p>
 
 
 
