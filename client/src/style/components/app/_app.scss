@@ -26,6 +26,10 @@ main.app {
         align-items: center;
         margin-bottom: 1em;
 
+        .pulseLoader {
+            margin-top: 40vh;
+        }
+
         .container {
             display: inline-block;
             width: 90%;

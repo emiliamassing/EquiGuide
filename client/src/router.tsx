@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import { Startpage } from "./components/startpage/Startpage";
 import { LoginLayout } from "./components/layout/LoginLayout";
 import { Loginpage } from "./components/login/Loginpage";
@@ -24,7 +24,7 @@ import { EditUserPage } from "./components/application/profile/EditUserPage";
 import { ViewAllRides } from "./components/application/rides/ViewAllRides";
 import { ViewRideWithHorse } from "./components/application/rides/ViewRideWithHorse";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
     {
         path: '/',
         element: <StartLayout />,
