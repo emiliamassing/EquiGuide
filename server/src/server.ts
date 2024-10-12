@@ -12,6 +12,7 @@ import horseRouter from './routes/horses';
 import ridingSessionRouter from './routes/ridingSessions';
 
 const app = express();
+const PORT = Number(process.env.DB_PORT) || 3000;
 
 connection.connect(function(err: QueryError | null) {
     if(err) {
@@ -39,6 +40,6 @@ app.use('/users', userRouter);
 app.use('/horses', horseRouter);
 app.use('/ridingSessions', ridingSessionRouter);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('App started on port 3000');
 });
