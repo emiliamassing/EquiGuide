@@ -59,7 +59,6 @@
     <li>
       <a href="#getting-started">Kom igång</a>
       <ul>
-        <li><a href="#prerequisites">Nödvändigheter</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -108,17 +107,8 @@
 
 <!-- GETTING STARTED -->
 ## Kom igång
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Nödvändigheter
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Följande är instruktioner för hur du sätter upp projketet för att arbeta lokalt.
+För att sätta upp en lokal kopia följer du följande steg.
 
 ### Installation
 
@@ -134,7 +124,7 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    cd/server npm install
    ```
-4. Skapa ENV-variabler 
+4. Skapa ENV-variabler i server & client för att ansluta till databas
 5. Starta server
    ```sh
    nodemon start
