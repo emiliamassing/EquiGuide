@@ -39,6 +39,6 @@ app.use('/users', userRouter);
 app.use('/horses', horseRouter);
 app.use('/ridingSessions', ridingSessionRouter);
 
-app.listen(3000, () => {
+app.listen(8080, () => {
     console.log('App started on port 3000');
 });
