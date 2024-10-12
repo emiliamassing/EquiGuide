@@ -22,7 +22,10 @@ connection.connect(function(err: QueryError | null) {
 });
 
 
-app.use(cors({origin: 'https://emiliamassing.github.io'}));
+app.use(cors({origin: [
+    'https://emiliamassing.github.io',
+    'http://localhost:5173'
+]}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded( {extended: false} ));
@@ -34,6 +37,6 @@ app.use('/users', userRouter);
 app.use('/horses', horseRouter);
 app.use('/ridingSessions', ridingSessionRouter);
 
-app.listen(8080, () => {
+app.listen(3000, () => {
     console.log('App started on port 3000');
 });
