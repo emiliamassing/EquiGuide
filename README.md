@@ -38,6 +38,7 @@
     En webbapplikation ämnad för människor involverade inom hästvärlden vars önskan är ett varierat träningschema och bättre planering. 
     Equiguide hjälper dig strukturera upp din vardag och ger dig mer värdefull tid tillsammans med dina fyrbenta vänner. 
     <br />
+    <a href="https://emiliamassing.github.io/EquiGuide/">Besök Equiguide</a>
     <a href="https://github.com/emiliamassing/Equiguide"><strong>Utforska projektet »</strong></a>
     <br />
     <br />
