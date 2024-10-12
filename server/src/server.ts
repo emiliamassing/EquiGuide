@@ -21,6 +21,12 @@ connection.connect(function(err: QueryError | null) {
     console.log('Connected to database');
 });
 
+//Test för att se så allting fungerar
+app.get('/api/items', (req, res) => {
+    res.json({ items: ['item1', 'item2', 'item3'] });
+});
+
+
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
