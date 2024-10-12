@@ -22,7 +22,7 @@ connection.connect(function(err: QueryError | null) {
 });
 
 
-app.use(cors({origin: 'https://emiliamassing.github.io/EquiGuide/'}));
+app.use(cors({origin: 'https://emiliamassing.github.io'}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded( {extended: false} ));
