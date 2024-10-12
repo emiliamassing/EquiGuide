@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
     database: process.env.DB_DATABASE,
     multipleStatements: true,
     ssl: {
-        rejectUnauthorized: true,
+        rejectUnauthorized: false,
     }
 });
 
