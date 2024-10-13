@@ -25,7 +25,7 @@ const corsOptions = {
     origin: [
         'https://emiliamassing.github.io',
         'http://localhost:3000/'
-    ], // Tillåt din frontend-domän
+    ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Tillåt cookies och autentisering
 };
