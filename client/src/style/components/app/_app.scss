@@ -95,7 +95,6 @@ main.app {
                         display: flex;
                         flex-direction: column;
                         margin-bottom: 1em;
-                        background-color: white;
 
                         label,
                         span {
@@ -184,7 +183,7 @@ main.app {
 
         section {
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: center;
             align-items: flex-start;
             gap: 1em;
 

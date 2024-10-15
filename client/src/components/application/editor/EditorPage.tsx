@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { editRide } from "../../../services/rideService";
 import { AxiosError } from "axios";
 import { ShowVerification } from "../verification/ShowVerification";
+import { ShowLoader } from "../../loader/ShowLoader";
 
 const allDisciplines = capitalizeWords(disciplines);
 
@@ -22,6 +23,7 @@ export function EditorPage() {
     const [notes, setNotes] = useState(rideData[0].notes);
     const [dataCreated, setDataCreated] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
     function resetDataCreated() {
@@ -167,6 +169,11 @@ export function EditorPage() {
                                                 init={{
                                                     plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
                                                     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                                                    setup: (editor) => {
+                                                        editor.on('init', () => {
+                                                            setIsLoading(false);
+                                                        });
+                                                    },
                                                 }}
                                             />
                                         }

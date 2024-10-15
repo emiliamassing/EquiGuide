@@ -1,0 +1,17 @@
+main.app {
+    section {
+        .container {
+            .innerContainer {
+                display: flex;
+                justify-content: center;
+                margin-top: 5em;
+
+                .errorContainer {
+                    h1 {
+                        color: var.$darkRed;
+                    }
+                }
+            }
+        }
+    }
+}
