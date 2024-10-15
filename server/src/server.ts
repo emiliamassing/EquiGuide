@@ -21,7 +21,18 @@ connection.connect(function(err: QueryError | null) {
     console.log('Connected to database');
 });
 
-app.use(cors());
+const corsOptions = {
+    origin: [
+        'https://emiliamassing.github.io',
+        'http://localhost:3000/'
+    ],
+    methods:['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true, // Tillåt cookies och autentisering
+};
+
+
+app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded( {extended: false} ));
