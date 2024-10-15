@@ -8,7 +8,7 @@ export function StartLayout() {
             <header>
                 <div className="logo">
                     <SvgLogo height={40} width={40} outline="0a3b2c79" fill="FBF9FA"></SvgLogo>
-                    <span>EquiGuide</span>
+                    <a href="/">EquiGuide</a>
                 </div>
             </header>
             <main className="start">

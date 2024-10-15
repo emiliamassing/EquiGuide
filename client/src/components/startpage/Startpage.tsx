@@ -11,7 +11,14 @@ export function Startpage() {
         <>
             <div className="startpageWrapper"></div>
             <div className="startpageContainer">
-                <h1 className="startpageHeading">Gör varje stund med hästen värdefull</h1>
+                <div className="headingContainer">
+                    <h1 className="startpageHeading">Gör varje stund med hästen värdefull</h1>
+                    <p>
+                        Med Equiguide får du verktygen att <span className="clarifyWord">planera</span>, <span className="clarifyWord">strukturera </span>
+                        och anpassa dina ridpass för att nå dina mål, oavsett om du tränar för tävling eller rider för nöje. 
+                        Skapa balans mellan hästens behov och dina ambitioner och gör varje ridstund <span className="clarifyWord">meningsfull</span>.
+                    </p>
+                </div>
                 <div className="highlightContainer">
                     <div className="highlight">
                         <div className="highlightFlex">
@@ -56,8 +63,8 @@ export function Startpage() {
                             Förhoppningsvis hittar du någon funktion som hjälper just dig!
                         </p>
                     </div>
+                    <button className="primaryButton" onClick={directToLogin}>Kom igång</button>
                 </div>
-                <button className="primaryButton" onClick={directToLogin}>Kom igång</button>
             </div>
         </>
     )
